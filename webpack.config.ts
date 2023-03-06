@@ -1,18 +1,37 @@
 import path from "path";
 
-import webpack from "webpack";
-
 import { WebpackOptionsInterface } from "./config/webpack/types";
+
 import getWebpackConfig from "./config/webpack";
 
-const options: WebpackOptionsInterface = {
-  mode: "development",
-  paths: {
-    entry: path.resolve(__dirname, "src", "index.ts"),
-    html: path.resolve(__dirname, "public", "index.html"),
-    output: path.resolve(__dirname, "build"),
-  },
+type EnvTypes = {
+  PORT?: string;
+  MODE?: WebpackOptionsInterface["mode"];
 };
 
-const config: webpack.Configuration = getWebpackConfig(options);
-export default config;
+export default () => {
+  const env = process.env as EnvTypes;
+
+  const PORT: number = Number(env.PORT) || 3003;
+  const isDev = env.MODE === "development";
+  const mode = env.MODE ?? "development";
+
+  const options: WebpackOptionsInterface = {
+    mode,
+    paths: {
+      entry: path.resolve(__dirname, "src", "index.ts"),
+      html: path.resolve(__dirname, "public", "index.html"),
+      output: path.resolve(__dirname, "build"),
+      env: path.resolve(
+        __dirname,
+        "config",
+        "envs",
+        `.${isDev ? "dev" : "prod"}.env`
+      ),
+    },
+    port: PORT,
+    isDev,
+  };
+
+  return getWebpackConfig(options);
+};

@@ -2,6 +2,7 @@ import webpack from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 
 import { WebpackOptionsInterface } from "./types";
+import DotenvWebpackPlugin from "dotenv-webpack";
 
 export function getPlugins(
   options: WebpackOptionsInterface
@@ -13,5 +14,9 @@ export function getPlugins(
       template: paths.html,
     }),
     new webpack.ProgressPlugin(),
+    new DotenvWebpackPlugin({
+      path: paths.env,
+      systemvars: true,
+    }),
   ];
 }

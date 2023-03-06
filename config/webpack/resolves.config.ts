@@ -2,6 +2,6 @@ import webpack from "webpack";
 
 export const getResolveConfig = (): webpack.ResolveOptions => {
   return {
-    extensions: [".tsx", ".ts"],
+    extensions: [".tsx", ".ts", ".js"],
   };
 };
