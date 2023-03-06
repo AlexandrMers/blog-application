@@ -1,43 +1,32 @@
-import path from "path";
-
 import webpack from "webpack";
-import HtmlWebpackPlugin from "html-webpack-plugin";
 
-export function getRules(): webpack.RuleSetRule[] {
-  return [
-    {
-      test: /\.tsx?$/,
-      use: "ts-loader",
-      exclude: /node_modules/,
+// Configs
+import { getPlugins } from "./plugins.config";
+import { getRules } from "./rules.config";
+import { getResolveConfig } from "./resolves.config";
+
+import { WebpackOptionsInterface } from "./types";
+
+const getWebpackConfig = (
+  options: WebpackOptionsInterface
+): webpack.Configuration => {
+  const { mode, paths } = options;
+
+  return {
+    mode,
+    entry: paths.entry,
+    module: {
+      rules: getRules(),
     },
-  ];
-}
+    resolve: getResolveConfig(),
+    plugins: getPlugins(options),
 
-function getPlugins(): webpack.WebpackPluginInstance[] {
-  return [
-    new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "../../", "public", "index.html"),
-    }),
-    new webpack.ProgressPlugin(),
-  ];
-}
-
-const getWebpackConfig = (): webpack.Configuration => ({
-  mode: "development",
-  entry: path.resolve(__dirname, "../../", "src", "index.ts"),
-  module: {
-    rules: getRules(),
-  },
-  resolve: {
-    extensions: [".tsx", ".ts"],
-  },
-  plugins: getPlugins(),
-
-  output: {
-    filename: "[name].[contenthash].js",
-    path: path.resolve(__dirname, "../../", "build"),
-    clean: true,
-  },
-});
+    output: {
+      filename: "[name].[contenthash].js",
+      path: paths.output,
+      clean: true,
+    },
+  };
+};
 
 export default getWebpackConfig;
