@@ -1,21 +1,18 @@
 import React from "react";
 
-import { Link } from "react-router-dom";
+import { Navbar } from "widgets/Navbar";
 
 import { useTheme } from "./providers/theme";
 import { AppRoute } from "./providers/router";
+import { SwitchTheme } from "../features/SwitchTheme";
 
 const App = () => {
   const { setTheme } = useTheme();
-  const toggleTheme = () => setTheme();
 
   return (
     <>
-      <button onClick={toggleTheme}>Switch Theme</button>
-
-      <Link to="/">Main Page</Link>
-      <Link to="/about">About Page</Link>
-
+      <SwitchTheme toggleTheme={setTheme} />
+      <Navbar />
       <AppRoute />
     </>
   );
