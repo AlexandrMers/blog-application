@@ -17,7 +17,7 @@ const getWebpackConfig = (
     mode,
     entry: paths.entry,
     module: {
-      rules: getRules(),
+      rules: getRules(options),
     },
     resolve: getResolveConfig(),
     plugins: getPlugins(options),
