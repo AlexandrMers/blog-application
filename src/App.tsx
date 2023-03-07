@@ -1,11 +1,13 @@
-import styles from "./style.module.scss";
+import Counter from "./components/Counter";
+
+import "./app.scss";
 
 const App = () => {
   return (
-    <>
+    <div className="App">
       <h1>Application component</h1>
-      <button className={styles.Button}>Press me</button>
-    </>
+      <Counter />
+    </div>
   );
 };
 
