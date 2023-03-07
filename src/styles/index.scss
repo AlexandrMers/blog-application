@@ -5,5 +5,11 @@
 @import "themes/normal";
 
 .app {
+  min-height: 100vh;
+  height: 100%;
+
   font: var(--font-m);
+
+  background-color: var(--bg-color);
+  color: var(--primary-color);
 }
