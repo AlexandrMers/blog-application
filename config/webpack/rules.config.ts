@@ -26,9 +26,20 @@ export function getRules({
           },
         },
       },
+      "resolve-url-loader",
       "sass-loader",
     ],
   };
 
-  return [typescriptConfigLoader, cssLoaders];
+  const filesLoader = {
+    test: /\.(png|svg|jpg|jpeg|gif)$/i,
+    type: "asset/resource",
+  };
+
+  const fontsLoader = {
+    test: /\.(woff|woff2|eot|ttf|otf)$/i,
+    type: "asset/resource",
+  };
+
+  return [typescriptConfigLoader, cssLoaders, filesLoader, fontsLoader];
 }

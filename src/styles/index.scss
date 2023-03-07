@@ -1,0 +1,9 @@
+@import "reset";
+@import "fonts/fonts";
+@import "variables/global";
+@import "themes/dark";
+@import "themes/normal";
+
+.app {
+  font: var(--font-m);
+}
