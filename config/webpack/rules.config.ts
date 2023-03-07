@@ -1,5 +1,6 @@
 import webpack from "webpack";
 import { WebpackOptionsInterface } from "./types";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
 export function getRules(
   options: WebpackOptionsInterface
@@ -10,10 +11,10 @@ export function getRules(
     exclude: /node_modules/,
   };
 
-  const cssLoaders: webpack.RuleSetRule = {
+  const cssLoaders = {
     test: /\.s[ac]ss$/i,
     use: [
-      "style-loader",
+      options.isDev ? "style-loader" : MiniCssExtractPlugin.loader,
       {
         loader: "css-loader",
         options: {
