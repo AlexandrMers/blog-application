@@ -2,10 +2,10 @@ import React, { Suspense } from "react";
 
 import { Link, Route, Routes } from "react-router-dom";
 
-import { useTheme } from "theme/useTheme";
+import { useTheme } from "app/theme";
 
-const MainPage = React.lazy(() => import("./pages/MainPage"));
-const AboutPage = React.lazy(() => import("./pages/AboutPage"));
+const MainPage = React.lazy(() => import("pages/MainPage"));
+const AboutPage = React.lazy(() => import("pages/AboutPage"));
 
 const App = () => {
   const { setTheme } = useTheme();

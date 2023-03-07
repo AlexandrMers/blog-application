@@ -1,12 +1,12 @@
 import { PropsWithChildren, useState } from "react";
-import { Theme, ThemeContext } from "./ThemeContext";
+import { Theme, ThemeContext } from "../lib";
 
 export const THEME_KEY_LOCAL_STORAGE = "theme";
 
 const defaultTheme =
   (localStorage.getItem(THEME_KEY_LOCAL_STORAGE) as Theme) || Theme.LIGHT;
 
-const ThemeProvider = ({ children }: PropsWithChildren) => {
+export const ThemeProvider = ({ children }: PropsWithChildren) => {
   const [theme, setTheme] = useState<Theme>(() => defaultTheme);
 
   const toggleTheme = () => {
@@ -22,5 +22,3 @@ const ThemeProvider = ({ children }: PropsWithChildren) => {
     </ThemeContext.Provider>
   );
 };
-
-export default ThemeProvider;
