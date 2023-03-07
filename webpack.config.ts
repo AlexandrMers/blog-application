@@ -16,19 +16,23 @@ export default () => {
   const mode = env.MODE ?? "development";
   const isDev = mode === "development";
 
+  const PATHS_CONFIG = {
+    entry: path.resolve(__dirname, "src", "index.tsx"),
+    html: path.resolve(__dirname, "public", "index.html"),
+    output: path.resolve(__dirname, "build"),
+    env: path.resolve(
+      __dirname,
+      "config",
+      "envs",
+      `.${isDev ? "dev" : "prod"}.env`
+    ),
+    src: path.resolve(__dirname, "src"),
+    nodeModules: path.resolve(__dirname, "node_modules"),
+  };
+
   const options: WebpackOptionsInterface = {
     mode,
-    paths: {
-      entry: path.resolve(__dirname, "src", "index.tsx"),
-      html: path.resolve(__dirname, "public", "index.html"),
-      output: path.resolve(__dirname, "build"),
-      env: path.resolve(
-        __dirname,
-        "config",
-        "envs",
-        `.${isDev ? "dev" : "prod"}.env`
-      ),
-    },
+    paths: PATHS_CONFIG,
     port: PORT,
     isDev,
   };

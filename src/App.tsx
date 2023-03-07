@@ -1,27 +1,19 @@
-import React, { Suspense, useState } from "react";
+import React, { Suspense } from "react";
 
 import { Link, Route, Routes } from "react-router-dom";
+
+import { useTheme } from "theme/useTheme";
 
 const MainPage = React.lazy(() => import("./pages/MainPage"));
 const AboutPage = React.lazy(() => import("./pages/AboutPage"));
 
-import "./styles/index.scss";
-
-enum Theme {
-  DARK = "dark",
-  LIGHT = "light",
-}
-
 const App = () => {
-  const [theme, setTheme] = useState<Theme>(Theme.LIGHT);
-
-  const handleSwitchTheme = () => {
-    setTheme((theme) => (theme === Theme.DARK ? Theme.LIGHT : Theme.DARK));
-  };
+  const { setTheme } = useTheme();
+  const toggleTheme = () => setTheme();
 
   return (
-    <div className={`app ${theme}`}>
-      <button onClick={handleSwitchTheme}>Switch Theme</button>
+    <>
+      <button onClick={toggleTheme}>Switch Theme</button>
 
       <Link to="/">Main Page</Link>
       <Link to="/about">About Page</Link>
@@ -32,7 +24,7 @@ const App = () => {
           <Route path="/about" element={<AboutPage />} />
         </Routes>
       </Suspense>
-    </div>
+    </>
   );
 };
 

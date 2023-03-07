@@ -19,7 +19,7 @@ const getWebpackConfig = (
     module: {
       rules: getRules(options),
     },
-    resolve: getResolveConfig(),
+    resolve: getResolveConfig(options),
     plugins: getPlugins(options),
     devtool: isDev ? "inline-source-map" : false,
     devServer: getDevServerConfig(options),
