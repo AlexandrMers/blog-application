@@ -1,9 +1,25 @@
+@use 'sass:color';
+
+$text-color: rgba(0, 0, 0, 0.71);
+
+$bg-color: #fff4e7;
+$bg-color-inverted: #2C3F59;
+
+$primary-color: #d79824;
+$primary-color-hover:  color.adjust($primary-color, $blackness: 30%);
+
+$secondary-color: #BFA584;
+$secondary-color-hover:  color.adjust($secondary-color, $blackness: 10%);
+
 .app.light {
-  --bg-color: #e3e1e1;
-  --bg-color-inverted: #161c77;
+    --text-color: #{$text-color};
 
-  --primary-color: #109425;
-  --primary-hover-color: #005408;
+    --bg-color: #{$bg-color};
+    --bg-color-inverted: #{$bg-color-inverted};
 
-  --secondary-color: #98da8c;
+    --primary-color: #{$primary-color};
+    --primary-color-hover: #{$primary-color-hover};
+
+    --secondary-color: #{$secondary-color};
+    --secondary-color-hover: #{$secondary-color-hover};
 }

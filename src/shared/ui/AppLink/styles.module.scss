@@ -1,0 +1,38 @@
+@use "sass:color";
+
+.AppLink {
+  padding: 5px 8px;
+  transition: color ease .2s;
+}
+
+.AppLink_primary {
+  color: var(--primary-color);
+
+  &:hover {
+    color: var(--primary-color-hover);
+  }
+
+  &:active {
+    color: var(--primary-color-hover);
+  }
+
+  &.AppLink_active {
+    color: var(--primary-color-hover);;
+  }
+}
+
+.AppLink_secondary {
+  color: var(--secondary-color);
+
+  &:hover {
+    color: var(--secondary-color-hover);
+  }
+
+  &:active {
+    color: var(--secondary-color-hover);
+  }
+
+  &.AppLink_active {
+    color: var(--secondary-color-hover);
+  }
+}

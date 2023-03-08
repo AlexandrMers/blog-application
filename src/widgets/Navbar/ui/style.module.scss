@@ -2,17 +2,11 @@
   align-items: center;
   display: flex;
   min-height: 50px;
-  width: 100%;
+  padding: 15px;
 
   background: var(--bg-color-inverted);
-}
 
-.Navbar__Link {
-  color: var(--primary-color);
-  padding: 5px 8px;
-  transition: color ease .2s;
-
-  &:hover {
-    color: var(--primary-hover-color);
+  &__Menu {
+    margin-left: auto;
   }
 }
