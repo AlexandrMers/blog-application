@@ -1,5 +1,4 @@
 import webpack from "webpack";
-import path from "path";
 import { WebpackOptionsInterface } from "./types";
 
 export const getResolveConfig = ({

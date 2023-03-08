@@ -32,7 +32,6 @@ $lightness-color: #fff;
   left: 3px;
   position: absolute;
   top: 3px;
-  transform: scale(1);
   transition: 0.3s ease top, 0.3s ease left, 0.3s ease transform, 0.3s ease background-color;
   width: $element-size;
   z-index: 1;

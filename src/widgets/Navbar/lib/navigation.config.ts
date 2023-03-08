@@ -16,4 +16,9 @@ export const NavigationConfig: Record<
     content: "О нас",
     key: "about",
   },
+  [AppRoutes.ARTICLES]: {
+    to: "/articles",
+    content: "Статьи",
+    key: "articles",
+  },
 };
