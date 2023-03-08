@@ -10,8 +10,6 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
-import "app/styles/index.scss";
-
 root.render(
   <BrowserRouter>
     <ThemeProvider>

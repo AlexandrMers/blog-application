@@ -8,6 +8,8 @@ import { SwitchTheme } from "widgets/SwitchTheme";
 import { Theme, useTheme } from "./providers/theme";
 import { AppRoute } from "./providers/router";
 
+import "./styles/index.scss";
+
 const App = () => {
   const { theme, setTheme } = useTheme();
   const isDarkAppliedTheme = theme === Theme.DARK;
