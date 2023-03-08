@@ -1,0 +1,69 @@
+$element-size: 12px;
+$sky-color: #77b5fe;
+$sun-color: #fafd0f;
+$darkness-color: #000;
+$lightness-color: #fff;
+
+.Switcher {
+  overflow: hidden;
+  position: relative;
+  width: 38px;
+
+  &__Checkbox {
+    display: none;
+  }
+}
+
+.Switcher__Label {
+  background-color: $sky-color;
+  border-radius: 18px;
+  cursor: pointer;
+  display: block;
+  height: 18px;
+  overflow: hidden;
+  transition: 0.3s ease background-color;
+  width: 100%;
+}
+
+.Switcher__Star {
+  background-color: $sun-color;
+  border-radius: 50%;
+  height: $element-size;
+  left: 3px;
+  position: absolute;
+  top: 3px;
+  transform: scale(1);
+  transition: 0.3s ease top, 0.3s ease left, 0.3s ease transform, 0.3s ease background-color;
+  width: $element-size;
+  z-index: 1;
+
+  &::after {
+    background-color: transparent;
+    border-radius: 50%;
+    content: "";
+    height: $element-size;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: $element-size;
+  }
+}
+
+.Switcher_checked {
+  .Switcher__Label {
+    background-color: $darkness-color;
+  }
+
+  .Switcher__Star {
+    top: 3px;
+    left: 22px;
+    background-color: $lightness-color;
+
+    &::after {
+      background-color: $darkness-color;
+      left: -4px;
+      top: -2px;
+      transition: all ease 0.5s;
+    }
+  }
+}

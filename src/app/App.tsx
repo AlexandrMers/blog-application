@@ -1,18 +1,27 @@
 import React from "react";
 
+import { Box, FlexContainer } from "shared/ui";
+
 import { Navbar } from "widgets/Navbar";
 import { SwitchTheme } from "widgets/SwitchTheme";
 
-import { useTheme } from "./providers/theme";
+import { Theme, useTheme } from "./providers/theme";
 import { AppRoute } from "./providers/router";
 
 const App = () => {
-  const { setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
+  const isDarkAppliedTheme = theme === Theme.DARK;
 
   return (
     <>
-      <SwitchTheme toggleTheme={setTheme} />
-      <Navbar />
+      <FlexContainer justifyContent="end">
+        <Navbar />
+
+        <Box insideSize="l">
+          <SwitchTheme checked={isDarkAppliedTheme} toggleTheme={setTheme} />
+        </Box>
+      </FlexContainer>
+
       <AppRoute />
     </>
   );

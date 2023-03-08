@@ -1,7 +1,25 @@
 import React from "react";
+import cn from "classnames";
 
 import { SwitchThemeTypes } from "../types/SwitchThemeTypes";
 
-export const SwitchTheme = ({ toggleTheme }: SwitchThemeTypes) => {
-  return <button onClick={toggleTheme}>Switch Theme</button>;
+import styles from "./styles.module.scss";
+
+export const SwitchTheme = ({ checked, toggleTheme }: SwitchThemeTypes) => {
+  return (
+    <div
+      className={cn(styles.Switcher, { [styles.Switcher_checked]: checked })}
+    >
+      <input
+        className={styles.Switcher__Checkbox}
+        type="checkbox"
+        id="toggle_checkbox"
+        checked={checked}
+        onClick={toggleTheme}
+      />
+      <label className={styles.Switcher__Label} htmlFor="toggle_checkbox">
+        <div className={styles.Switcher__Star} />
+      </label>
+    </div>
+  );
 };
