@@ -16,12 +16,10 @@ const App = () => {
     <>
       <FlexContainer justifyContent="end">
         <Navbar />
-
         <Box insideSize="l">
           <SwitchTheme checked={isDarkAppliedTheme} toggleTheme={setTheme} />
         </Box>
       </FlexContainer>
-
       <AppRoute />
     </>
   );

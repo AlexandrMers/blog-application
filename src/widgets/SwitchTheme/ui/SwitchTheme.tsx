@@ -15,7 +15,7 @@ export const SwitchTheme = ({ checked, toggleTheme }: SwitchThemeTypes) => {
         type="checkbox"
         id="toggle_checkbox"
         checked={checked}
-        onClick={toggleTheme}
+        onChange={toggleTheme}
       />
       <label className={styles.Switcher__Label} htmlFor="toggle_checkbox">
         <div className={styles.Switcher__Star} />
