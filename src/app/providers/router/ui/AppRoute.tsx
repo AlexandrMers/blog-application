@@ -5,7 +5,7 @@ import { RouteConfig } from "../lib/router.config";
 
 export const AppRoute = () => {
   return (
-    <React.Suspense fallback={"Loading ..."}>
+    <React.Suspense fallback={"Loading route ..."}>
       <Routes>
         {Object.values(RouteConfig).map((route, index) => (
           <Route key={index} {...route} />
