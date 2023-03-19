@@ -1,7 +1,7 @@
 .Navbar {
   align-items: center;
   display: flex;
-  min-height: 50px;
+  height: var(--header-height);
   font: var(--font-xl);
 
   &__Menu {

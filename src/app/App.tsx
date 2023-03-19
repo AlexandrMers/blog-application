@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Box, FlexContainer } from "shared/ui";
+import { Box, FlexContainer, Layout } from "shared/ui";
 
 import { Navbar } from "widgets/Navbar";
 import { SwitchTheme } from "widgets/SwitchTheme";
@@ -18,7 +18,14 @@ const App = () => {
           <SwitchTheme />
         </Box>
       </FlexContainer>
-      <AppRoute />
+
+      <Layout.Container>
+        <Layout.SideBar>this is sidebar)</Layout.SideBar>
+
+        <Layout.Content>
+          <AppRoute />
+        </Layout.Content>
+      </Layout.Container>
     </>
   );
 };
