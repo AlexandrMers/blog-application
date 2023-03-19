@@ -1,11 +1,13 @@
 .Navbar {
+  width: 100%;
+  background: var(--bg-color-inverted);
+  padding: 0 50px;
+  font: var(--font-xl);
+  height: var(--header-height);
   align-items: center;
   display: flex;
-  height: var(--header-height);
-  font: var(--font-xl);
-  padding: 0 50px;
+}
 
-  &__Menu {
-    margin-left: auto;
-  }
+.Navbar__Menu {
+  margin-left: auto;
 }

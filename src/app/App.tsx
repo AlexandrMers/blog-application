@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import { useTranslation } from "react-i18next";
 
 // ~ shared layout
-import { Layout } from "shared/ui";
+import { FlexContainer, Layout } from "shared/ui";
 import "shared/config/i18";
 
 // ~ widgets layout
@@ -23,11 +23,17 @@ const App = () => {
 
   return (
     <Suspense fallback="translation loading ...">
-      <button onClick={handleChangeLanguage}>change language</button>
       <Navbar />
       <Layout.Container>
         <Layout.SideBar>
-          <SideBar endCellRender={<SwitchTheme />} />
+          <SideBar
+            endCellRender={
+              <FlexContainer>
+                <SwitchTheme />
+                <button onClick={handleChangeLanguage}>change language</button>
+              </FlexContainer>
+            }
+          />
         </Layout.SideBar>
 
         <Layout.Content>

@@ -9,14 +9,14 @@ import styles from "./style.module.scss";
 
 export const Navbar = ({ className }: NavbarProps) => {
   return (
-    <FlexContainer justifyContent="end">
-      <div className={cn(styles.Navbar, className)}>
+    <div className={cn(styles.Navbar, className)}>
+      <FlexContainer justifyContent="end">
         <div className={styles.Navbar__Menu}>
           {Object.values(NavigationConfig).map((link) => (
             <AppLink {...link}>{link.content}</AppLink>
           ))}
         </div>
-      </div>
-    </FlexContainer>
+      </FlexContainer>
+    </div>
   );
 };
