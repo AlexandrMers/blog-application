@@ -9,8 +9,6 @@ export const SwitchTheme = () => {
   const { theme, setTheme } = useTheme();
   const isDarkAppliedTheme = theme === Theme.DARK;
 
-  const handleOnChange = () => setTheme();
-
   return (
     <div
       className={cn(styles.Switcher, {
@@ -22,7 +20,7 @@ export const SwitchTheme = () => {
         type="checkbox"
         id="toggle_checkbox"
         checked={isDarkAppliedTheme}
-        onChange={handleOnChange}
+        onChange={setTheme}
       />
       <label className={styles.Switcher__Label} htmlFor="toggle_checkbox">
         <div className={styles.Switcher__Star} />

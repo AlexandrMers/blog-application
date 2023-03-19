@@ -1,8 +1,9 @@
 import React from "react";
 
-import { Box, FlexContainer, Layout } from "shared/ui";
+import { Layout } from "shared/ui";
 
 import { Navbar } from "widgets/Navbar";
+import { SideBar } from "widgets/SideBar";
 import { SwitchTheme } from "widgets/SwitchTheme";
 
 import { AppRoute } from "./providers/router";
@@ -12,15 +13,11 @@ import "./styles/index.scss";
 const App = () => {
   return (
     <>
-      <FlexContainer justifyContent="end">
-        <Navbar />
-        <Box insideSize="l">
-          <SwitchTheme />
-        </Box>
-      </FlexContainer>
-
+      <Navbar />
       <Layout.Container>
-        <Layout.SideBar>this is sidebar)</Layout.SideBar>
+        <Layout.SideBar>
+          <SideBar endCellRender={<SwitchTheme />} />
+        </Layout.SideBar>
 
         <Layout.Content>
           <AppRoute />
