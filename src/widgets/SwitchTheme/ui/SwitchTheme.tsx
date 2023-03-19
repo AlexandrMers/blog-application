@@ -1,21 +1,28 @@
 import React from "react";
 import cn from "classnames";
 
-import { SwitchThemeTypes } from "../types/SwitchThemeTypes";
+import { Theme, useTheme } from "shared/providers/theme";
 
 import styles from "./styles.module.scss";
 
-export const SwitchTheme = ({ checked, toggleTheme }: SwitchThemeTypes) => {
+export const SwitchTheme = () => {
+  const { theme, setTheme } = useTheme();
+  const isDarkAppliedTheme = theme === Theme.DARK;
+
+  const handleOnChange = () => setTheme();
+
   return (
     <div
-      className={cn(styles.Switcher, { [styles.Switcher_checked]: checked })}
+      className={cn(styles.Switcher, {
+        [styles.Switcher_checked]: isDarkAppliedTheme,
+      })}
     >
       <input
         className={styles.Switcher__Checkbox}
         type="checkbox"
         id="toggle_checkbox"
-        checked={checked}
-        onChange={toggleTheme}
+        checked={isDarkAppliedTheme}
+        onChange={handleOnChange}
       />
       <label className={styles.Switcher__Label} htmlFor="toggle_checkbox">
         <div className={styles.Switcher__Star} />

@@ -5,21 +5,17 @@ import { Box, FlexContainer } from "shared/ui";
 import { Navbar } from "widgets/Navbar";
 import { SwitchTheme } from "widgets/SwitchTheme";
 
-import { Theme, useTheme } from "./providers/theme";
 import { AppRoute } from "./providers/router";
 
 import "./styles/index.scss";
 
 const App = () => {
-  const { theme, setTheme } = useTheme();
-  const isDarkAppliedTheme = theme === Theme.DARK;
-
   return (
     <>
       <FlexContainer justifyContent="end">
         <Navbar />
         <Box insideSize="l">
-          <SwitchTheme checked={isDarkAppliedTheme} toggleTheme={setTheme} />
+          <SwitchTheme />
         </Box>
       </FlexContainer>
       <AppRoute />
