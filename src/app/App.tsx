@@ -9,6 +9,7 @@ import "shared/config/i18";
 import { Navbar } from "widgets/Navbar";
 import { SideBar } from "widgets/SideBar";
 import { SwitchTheme } from "widgets/SwitchTheme";
+import { SelectLanguage } from "widgets/SelectLanguage";
 
 import { AppRoute } from "./providers/router";
 
@@ -23,6 +24,7 @@ const App = () => {
 
   return (
     <Suspense fallback="translation loading ...">
+      <SelectLanguage />
       <Navbar />
       <Layout.Container>
         <Layout.SideBar>
@@ -30,6 +32,7 @@ const App = () => {
             endCellRender={
               <FlexContainer>
                 <SwitchTheme />
+                // Уйдет в шапку профиля
                 <button onClick={handleChangeLanguage}>change language</button>
               </FlexContainer>
             }
