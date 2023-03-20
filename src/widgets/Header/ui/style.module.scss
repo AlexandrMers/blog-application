@@ -1,4 +1,4 @@
-.Navbar {
+.Header {
   width: 100%;
   background: var(--bg-color-inverted);
   padding: 0 50px;
@@ -8,6 +8,6 @@
   display: flex;
 }
 
-.Navbar__Menu {
+.Header__Menu {
   margin-left: auto;
 }

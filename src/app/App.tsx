@@ -1,49 +1,32 @@
-import React, { Suspense } from "react";
-import { useTranslation } from "react-i18next";
+import React from "react";
 
 // ~ shared layout
-import { FlexContainer, Layout } from "shared/ui";
-import "shared/config/i18";
+import { Layout } from "shared/ui";
 
 // ~ widgets layout
-import { Navbar } from "widgets/Navbar";
+import { Header } from "../widgets/Header";
 import { SideBar } from "widgets/SideBar";
 import { SwitchTheme } from "widgets/SwitchTheme";
 import { SelectLanguage } from "widgets/SelectLanguage";
 
+// ~ app layer
 import { AppRoute } from "./providers/router";
 
 import "./styles/index.scss";
 
 const App = () => {
-  const { t, i18n } = useTranslation();
-
-  const handleChangeLanguage = () => {
-    i18n.changeLanguage(i18n.language === "ru" ? "en" : "ru");
-  };
-
   return (
-    <Suspense fallback="translation loading ...">
-      <SelectLanguage />
-      <Navbar />
+    <>
+      <Header leftElement={<SelectLanguage />} />
       <Layout.Container>
         <Layout.SideBar>
-          <SideBar
-            endCellRender={
-              <FlexContainer>
-                <SwitchTheme />
-                // Уйдет в шапку профиля
-                <button onClick={handleChangeLanguage}>change language</button>
-              </FlexContainer>
-            }
-          />
+          <SideBar endCellRender={<SwitchTheme />} />
         </Layout.SideBar>
-
         <Layout.Content>
           <AppRoute />
         </Layout.Content>
       </Layout.Container>
-    </Suspense>
+    </>
   );
 };
 
