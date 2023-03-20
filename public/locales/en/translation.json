@@ -1,4 +1,7 @@
 {
-  "key1": "key 1",
-  "key2": "key2"
+  "nav_links": {
+    "main": "Home",
+    "about": "About",
+    "articles": "Articles"
+  }
 }

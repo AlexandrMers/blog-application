@@ -1,10 +1,11 @@
-import IconEx from "shared/assets/icons/icon-person.svg";
+import { useTranslation } from "react-i18next";
 
 export const ArticlesPage = () => {
+  const { t } = useTranslation("articles_page");
+
   return (
     <div>
-      <div>Статьи</div>
-      <IconEx key="" />
+      <div>{t("articles_title")}</div>
     </div>
   );
 };

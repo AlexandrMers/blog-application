@@ -4,21 +4,18 @@ import { AppRoutes } from "shared/config/router";
 
 export const NavigationConfig: Record<
   AppRoutes,
-  Pick<LinkProps, "to"> & { content: string; key: string }
+  Pick<LinkProps, "to"> & { key: string }
 > = {
   [AppRoutes.MAIN]: {
     to: "/",
-    content: "Главная",
     key: "main",
   },
   [AppRoutes.ABOUT]: {
     to: "/about",
-    content: "О нас",
     key: "about",
   },
   [AppRoutes.ARTICLES]: {
     to: "/articles",
-    content: "Статьи",
     key: "articles",
   },
 };

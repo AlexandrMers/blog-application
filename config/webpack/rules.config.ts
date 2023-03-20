@@ -37,7 +37,7 @@ export function getRules({
   };
 
   const filesLoader = {
-    test: /\.(png|jpg|jpeg|gif|woff|woff2|eot|ttf|otf)$/i,
+    test: /\.(png|json|jpg|jpeg|gif|woff|woff2|eot|ttf|otf)$/i,
     type: "asset/resource",
   };
 

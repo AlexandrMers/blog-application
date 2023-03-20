@@ -12,7 +12,9 @@ export const SelectBox = ({ options, value, onChange }: SelectBoxPropTypes) => {
   return (
     <Select value={value} onChange={handleChange}>
       {options.map(({ id, name, render }) => (
-        <MenuItem value={id}>{render ? render(name) : name}</MenuItem>
+        <MenuItem key={id} value={id}>
+          {render ? render(name) : name}
+        </MenuItem>
       ))}
     </Select>
   );

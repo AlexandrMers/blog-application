@@ -6,8 +6,8 @@ export const LANGUAGE_KEY_LOCAL_STORAGE = "language";
 const defaultLanguage =
   (localStorage.getItem(LANGUAGE_KEY_LOCAL_STORAGE) as LanguageType) || "ru";
 
-// ~ import config of i18 library
-import "../i18";
+// ~ import config of config library
+import "../config";
 
 export const LanguageProvider = ({ children }: PropsWithChildren) => {
   const [lang, setLang] = useState<LanguageContext["lang"]>(defaultLanguage);
