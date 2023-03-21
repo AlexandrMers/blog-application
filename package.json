@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "PORT=3000 MODE=development webpack serve",
     "build:dev": "MODE=development webpack",
-    "build:prod": "MODE=production webpack"
+    "build:prod": "webpack --mode production"
   },
   "author": "Aleksandr Avdeev",
   "license": "ISC",
@@ -16,6 +16,7 @@
     "@types/dotenv-webpack": "^7.0.3",
     "@types/html-webpack-plugin": "^3.2.6",
     "@types/node": "^18.14.6",
+    "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.3",
     "dotenv-webpack": "^8.0.1",
     "html-webpack-plugin": "^5.5.0",

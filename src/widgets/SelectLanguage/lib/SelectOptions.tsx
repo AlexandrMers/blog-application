@@ -1,4 +1,5 @@
 import React from "react";
+import { TFunction } from "i18next";
 
 import IconRu from "shared/assets/icons/flag-ru.svg";
 import IconEn from "shared/assets/icons/flag-en.svg";
@@ -12,15 +13,17 @@ const SvgProps: React.SVGProps<SVGSVGElement> = {
   },
 };
 
-export const OptionsForSelect: SuggestType[] = [
+export const OptionsForSelect: (t: TFunction) => SuggestType[] = (
+  translation
+) => [
   {
     id: "ru",
     name: "Русский",
-    render: (name) => {
+    render: () => {
       return (
         <div style={{ display: "flex", alignItems: "center" }}>
           <IconRu {...SvgProps} />
-          {name}
+          {translation("languages.ru")}
         </div>
       );
     },
@@ -28,11 +31,11 @@ export const OptionsForSelect: SuggestType[] = [
   {
     id: "en",
     name: "Английский",
-    render: (name) => {
+    render: () => {
       return (
         <div style={{ display: "flex", alignItems: "center" }}>
           <IconEn {...SvgProps} />
-          {name}
+          {translation("languages.en")}
         </div>
       );
     },

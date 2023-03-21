@@ -28,6 +28,7 @@ export default () => {
     ),
     src: path.resolve(__dirname, "src"),
     nodeModules: path.resolve(__dirname, "node_modules"),
+    public: path.resolve(__dirname, "public"),
   };
 
   const options: WebpackOptionsInterface = {

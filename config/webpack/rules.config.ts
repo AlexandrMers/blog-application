@@ -18,6 +18,7 @@ export function getRules({
       {
         loader: "css-loader",
         options: {
+          sourceMap: isDev,
           modules: {
             auto: (resPath: string) => resPath.includes(".module."),
             localIdentName: isDev
@@ -26,8 +27,18 @@ export function getRules({
           },
         },
       },
-      "resolve-url-loader",
-      "sass-loader",
+      {
+        loader: "resolve-url-loader",
+        options: {
+          sourceMap: isDev,
+        },
+      },
+      {
+        loader: "sass-loader",
+        options: {
+          sourceMap: isDev,
+        },
+      },
     ],
   };
 

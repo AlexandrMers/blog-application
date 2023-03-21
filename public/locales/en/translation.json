@@ -3,5 +3,9 @@
     "main": "Home",
     "about": "About",
     "articles": "Articles"
+  },
+  "languages": {
+    "ru": "Russian",
+    "en": "English"
   }
 }

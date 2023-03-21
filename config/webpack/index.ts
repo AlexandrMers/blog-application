@@ -27,7 +27,7 @@ const getWebpackConfig = (
     output: {
       filename: "[name].[contenthash].js",
       path: paths.output,
-      assetModuleFilename: "assets/fonts/[name][ext]",
+      assetModuleFilename: "assets/[name][ext]",
       clean: true,
       publicPath: "/",
     },

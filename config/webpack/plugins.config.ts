@@ -3,15 +3,16 @@ import webpack from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import DotenvWebpackPlugin from "dotenv-webpack";
+import CopyWebpackPlugin from "copy-webpack-plugin";
 
 import { WebpackOptionsInterface } from "./types";
 
 export function getPlugins(
   options: WebpackOptionsInterface
 ): webpack.WebpackPluginInstance[] {
-  const { paths } = options;
+  const { paths, isDev } = options;
 
-  return [
+  const plugins = [
     new HtmlWebpackPlugin({
       template: paths.html,
     }),
@@ -24,5 +25,16 @@ export function getPlugins(
       filename: "css/[name].[contenthash:8].css",
       chunkFilename: "css/[name].[contenthash:8].css",
     }),
+
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: `${paths.public}/locales`,
+          to: "locales",
+        },
+      ],
+    }),
   ];
+
+  return plugins;
 }

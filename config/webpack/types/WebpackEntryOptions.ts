@@ -7,6 +7,7 @@ export type PathsForWebpackConfig = {
   env: string;
   src: string;
   nodeModules: string;
+  public: string;
 };
 
 export interface WebpackOptionsInterface {

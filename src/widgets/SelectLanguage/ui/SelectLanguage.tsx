@@ -8,7 +8,7 @@ import { LanguageType, useLanguage } from "shared/providers/language/lib";
 import { OptionsForSelect } from "../lib/SelectOptions";
 
 export const SelectLanguage = () => {
-  const { i18n } = useTranslation();
+  const { t: translation, i18n } = useTranslation();
   const { lang: language, changeLanguage: setLanguage } = useLanguage();
 
   const handleChangeLanguage = (value: SuggestType["id"]) => {
@@ -17,10 +17,12 @@ export const SelectLanguage = () => {
     setLanguage(stringValue);
   };
 
+  const options = OptionsForSelect(translation);
+
   return (
     <SelectBox
       value={language}
-      options={OptionsForSelect}
+      options={options}
       onChange={handleChangeLanguage}
     />
   );
