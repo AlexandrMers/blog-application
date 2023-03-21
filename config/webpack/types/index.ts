@@ -1,1 +1,1 @@
-export * from "./WebpackEntryOptions";
+export * from './WebpackEntryOptions'

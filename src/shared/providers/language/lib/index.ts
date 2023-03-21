@@ -1,2 +1,2 @@
-export * from "./LanguageContext";
-export * from "./useLanguage";
+export * from './LanguageContext'
+export * from './useLanguage'

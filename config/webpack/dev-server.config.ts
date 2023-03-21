@@ -1,5 +1,5 @@
-import { Configuration as DevServerConfigurationType } from "webpack-dev-server";
-import { WebpackOptionsInterface } from "./types";
+import { type Configuration as DevServerConfigurationType } from 'webpack-dev-server'
+import { type WebpackOptionsInterface } from './types'
 
 export const getDevServerConfig = (
   options: WebpackOptionsInterface
@@ -7,6 +7,6 @@ export const getDevServerConfig = (
   return {
     port: options.port,
     open: true,
-    historyApiFallback: true,
-  };
-};
+    historyApiFallback: true
+  }
+}

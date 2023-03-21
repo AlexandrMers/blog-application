@@ -1,6 +1,6 @@
-import { PropsWithChildren } from "react";
+import { type PropsWithChildren } from 'react'
 
 export type BoxTypes = PropsWithChildren<{
-  className?: string;
-  insideSize?: "s" | "m" | "l";
-}>;
+  className?: string
+  insideSize?: 's' | 'm' | 'l'
+}>

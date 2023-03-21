@@ -1,7 +1,7 @@
-import { ReactNode } from "react";
+import { type ReactNode } from 'react'
 
-export type SuggestType = {
-  id: string | number;
-  name: string;
-  render?: (name: string) => ReactNode;
-};
+export interface SuggestType {
+  id: string | number
+  name: string
+  render?: (name: string) => ReactNode
+}

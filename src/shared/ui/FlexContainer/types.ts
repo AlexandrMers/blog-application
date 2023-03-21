@@ -1,6 +1,6 @@
-import { PropsWithChildren } from "react";
+import { type PropsWithChildren } from 'react'
 
 export type FlexContainerTypes = PropsWithChildren<{
-  className?: string;
-  justifyContent?: "start" | "center" | "end";
-}>;
+  className?: string
+  justifyContent: 'start' | 'center' | 'end'
+}>

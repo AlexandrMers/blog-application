@@ -1,11 +1,11 @@
-import webpack from "webpack";
-import { WebpackOptionsInterface } from "./types";
+import type webpack from 'webpack'
+import { type WebpackOptionsInterface } from './types'
 
 export const getResolveConfig = ({
-  paths,
+  paths
 }: WebpackOptionsInterface): webpack.ResolveOptions => {
   return {
-    extensions: [".tsx", ".ts", ".js"],
-    modules: [paths.src, paths.nodeModules],
-  };
-};
+    extensions: ['.tsx', '.ts', '.js'],
+    modules: [paths.src, paths.nodeModules]
+  }
+}

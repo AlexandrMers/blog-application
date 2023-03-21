@@ -1,22 +1,22 @@
-import cn from "classnames";
-import { FlexContainerTypes } from "./types";
+import cn from 'classnames'
+import { type FlexContainerTypes } from './types'
 
-import styles from "./styles.module.scss";
+import styles from './styles.module.scss'
 
 export const FlexContainer = ({
   children,
-  justifyContent,
-  className,
+  justifyContent = 'start',
+  className
 }: FlexContainerTypes) => {
   return (
     <div
       className={cn([
         styles.FlexContainer,
         styles[`FlexContainer_${justifyContent}`],
-        className,
+        className
       ])}
     >
       {children}
     </div>
-  );
-};
+  )
+}

@@ -1,18 +1,18 @@
-import React from "react";
-import cn from "classnames";
+import { type FC } from 'react'
+import cn from 'classnames'
 
-import { Theme, useTheme } from "shared/providers/theme";
+import { Theme, useTheme } from 'shared/providers/theme'
 
-import styles from "./styles.module.scss";
+import styles from './styles.module.scss'
 
-export const SwitchTheme = () => {
-  const { theme, setTheme } = useTheme();
-  const isDarkAppliedTheme = theme === Theme.DARK;
+export const SwitchTheme: FC = () => {
+  const { theme, setTheme } = useTheme()
+  const isDarkAppliedTheme = theme === Theme.DARK
 
   return (
     <div
       className={cn(styles.Switcher, {
-        [styles.Switcher_checked]: isDarkAppliedTheme,
+        [styles.Switcher_checked]: isDarkAppliedTheme
       })}
     >
       <input
@@ -26,5 +26,5 @@ export const SwitchTheme = () => {
         <div className={styles.Switcher__Star} />
       </label>
     </div>
-  );
-};
+  )
+}

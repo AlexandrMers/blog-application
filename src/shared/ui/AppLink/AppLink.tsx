@@ -1,9 +1,9 @@
-import { NavLink } from "react-router-dom";
-import cn from "classnames";
+import { NavLink } from 'react-router-dom'
+import cn from 'classnames'
 
-import { Appearance, Types } from "./types";
+import { Appearance, type Types } from './types'
 
-import styles from "./styles.module.scss";
+import styles from './styles.module.scss'
 
 export const AppLink = (props: Types) => {
   const {
@@ -12,7 +12,7 @@ export const AppLink = (props: Types) => {
     to,
     children,
     ...otherProps
-  } = props;
+  } = props
 
   return (
     <NavLink
@@ -21,7 +21,7 @@ export const AppLink = (props: Types) => {
           styles.AppLink,
           {
             [styles.AppLink_active]: isActive,
-            [styles[`AppLink_${appearance}`]]: appearance,
+            [styles[`AppLink_${appearance}`]]: appearance
           },
           className
         )
@@ -31,5 +31,5 @@ export const AppLink = (props: Types) => {
     >
       {children}
     </NavLink>
-  );
-};
+  )
+}

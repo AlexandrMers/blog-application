@@ -1,7 +1,7 @@
-import { useTranslation } from "react-i18next";
+import { useTranslation } from 'react-i18next'
 
 export const MainPage = () => {
-  const { t } = useTranslation("main_page");
+  const { t } = useTranslation('main_page')
 
-  return <p>{t("main_title")}</p>;
-};
+  return <p>{t('main_title')}</p>
+}

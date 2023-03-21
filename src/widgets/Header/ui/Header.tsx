@@ -1,25 +1,25 @@
-import cn from "classnames";
-import { useTranslation } from "react-i18next";
+import cn from 'classnames'
+import { useTranslation } from 'react-i18next'
 
-import { AppLink, FlexContainer } from "shared/ui";
+import { AppLink, FlexContainer } from 'shared/ui'
 
-import { NavigationConfig } from "../lib/navigation.config";
-import { HeaderProps } from "../types/HeaderProps";
+import { NavigationConfig } from '../lib/navigation.config'
+import { type HeaderProps } from '../types/HeaderProps'
 
-import styles from "./style.module.scss";
+import styles from './style.module.scss'
 
-function LinksWithTranslations() {
-  const { t } = useTranslation();
+function LinksWithTranslations () {
+  const { t } = useTranslation()
 
   return (
     <>
       {Object.values(NavigationConfig).map((link) => (
-        <AppLink key={link.key} {...link}>
+        <AppLink key={link.key} to={link.to} >
           {t(`nav_links.${link.key}`)}
         </AppLink>
       ))}
     </>
-  );
+  )
 }
 
 export const Header = ({ className, leftElement }: HeaderProps) => {
@@ -32,5 +32,5 @@ export const Header = ({ className, leftElement }: HeaderProps) => {
         </div>
       </FlexContainer>
     </div>
-  );
-};
+  )
+}

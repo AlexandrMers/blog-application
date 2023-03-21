@@ -1,1 +1,1 @@
-export * from "./SuggestType";
+export * from './SuggestType'

@@ -7,8 +7,10 @@
     "allowJs": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
+    "strictNullChecks": true,
     "allowSyntheticDefaultImports": true,
     "baseUrl": "./src",
+
     "paths": {
       "*": ["*"]
     }
@@ -16,7 +18,8 @@
   "include": ["./**/*.ts", "./**/*.tsx"],
   "ts-node": {
     "compilerOptions": {
-      "module": "CommonJS"
+      "module": "CommonJS",
+      "strictNullChecks": true
     }
   },
 }

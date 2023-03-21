@@ -1,2 +1,2 @@
-export { LanguageProvider } from "./ui/LanguageProvider";
-export * from "./lib";
+export { LanguageProvider } from './ui/LanguageProvider'
+export * from './lib'

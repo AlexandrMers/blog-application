@@ -1,23 +1,23 @@
-import React from "react";
-import { useTranslation } from "react-i18next";
+import React from 'react'
+import { useTranslation } from 'react-i18next'
 
-import { SelectBox } from "shared/ui";
-import { SuggestType } from "shared/types";
-import { LanguageType, useLanguage } from "shared/providers/language/lib";
+import { SelectBox } from 'shared/ui'
+import { type SuggestType } from 'shared/types'
+import { type LanguageType, useLanguage } from 'shared/providers/language/lib'
 
-import { OptionsForSelect } from "../lib/SelectOptions";
+import { OptionsForSelect } from '../lib/SelectOptions'
 
 export const SelectLanguage = () => {
-  const { t: translation, i18n } = useTranslation();
-  const { lang: language, changeLanguage: setLanguage } = useLanguage();
+  const { t: translation, i18n: { changeLanguage } } = useTranslation()
+  const { lang: language, changeLanguage: setLanguage } = useLanguage()
 
-  const handleChangeLanguage = (value: SuggestType["id"]) => {
-    const stringValue = value as LanguageType;
-    i18n.changeLanguage(stringValue);
-    setLanguage(stringValue);
-  };
+  const handleChangeLanguage = (value: SuggestType['id']) => {
+    const stringValue = value as LanguageType
+    setLanguage(stringValue)
+    void changeLanguage(stringValue)
+  }
 
-  const options = OptionsForSelect(translation);
+  const options = OptionsForSelect(translation)
 
   return (
     <SelectBox
@@ -25,5 +25,5 @@ export const SelectLanguage = () => {
       options={options}
       onChange={handleChangeLanguage}
     />
-  );
-};
+  )
+}

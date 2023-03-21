@@ -1,40 +1,38 @@
-import webpack from "webpack";
+import webpack from 'webpack'
 
-import HtmlWebpackPlugin from "html-webpack-plugin";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import DotenvWebpackPlugin from "dotenv-webpack";
-import CopyWebpackPlugin from "copy-webpack-plugin";
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import DotenvWebpackPlugin from 'dotenv-webpack'
+import CopyWebpackPlugin from 'copy-webpack-plugin'
 
-import { WebpackOptionsInterface } from "./types";
+import { type WebpackOptionsInterface } from './types'
 
-export function getPlugins(
+export function getPlugins (
   options: WebpackOptionsInterface
 ): webpack.WebpackPluginInstance[] {
-  const { paths, isDev } = options;
+  const { paths } = options
 
-  const plugins = [
+  return [
     new HtmlWebpackPlugin({
-      template: paths.html,
+      template: paths.html
     }),
     new webpack.ProgressPlugin(),
     new DotenvWebpackPlugin({
       path: paths.env,
-      systemvars: true,
+      systemvars: true
     }),
     new MiniCssExtractPlugin({
-      filename: "css/[name].[contenthash:8].css",
-      chunkFilename: "css/[name].[contenthash:8].css",
+      filename: 'css/[name].[contenthash:8].css',
+      chunkFilename: 'css/[name].[contenthash:8].css'
     }),
 
     new CopyWebpackPlugin({
       patterns: [
         {
           from: `${paths.public}/locales`,
-          to: "locales",
-        },
-      ],
-    }),
-  ];
-
-  return plugins;
+          to: 'locales'
+        }
+      ]
+    })
+  ]
 }

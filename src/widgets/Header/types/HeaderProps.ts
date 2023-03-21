@@ -1,6 +1,6 @@
-import { ReactNode } from "react";
+import { type ReactNode } from 'react'
 
-export type HeaderProps = {
-  className?: string;
-  leftElement?: ReactNode;
-};
+export interface HeaderProps {
+  className?: string
+  leftElement?: ReactNode
+}

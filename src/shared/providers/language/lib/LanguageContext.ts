@@ -1,10 +1,13 @@
-import { createContext } from "react";
+import { createContext } from 'react'
 
-export type LanguageType = "ru" | "en";
+export type LanguageType = 'ru' | 'en'
 
-export interface LanguageContext {
-  lang?: LanguageType;
-  changeLanguage?: (lang: LanguageContext["lang"], namespace?: string) => void;
+export interface LanguageContextInterface {
+  lang: LanguageType
+  changeLanguage: (lang: LanguageContextInterface['lang'], namespace?: string) => void
 }
 
-export const LanguageContext = createContext<LanguageContext>({});
+export const LanguageContext = createContext<LanguageContextInterface>({
+  lang: '' as LanguageType,
+  changeLanguage: () => {}
+})

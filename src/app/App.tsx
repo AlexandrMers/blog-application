@@ -1,20 +1,19 @@
-import React from "react";
+import { type FC } from 'react'
 
-// ~ shared layout
-import { Layout } from "shared/ui";
+import { Layout } from 'shared/ui'
 
 // ~ widgets layout
-import { Header } from "../widgets/Header";
-import { SideBar } from "widgets/SideBar";
-import { SwitchTheme } from "widgets/SwitchTheme";
-import { SelectLanguage } from "widgets/SelectLanguage";
+import { Header } from '../widgets/Header'
+import { SideBar } from 'widgets/SideBar'
+import { SwitchTheme } from 'widgets/SwitchTheme'
+import { SelectLanguage } from 'widgets/SelectLanguage'
 
 // ~ app layer
-import { AppRoute } from "./providers/router";
+import { AppRoute } from './providers/router'
 
-import "./styles/index.scss";
+import './styles/index.scss'
 
-const App = () => {
+const App: FC = () => {
   return (
     <>
       <Header leftElement={<SelectLanguage />} />
@@ -27,7 +26,7 @@ const App = () => {
         </Layout.Content>
       </Layout.Container>
     </>
-  );
-};
+  )
+}
 
-export default App;
+export default App

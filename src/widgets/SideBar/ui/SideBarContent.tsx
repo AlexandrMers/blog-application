@@ -1,11 +1,11 @@
-import React, { PropsWithChildren, ReactNode } from "react";
+import React, { type PropsWithChildren, type ReactNode } from 'react'
 
-import styles from "./style.module.scss";
+import styles from './style.module.scss'
 
 export const SideBarContent = ({
-  endCellRender,
+  endCellRender
 }: PropsWithChildren<{
-  endCellRender?: ReactNode;
+  endCellRender?: ReactNode
 }>) => {
   return (
     <div className={styles.SideBarContent}>
@@ -14,5 +14,5 @@ export const SideBarContent = ({
       <p>Item 3</p>
       <div className={styles.SideBarContent__EndCell}>{endCellRender}</div>
     </div>
-  );
-};
+  )
+}

@@ -1,7 +1,7 @@
-import { SuggestType } from "../../types";
+import { type SuggestType } from '../../types'
 
-export type SelectBoxPropTypes = {
-  options: SuggestType[];
-  value: SuggestType["id"];
-  onChange: (value: SuggestType["id"]) => void;
-};
+export interface SelectBoxPropTypes {
+  options: SuggestType[]
+  value: SuggestType['id']
+  onChange: (value: SuggestType['id']) => void
+}
