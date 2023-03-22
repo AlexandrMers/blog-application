@@ -1,20 +1,24 @@
 import { type LinkProps } from 'react-router-dom'
 
-import { AppRoutes } from 'shared/config/router'
+export enum NavigationRoutes {
+  MAIN = 'main',
+  ABOUT = 'about',
+  ARTICLES = 'articles',
+}
 
 export const NavigationConfig: Record<
-AppRoutes,
+NavigationRoutes,
 Pick<LinkProps, 'to'> & { key: string }
 > = {
-  [AppRoutes.MAIN]: {
+  [NavigationRoutes.MAIN]: {
     to: '/',
     key: 'main'
   },
-  [AppRoutes.ABOUT]: {
+  [NavigationRoutes.ABOUT]: {
     to: '/about',
     key: 'about'
   },
-  [AppRoutes.ARTICLES]: {
+  [NavigationRoutes.ARTICLES]: {
     to: '/articles',
     key: 'articles'
   }
