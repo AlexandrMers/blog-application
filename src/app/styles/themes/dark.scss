@@ -1,20 +1,16 @@
 @use 'sass:color';
 
 $primary-color: #d79824;
-$primary-color-hover:  color.adjust($primary-color, $blackness: 40%);
-
+$primary-color-hover: color.adjust($primary-color, $blackness: 40%);
 $secondary-color: #BFA584;
-$secondary-color-hover:  color.adjust($secondary-color, $blackness: 40%);
+$secondary-color-hover: color.adjust($secondary-color, $blackness: 40%);
 
 .app.dark {
-  --text-color: rgba(246, 246, 246, 0.8);
-
+  --text-color: rgb(246 246 246 / 80%);
   --bg-color: #2C3F59;
   --bg-color-inverted: #fff4e7;
-
   --primary-color: #{$primary-color};
   --primary-color-hover: #{$primary-color-hover};
-
   --secondary-color: #{$secondary-color};
   --secondary-color-hover: #{$secondary-color-hover};
 }

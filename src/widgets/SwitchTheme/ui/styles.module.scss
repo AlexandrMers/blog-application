@@ -54,9 +54,9 @@ $lightness-color: #fff;
   }
 
   .Switcher__Star {
-    top: 3px;
-    left: 22px;
     background-color: $lightness-color;
+    left: 22px;
+    top: 3px;
 
     &::after {
       background-color: $darkness-color;

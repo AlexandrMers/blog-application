@@ -1,11 +1,11 @@
 .Header {
-  width: 100%;
+  align-items: center;
   background: var(--bg-color-inverted);
-  padding: 0 50px;
+  display: flex;
   font: var(--font-xl);
   height: var(--header-height);
-  align-items: center;
-  display: flex;
+  padding: 0 50px;
+  width: 100%;
 }
 
 .Header__Menu {

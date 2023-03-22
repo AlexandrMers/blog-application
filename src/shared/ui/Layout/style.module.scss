@@ -1,15 +1,15 @@
 $container-padding: 15px;
 
 .LayoutContainer {
-  width: 100%;
   display: flex;
+  width: 100%;
 }
 
 .SideBar {
-  width: var(--sidebar-width);
-  min-height: calc(100vh - 80px);
   background-color: var(--secondary-color);
+  min-height: calc(100vh - 80px);
   padding: $container-padding;
+  width: var(--sidebar-width);
 }
 
 .LayoutContent {
