@@ -1,4 +1,6 @@
 import { ThemeDecorator } from '../../src/shared/config/storybook'
+import { LanguageDecorator } from '../../src/shared/config/storybook/decorators/languageDecorator'
+import { RouteDecorator } from '../../src/shared/config/storybook/decorators/routeDecorator'
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -12,7 +14,7 @@ export const parameters = {
 
 export const globalTypes = {
   theme: {
-    name: 'Theme',
+    name: 'theme',
     defaultValue: 'light',
     toolbar: {
       icon: 'mirror',
@@ -20,7 +22,17 @@ export const globalTypes = {
       showName: true,
       dynamicTitle: true
     }
+  },
+  language: {
+    name: 'language',
+    defaultValue: 'ru',
+    toolbar: {
+      icon: '',
+      items: ['ru', 'en'],
+      showName: true,
+      dynamicTitle: true
+    }
   }
 }
 
-export const decorators = [ThemeDecorator]
+export const decorators = [ThemeDecorator, LanguageDecorator, RouteDecorator]

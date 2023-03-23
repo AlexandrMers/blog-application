@@ -1,6 +1,7 @@
 import { type FC, Suspense } from 'react'
 
 import { Layout } from 'shared/ui'
+import 'shared/config/theme/styles/index.scss'
 
 // ~ widgets layout
 import { Header } from '../widgets/Header'
@@ -11,8 +12,6 @@ import { PageLoader } from '../widgets/PageLoader'
 
 // ~ app layer
 import { AppRoute } from './providers/router'
-
-import './styles/index.scss'
 
 const App: FC = () => {
   return (

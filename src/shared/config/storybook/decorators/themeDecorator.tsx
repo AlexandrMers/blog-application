@@ -4,6 +4,8 @@ import { type Story, type StoryContext } from '@storybook/react'
 
 import { type Theme, ThemeProvider, useTheme } from '../../theme'
 
+import '../../theme/styles/index.scss'
+
 const ThemeSwitcher = ({ children, theme }: PropsWithChildren<{ theme: Theme }>) => {
   const { setTheme } = useTheme()
 
