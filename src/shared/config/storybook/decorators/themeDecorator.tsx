@@ -12,7 +12,10 @@ const ThemeSwitcher = ({ children, theme }: PropsWithChildren<{ theme: Theme }>)
   }, [theme])
 
   return (
-    <div>
+    <div style={{
+      background: 'var(--bg-color)',
+      height: '100vh'
+    }}>
       {children}
     </div>
   )

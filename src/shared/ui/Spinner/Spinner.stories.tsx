@@ -1,17 +1,17 @@
 import React from 'react'
 import { type ComponentMeta, type ComponentStory } from '@storybook/react'
 
-import { Spinner } from './Spinner'
+import { Spinner as SpinnerComponent } from './Spinner'
 
-const StorySpinner: ComponentMeta<typeof Spinner> = {
+const StorySpinner: ComponentMeta<typeof SpinnerComponent> = {
   argTypes: {},
-  component: Spinner,
+  component: SpinnerComponent,
   title: 'shared/Spinner'
 }
 
-const Template: ComponentStory<typeof Spinner> = (args) => <Spinner {...args} />
+const Template: ComponentStory<typeof SpinnerComponent> = (args) => <SpinnerComponent {...args} />
 
-export const SpinnerComponent = Template.bind({})
-SpinnerComponent.args = {}
+export const Spinner = Template.bind({})
+Spinner.args = {}
 
 export default StorySpinner
