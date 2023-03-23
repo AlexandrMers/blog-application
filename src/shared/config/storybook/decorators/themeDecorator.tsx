@@ -1,6 +1,6 @@
 import { type PropsWithChildren, useEffect } from 'react'
 
-import { type Story, type StoryContext } from '@storybook/react'
+import { type StoryContext } from '@storybook/react'
 
 import { type Theme, ThemeProvider, useTheme } from '../../theme'
 
@@ -23,13 +23,13 @@ const ThemeSwitcher = ({ children, theme }: PropsWithChildren<{ theme: Theme }>)
   )
 }
 
-export const ThemeDecorator = (Story: Story, context: StoryContext) => {
+export const ThemeDecorator = (story: any, context: StoryContext) => {
   const { theme } = context.globals
 
   return (
     <ThemeProvider>
       <ThemeSwitcher theme={theme}>
-        <Story />
+        {story()}
       </ThemeSwitcher>
     </ThemeProvider>
   )

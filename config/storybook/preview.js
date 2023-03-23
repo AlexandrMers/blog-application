@@ -28,11 +28,21 @@ export const globalTypes = {
     defaultValue: 'ru',
     toolbar: {
       icon: '',
-      items: ['ru', 'en'],
+      items: [{
+        title: 'Русский',
+        value: 'ru'
+      }, {
+        title: 'Английский',
+        value: 'en'
+      }],
       showName: true,
       dynamicTitle: true
     }
   }
 }
 
-export const decorators = [ThemeDecorator, LanguageDecorator, RouteDecorator]
+export const decorators = [
+  RouteDecorator,
+  LanguageDecorator,
+  ThemeDecorator
+]
