@@ -1,4 +1,4 @@
-import { sum } from './sum'
+import { sum } from 'widgets/SideBar/helpers/sum'
 
 describe('sum', () => {
   it('2,4,5,6 -> 17', () => {

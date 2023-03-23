@@ -5,7 +5,8 @@ module.exports = {
     '/node_modules/'
   ],
   moduleDirectories: [
-    'node_modules'
+    'node_modules',
+    'src'
   ],
   moduleFileExtensions: [
     'js',
