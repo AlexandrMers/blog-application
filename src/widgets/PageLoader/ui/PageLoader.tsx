@@ -1,7 +1,7 @@
 import { type FC } from 'react'
 import cn from 'classnames'
 
-import { Spinner } from 'shared/ui/Spinner'
+import { Spinner } from 'shared/ui'
 
 import styles from './styles.module.scss'
 
