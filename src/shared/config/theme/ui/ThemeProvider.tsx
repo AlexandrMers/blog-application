@@ -1,6 +1,8 @@
 import { type PropsWithChildren, useState } from 'react'
 import { Theme, ThemeContext } from '../lib'
 
+import './themes/index.scss'
+
 export const THEME_KEY_LOCAL_STORAGE = 'theme'
 
 const defaultTheme =
@@ -9,8 +11,8 @@ const defaultTheme =
 export const ThemeProvider = ({ children }: PropsWithChildren) => {
   const [theme, setTheme] = useState<Theme>(() => defaultTheme)
 
-  const toggleTheme = () => {
-    const newTheme = theme === Theme.DARK ? Theme.LIGHT : Theme.DARK
+  const toggleTheme = (themeParam?: Theme) => {
+    const newTheme = themeParam ?? (theme === Theme.DARK ? Theme.LIGHT : Theme.DARK)
 
     setTheme(newTheme)
     localStorage.setItem(THEME_KEY_LOCAL_STORAGE, newTheme)

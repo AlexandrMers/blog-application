@@ -12,5 +12,6 @@ const StorySpinner: ComponentMeta<typeof Spinner> = {
 const Template: ComponentStory<typeof Spinner> = (args) => <Spinner {...args} />
 
 export const SpinnerComponent = Template.bind({})
+SpinnerComponent.args = {}
 
 export default StorySpinner

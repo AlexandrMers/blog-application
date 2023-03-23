@@ -1,13 +1,17 @@
 import { type FC } from 'react'
 import cn from 'classnames'
 
-import { Theme, useTheme } from 'shared/providers/theme'
+import { Theme, useTheme } from 'shared/config/theme'
 
 import styles from './styles.module.scss'
 
 export const SwitchTheme: FC = () => {
   const { theme, setTheme } = useTheme()
   const isDarkAppliedTheme = theme === Theme.DARK
+
+  const handleChangeTheme = () => {
+    setTheme()
+  }
 
   return (
     <div
@@ -20,7 +24,7 @@ export const SwitchTheme: FC = () => {
         type="checkbox"
         id="toggle_checkbox"
         checked={isDarkAppliedTheme}
-        onChange={setTheme}
+        onChange={handleChangeTheme}
       />
       <label className={styles.Switcher__Label} htmlFor="toggle_checkbox">
         <div className={styles.Switcher__Star} />

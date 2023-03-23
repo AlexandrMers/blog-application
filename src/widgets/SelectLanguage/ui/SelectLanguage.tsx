@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 
 import { SelectBox } from 'shared/ui'
 import { type SuggestType } from 'shared/types'
-import { type LanguageType, useLanguage } from 'shared/providers/language/lib'
+import { type LanguageType, useLanguage } from 'shared/config/language/lib'
 
 import { OptionsForSelect } from '../lib/SelectOptions'
 
