@@ -1,4 +1,4 @@
-import React, { Suspense, type PropsWithChildren, useState } from 'react'
+import React, { type PropsWithChildren, useState } from 'react'
 import { LanguageContext, type LanguageContextInterface, type LanguageType } from '../lib'
 
 // ~ import config of config library
@@ -24,7 +24,7 @@ export const LanguageProvider = ({ children }: PropsWithChildren) => {
         changeLanguage
       }}
     >
-      <Suspense fallback="Loading translations ...">{children}</Suspense>
+      {children}
     </LanguageContext.Provider>
   )
 }
