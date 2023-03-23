@@ -17,13 +17,12 @@ export const LanguageDecorator = (Story: Story, context: StoryContext) => {
   const { language } = context.globals
 
   return (
-    <Suspense fallback="">
-      <LanguageProvider>
+    <LanguageProvider>
+      <Suspense fallback="">
         <LanguageSwitcher lang={language as LanguageType}>
           <Story />
         </LanguageSwitcher>
-      </LanguageProvider>
-    </Suspense>
-
+      </Suspense>
+    </LanguageProvider>
   )
 }
