@@ -12,6 +12,9 @@ const defaultLanguage =
 
 export const LanguageProvider = ({ children }: PropsWithChildren) => {
   const { i18n: { changeLanguage, language } } = useTranslation()
+
+  console.log('language ->', language)
+
   const [lang, setLang] = useState(() => defaultLanguage ?? language)
 
   const handleLanguage = (lang: LanguageType) => {

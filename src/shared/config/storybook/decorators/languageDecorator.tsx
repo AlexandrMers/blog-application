@@ -16,6 +16,8 @@ const LanguageSwitcher = ({ children, lang }: PropsWithChildren<{ lang: Language
 export const LanguageDecorator = (story: any, context: StoryContext) => {
   const { language } = context.globals
 
+  console.log('language check ->', language)
+
   return (
     <LanguageProvider>
         <Suspense fallback="">
