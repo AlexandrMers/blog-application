@@ -1,5 +1,5 @@
 {
-  "name": "study-first",
+  "name": "blog-app",
   "version": "1.0.0",
   "description": "project for improving some skills of development",
   "main": "index.ts",
@@ -8,7 +8,8 @@
     "start": "PORT=3000 MODE=development webpack serve",
     "lint": "eslint \"**/*.{ts,tsx}\"",
     "lint:fix": "eslint \"**/*.{ts,tsx}\" --fix",
-    "stylelint:fix": "npx stylelint \"**/*.scss\" --fix",
+    "stylelint": "stylelint \"**/*.scss\"",
+    "stylelint:fix": "stylelint \"**/*.scss\" --fix",
     "build:dev": "MODE=development webpack",
     "build:prod": "webpack --mode production",
     "storybook": "start-storybook -p 6006 -c ./config/storybook",

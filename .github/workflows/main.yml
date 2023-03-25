@@ -1,0 +1,28 @@
+name: 'blog-app'
+on:
+  push:
+  pull-request:
+jobs:
+  test-project:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        name: 'setup node'
+        with:
+          node-version: '18.x'
+
+      - name: 'npm install'
+        run: npm i
+
+      - name: 'run tests'
+        run: npm run test
+
+      - name: 'lint'
+        run: npm run lint
+
+      - name: 'stylelint'
+        run: npm run stylelint
+
+      - name: 'build project'
+        run: npm run build:prod
