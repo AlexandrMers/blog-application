@@ -11,7 +11,6 @@ describe('SideBarContent', () => {
   test('pass endCellRender -> should appear element', async () => {
     const { findByText } = render(<SideBar endCellRender={<span>Hello world</span>} />)
     const element = await findByText(/Hello world/i)
-    expect(element).not.toBeInTheDocument()
-    expect(element).not.toBeInTheDocument()
+    expect(element).toBeInTheDocument()
   })
 })
