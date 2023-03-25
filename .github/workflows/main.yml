@@ -1,7 +1,11 @@
 name: 'blog-app'
 on:
   push:
+    branches:
+      - "*"
   pull-request:
+    branches:
+      - "*"
 
 jobs:
   test-project:
