@@ -2,6 +2,7 @@ name: 'blog-app'
 on:
   push:
   pull-request:
+
 jobs:
   test-project:
     runs-on: ubuntu-latest
