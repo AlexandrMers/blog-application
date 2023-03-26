@@ -18,7 +18,7 @@ jobs:
           node-version: '18.x'
 
       - name: 'npm install'
-        run: npm i
+        run: npm ci
 
       - name: 'run tests'
         run: npm run test
@@ -31,3 +31,6 @@ jobs:
 
       - name: 'build project'
         run: npm run build:prod
+
+      - name: 'build storybook'
+        run: npm run storybook:build
