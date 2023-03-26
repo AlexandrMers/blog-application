@@ -17,8 +17,8 @@ jobs:
         with:
           node-version: '18.x'
 
-      - name: 'npm ci'
-        run: npm i
+      - name: 'npm install'
+        run: npm ci
 
       - name: 'run tests'
         run: npm run test
