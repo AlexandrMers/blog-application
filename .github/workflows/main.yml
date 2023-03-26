@@ -31,3 +31,9 @@ jobs:
 
       - name: 'build project'
         run: npm run build:prod
+
+      - name: 'build storybook'
+        run: npm run storybook:build
+
+      - name: 'test UI'
+        run: npm run test:ui:ci

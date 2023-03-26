@@ -13,8 +13,9 @@
     "build:dev": "MODE=development webpack",
     "build:prod": "webpack --mode production",
     "storybook": "start-storybook -p 6006 -c ./config/storybook",
-    "build-storybook": "build-storybook -c ./config/storybook",
-    "test:loki": "loki test"
+    "storybook:build": "build-storybook -c ./config/storybook",
+    "test:ui": "loki test",
+    "test:ui:ci": "loki --requireReference --reactUri file:./storybook-static"
   },
   "author": "Aleksandr Avdeev",
   "license": "ISC",
