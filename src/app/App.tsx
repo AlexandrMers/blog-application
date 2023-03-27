@@ -16,15 +16,17 @@ import { AppRoute } from './providers/router'
 const App: FC = () => {
   return (
     <Suspense fallback={<PageLoader />}>
-      <Header leftElement={<SelectLanguage />} />
-      <Layout.Container>
-        <Layout.SideBar>
-          <SideBar endCellRender={<SwitchTheme />} />
-        </Layout.SideBar>
-        <Layout.Content>
-          <AppRoute />
-        </Layout.Content>
-      </Layout.Container>
+
+        <Header leftElement={<SelectLanguage />} />
+        <Layout.Container>
+          <Layout.SideBar>
+            <SideBar endCellRender={<SwitchTheme />} />
+          </Layout.SideBar>
+          <Layout.Content>
+            <AppRoute />
+          </Layout.Content>
+        </Layout.Container>
+
     </Suspense>
   )
 }

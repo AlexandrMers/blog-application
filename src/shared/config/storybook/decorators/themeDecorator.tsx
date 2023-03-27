@@ -5,6 +5,7 @@ import { type StoryContext } from '@storybook/react'
 import { type Theme, ThemeProvider, useTheme } from '../../theme'
 
 import '../../theme/styles/index.scss'
+import classNames from 'classnames'
 
 const ThemeSwitcher = ({ children, theme }: PropsWithChildren<{ theme: Theme }>) => {
   const { setTheme } = useTheme()
@@ -14,10 +15,7 @@ const ThemeSwitcher = ({ children, theme }: PropsWithChildren<{ theme: Theme }>)
   }, [theme])
 
   return (
-    <div style={{
-      background: 'var(--bg-color)',
-      height: '100vh'
-    }}>
+    <div className={classNames('app', theme)}>
       {children}
     </div>
   )
@@ -28,9 +26,9 @@ export const ThemeDecorator = (story: any, context: StoryContext) => {
 
   return (
     <ThemeProvider>
-      <ThemeSwitcher theme={theme}>
-        {story()}
-      </ThemeSwitcher>
+        <ThemeSwitcher theme={theme}>
+          {story()}
+        </ThemeSwitcher>
     </ThemeProvider>
   )
 }
