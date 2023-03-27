@@ -1,9 +1,15 @@
 @use "sass:color";
 
 .Modal {
+  display: none;
   left: 0;
   position: fixed;
   top: 0;
+
+  &_open {
+    display: block;
+    transform: scale(1);
+  }
 }
 
 .Modal__Overlay {
@@ -13,10 +19,38 @@
   width: 100%;
 }
 
-.Modal__Content {
+.Modal__Wrapper {
   background-color: var(--bg-color);
   border-radius: 25px;
   margin: auto;
   max-width: 60%;
+  min-width: 300px;
   padding: 25px;
+  width: 100%;
+}
+
+.Modal__Header {
+  border-bottom: 1px solid rgb(87 96 98 / 24%);
+  display: flex;
+  padding-bottom: 5px;
+  width: 100%;
+}
+
+.Modal__CloseButton {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  height: 20px;
+  margin-left: auto;
+  padding: 0;
+  transition: transform 0.2s ease-in-out;
+  width: 20px;
+
+  &:hover {
+    transform: rotate(90deg);
+  }
+}
+
+.Modal__Content {
+  padding: 25px 0;
 }

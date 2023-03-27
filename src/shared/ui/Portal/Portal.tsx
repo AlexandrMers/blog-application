@@ -3,6 +3,6 @@ import { createPortal } from 'react-dom'
 
 export const Portal = ({
   element, children
-}: PropsWithChildren<{ element: HTMLElement | null }>) => {
+}: PropsWithChildren<{ element?: HTMLElement | null }>) => {
   return createPortal(children, element ?? document.body)
 }
