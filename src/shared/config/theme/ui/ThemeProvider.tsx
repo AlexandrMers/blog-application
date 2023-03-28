@@ -20,7 +20,8 @@ export const ThemeProvider = ({ children }: PropsWithChildren) => {
   }, [])
 
   const toggleTheme = (themeParam?: Theme) => {
-    const newTheme = themeParam ?? (theme === Theme.DARK ? Theme.LIGHT : Theme.DARK)
+    const newTheme =
+      themeParam ?? (theme === Theme.DARK ? Theme.LIGHT : Theme.DARK)
 
     setTheme(newTheme)
     handleBodyClassName(newTheme)

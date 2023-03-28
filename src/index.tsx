@@ -9,9 +9,7 @@ import { LanguageProvider } from 'shared/config/language'
 
 import 'shared/config//theme/styles/index.scss'
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-)
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
 root.render(
   <BrowserRouter>
