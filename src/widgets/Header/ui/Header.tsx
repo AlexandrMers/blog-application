@@ -22,7 +22,7 @@ function LinksWithTranslations () {
   )
 }
 
-export const Header = ({ className, leftElement }: HeaderProps) => {
+export const Header = ({ className, leftElement, rightElement }: HeaderProps) => {
   return (
     <div className={cn(styles.Header, className)}>
       {leftElement}
@@ -31,6 +31,7 @@ export const Header = ({ className, leftElement }: HeaderProps) => {
           <LinksWithTranslations />
         </div>
       </FlexContainer>
+      {rightElement}
     </div>
   )
 }

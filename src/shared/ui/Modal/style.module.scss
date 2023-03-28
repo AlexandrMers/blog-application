@@ -1,5 +1,8 @@
 @use "sass:color";
 
+$max-width-modal: 600px;
+$min-width-modal: 300px;
+
 .Modal {
   height: 100%;
   left: 0;
@@ -27,8 +30,8 @@
   background-color: var(--bg-color);
   border-radius: 25px;
   margin: auto;
-  max-width: 60%;
-  min-width: 300px;
+  max-width: $max-width-modal;
+  min-width: $min-width-modal;
   padding: 25px;
   transform: scale(0.2);
   transition: transform ease-in-out .2s;

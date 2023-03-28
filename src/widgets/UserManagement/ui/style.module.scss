@@ -1,0 +1,14 @@
+.UserManagement {
+  align-items: center;
+  display: flex;
+
+  &__Icon {
+    color: var(--primary-color);
+    cursor: pointer;
+
+    &:hover {
+      color: var(--primary-color-hover);
+      transition: color ease .2s;
+    }
+  }
+}
