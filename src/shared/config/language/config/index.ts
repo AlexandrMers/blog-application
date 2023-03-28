@@ -10,7 +10,7 @@ void i18n
   .use(initReactI18next)
   .init({
     fallbackLng: 'ru',
-    debug: process.env.MODE === 'development'
+    debug: process.env.MODE === 'development',
   })
 
 export default i18n

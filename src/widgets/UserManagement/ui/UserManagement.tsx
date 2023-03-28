@@ -18,10 +18,17 @@ export const UserManagement = () => {
     setIsOpenModal(true)
   }
 
-  return <div className={styles.UserManagement}>
-    <Icon fontSize="large" className={styles.UserManagement__Icon} onClick={handleOpenModal} component={SupervisedUserCircleRoundedIcon} />
-    <Modal isOpen={isOpenModal} onClose={handleCloseModal}>
-      Здесь будет окно авторизации
-    </Modal>
-  </div>
+  return (
+    <div className={styles.UserManagement}>
+      <Icon
+        fontSize="large"
+        className={styles.UserManagement__Icon}
+        onClick={handleOpenModal}
+        component={SupervisedUserCircleRoundedIcon}
+      />
+      <Modal isOpen={isOpenModal} onClose={handleCloseModal}>
+        Здесь будет окно авторизации
+      </Modal>
+    </div>
+  )
 }

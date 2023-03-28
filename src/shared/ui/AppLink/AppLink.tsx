@@ -21,7 +21,7 @@ export const AppLink = (props: Types) => {
           styles.AppLink,
           {
             [styles.AppLink_active]: isActive,
-            [styles[`AppLink_${appearance}`]]: appearance
+            [styles[`AppLink_${appearance}`]]: appearance,
           },
           className
         )

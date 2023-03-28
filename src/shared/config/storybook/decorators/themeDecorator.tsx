@@ -7,18 +7,17 @@ import { type Theme, ThemeProvider, useTheme } from '../../theme'
 import '../../theme/styles/index.scss'
 import classNames from 'classnames'
 
-const ThemeSwitcher = ({ children, theme }: PropsWithChildren<{ theme: Theme }>) => {
+const ThemeSwitcher = ({
+  children,
+  theme,
+}: PropsWithChildren<{ theme: Theme }>) => {
   const { setTheme } = useTheme()
 
   useEffect(() => {
     setTheme(theme)
   }, [theme])
 
-  return (
-    <div className={classNames('app', theme)}>
-      {children}
-    </div>
-  )
+  return <div className={classNames('app', theme)}>{children}</div>
 }
 
 export const ThemeDecorator = (story: any, context: StoryContext) => {
@@ -26,9 +25,7 @@ export const ThemeDecorator = (story: any, context: StoryContext) => {
 
   return (
     <ThemeProvider>
-        <ThemeSwitcher theme={theme}>
-          {story()}
-        </ThemeSwitcher>
+      <ThemeSwitcher theme={theme}>{story()}</ThemeSwitcher>
     </ThemeProvider>
   )
 }

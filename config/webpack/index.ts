@@ -17,7 +17,7 @@ const getWebpackConfig = (
     mode,
     entry: paths.entry,
     module: {
-      rules: getRules(options)
+      rules: getRules(options),
     },
     resolve: getResolveConfig(options),
     plugins: getPlugins(options),
@@ -29,8 +29,8 @@ const getWebpackConfig = (
       path: paths.output,
       assetModuleFilename: 'assets/[name][ext]',
       clean: true,
-      publicPath: '/'
-    }
+      publicPath: '/',
+    },
   }
 }
 

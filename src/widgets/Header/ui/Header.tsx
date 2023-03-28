@@ -8,13 +8,13 @@ import { type HeaderProps } from '../types/HeaderProps'
 
 import styles from './style.module.scss'
 
-function LinksWithTranslations () {
+function LinksWithTranslations() {
   const { t } = useTranslation()
 
   return (
     <>
       {Object.values(NavigationConfig).map((link) => (
-        <AppLink key={link.key} to={link.to} >
+        <AppLink key={link.key} to={link.to}>
           {t(`nav_links.${link.key}`)}
         </AppLink>
       ))}
@@ -22,7 +22,11 @@ function LinksWithTranslations () {
   )
 }
 
-export const Header = ({ className, leftElement, rightElement }: HeaderProps) => {
+export const Header = ({
+  className,
+  leftElement,
+  rightElement,
+}: HeaderProps) => {
   return (
     <div className={cn(styles.Header, className)}>
       {leftElement}

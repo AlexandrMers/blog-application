@@ -3,7 +3,7 @@ import React, { type PropsWithChildren, type ReactNode } from 'react'
 import styles from './style.module.scss'
 
 export const SideBarContent = ({
-  endCellRender
+  endCellRender,
 }: PropsWithChildren<{
   endCellRender?: ReactNode
 }>) => {

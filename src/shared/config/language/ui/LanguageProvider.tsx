@@ -11,7 +11,9 @@ const defaultLanguage =
   (localStorage.getItem(LANGUAGE_KEY_LOCAL_STORAGE) as LanguageType) ?? 'ru'
 
 export const LanguageProvider = ({ children }: PropsWithChildren) => {
-  const { i18n: { changeLanguage, language } } = useTranslation()
+  const {
+    i18n: { changeLanguage, language },
+  } = useTranslation()
 
   const [lang, setLang] = useState(() => defaultLanguage ?? language)
 
@@ -25,7 +27,7 @@ export const LanguageProvider = ({ children }: PropsWithChildren) => {
     <LanguageContext.Provider
       value={{
         lang,
-        changeLanguage: handleLanguage
+        changeLanguage: handleLanguage,
       }}
     >
       {children}
