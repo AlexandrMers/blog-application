@@ -16,7 +16,7 @@ export const SwitchTheme: FC = () => {
   return (
     <div
       className={cn(styles.Switcher, {
-        [styles.Switcher_checked]: isDarkAppliedTheme
+        [styles.Switcher_checked]: isDarkAppliedTheme,
       })}
     >
       <input

@@ -7,19 +7,19 @@ export enum NavigationRoutes {
 }
 
 export const NavigationConfig: Record<
-NavigationRoutes,
-Pick<LinkProps, 'to'> & { key: string }
+  NavigationRoutes,
+  Pick<LinkProps, 'to'> & { key: string }
 > = {
   [NavigationRoutes.MAIN]: {
     to: '/',
-    key: 'main'
+    key: 'main',
   },
   [NavigationRoutes.ABOUT]: {
     to: '/about',
-    key: 'about'
+    key: 'about',
   },
   [NavigationRoutes.ARTICLES]: {
     to: '/articles',
-    key: 'articles'
-  }
+    key: 'articles',
+  },
 }

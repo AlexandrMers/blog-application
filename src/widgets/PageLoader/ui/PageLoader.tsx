@@ -6,7 +6,9 @@ import { Spinner } from 'shared/ui'
 import styles from './styles.module.scss'
 
 export const PageLoader: FC<{ className?: string }> = ({ className }) => {
-  return <div className={cn(styles.PageLoader, className)}>
-    <Spinner />
-  </div>
+  return (
+    <div className={cn(styles.PageLoader, className)}>
+      <Spinner />
+    </div>
+  )
 }

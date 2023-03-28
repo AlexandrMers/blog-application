@@ -6,14 +6,14 @@ import styles from './styles.module.scss'
 export const FlexContainer = ({
   children,
   justifyContent = 'start',
-  className
+  className,
 }: FlexContainerTypes) => {
   return (
     <div
       className={cn([
         styles.FlexContainer,
         styles[`FlexContainer_${justifyContent}`],
-        className
+        className,
       ])}
     >
       {children}

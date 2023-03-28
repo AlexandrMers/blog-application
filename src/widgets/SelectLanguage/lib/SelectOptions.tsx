@@ -9,8 +9,8 @@ const SvgProps: React.SVGProps<SVGSVGElement> = {
   width: 20,
   height: 20,
   style: {
-    marginRight: 4
-  }
+    marginRight: 4,
+  },
 }
 
 export const OptionsForSelect: (t: TFunction) => SuggestType[] = (
@@ -26,7 +26,7 @@ export const OptionsForSelect: (t: TFunction) => SuggestType[] = (
           {translation('languages.ru')}
         </div>
       )
-    }
+    },
   },
   {
     id: 'en',
@@ -38,6 +38,6 @@ export const OptionsForSelect: (t: TFunction) => SuggestType[] = (
           {translation('languages.en')}
         </div>
       )
-    }
-  }
+    },
+  },
 ]

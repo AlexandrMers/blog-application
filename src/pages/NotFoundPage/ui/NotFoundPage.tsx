@@ -6,7 +6,9 @@ import { useTranslation } from 'react-i18next'
 export const NotFoundPage: FC = () => {
   const { t } = useTranslation()
 
-  return <div className={styles.NotFoundPage}>
-    <p>{t('not_found_page.title')}</p>
-  </div>
+  return (
+    <div className={styles.NotFoundPage}>
+      <p>{t('not_found_page.title')}</p>
+    </div>
+  )
 }

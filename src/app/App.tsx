@@ -19,15 +19,12 @@ const App: FC = () => {
   return (
     <Suspense fallback={<PageLoader />}>
       <Header
-        leftElement={
-        <SelectLanguage />
-      }
-      rightElement={
-        <Box insideSize="l">
-          <UserManagement />
-        </Box>
-      }
-
+        leftElement={<SelectLanguage />}
+        rightElement={
+          <Box insideSize="l">
+            <UserManagement />
+          </Box>
+        }
       />
       <Layout.Container>
         <Layout.SideBar>
@@ -37,7 +34,6 @@ const App: FC = () => {
           <AppRoute />
         </Layout.Content>
       </Layout.Container>
-
     </Suspense>
   )
 }

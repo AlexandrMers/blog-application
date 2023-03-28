@@ -1,9 +1,16 @@
 import { type PropsWithChildren, Suspense, useEffect } from 'react'
 import { type StoryContext } from '@storybook/react'
 
-import { LanguageProvider, type LanguageType, useLanguage } from '../../language'
+import {
+  LanguageProvider,
+  type LanguageType,
+  useLanguage,
+} from '../../language'
 
-const LanguageSwitcher = ({ children, lang }: PropsWithChildren<{ lang: LanguageType }>) => {
+const LanguageSwitcher = ({
+  children,
+  lang,
+}: PropsWithChildren<{ lang: LanguageType }>) => {
   const { changeLanguage } = useLanguage()
 
   useEffect(() => {
@@ -18,11 +25,11 @@ export const LanguageDecorator = (story: any, context: StoryContext) => {
 
   return (
     <LanguageProvider>
-        <Suspense fallback="">
-          <LanguageSwitcher lang={language as LanguageType}>
-            {story()}
-          </LanguageSwitcher>
-        </Suspense>
+      <Suspense fallback="">
+        <LanguageSwitcher lang={language as LanguageType}>
+          {story()}
+        </LanguageSwitcher>
+      </Suspense>
     </LanguageProvider>
   )
 }

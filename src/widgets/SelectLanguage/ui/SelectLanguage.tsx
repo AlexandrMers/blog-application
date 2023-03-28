@@ -8,7 +8,10 @@ import { type LanguageType, useLanguage } from 'shared/config/language/lib'
 import { OptionsForSelect } from '../lib/SelectOptions'
 
 export const SelectLanguage = () => {
-  const { t: translation, i18n: { changeLanguage } } = useTranslation()
+  const {
+    t: translation,
+    i18n: { changeLanguage },
+  } = useTranslation()
   const { lang: language, changeLanguage: setLanguage } = useLanguage()
 
   const handleChangeLanguage = (value: SuggestType['id']) => {
