@@ -18,7 +18,16 @@ export const globalTypes = {
     defaultValue: 'light',
     toolbar: {
       icon: 'mirror',
-      items: ['light', 'dark'],
+      items: [
+        {
+          title: 'light',
+          value: 'app_theme_light'
+        },
+        {
+          title: 'dark',
+          value: 'app_theme_dark'
+        }
+      ],
       showName: true,
       dynamicTitle: true
     }

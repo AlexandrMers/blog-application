@@ -1,6 +1,7 @@
 import { type FC, Suspense } from 'react'
 
-import { Layout } from 'shared/ui'
+import { Box, Layout } from 'shared/ui'
+
 import 'shared/config/theme/styles/index.scss'
 
 // ~ widgets layout
@@ -9,6 +10,7 @@ import { SideBar } from 'widgets/SideBar'
 import { SwitchTheme } from 'widgets/SwitchTheme'
 import { SelectLanguage } from 'widgets/SelectLanguage'
 import { PageLoader } from 'widgets/PageLoader'
+import { UserManagement } from 'widgets/UserManagement'
 
 // ~ app layer
 import { AppRoute } from './providers/router'
@@ -16,7 +18,17 @@ import { AppRoute } from './providers/router'
 const App: FC = () => {
   return (
     <Suspense fallback={<PageLoader />}>
-      <Header leftElement={<SelectLanguage />} />
+      <Header
+        leftElement={
+        <SelectLanguage />
+      }
+      rightElement={
+        <Box insideSize="l">
+          <UserManagement />
+        </Box>
+      }
+
+      />
       <Layout.Container>
         <Layout.SideBar>
           <SideBar endCellRender={<SwitchTheme />} />
@@ -25,6 +37,7 @@ const App: FC = () => {
           <AppRoute />
         </Layout.Content>
       </Layout.Container>
+
     </Suspense>
   )
 }

@@ -5,7 +5,7 @@ $primary-color-hover: color.adjust($primary-color, $blackness: 40%);
 $secondary-color: #BFA584;
 $secondary-color-hover: color.adjust($secondary-color, $blackness: 40%);
 
-.app.dark {
+.app_theme_dark {
   --text-color: rgb(246 246 246 / 80%);
   --bg-color: #2C3F59;
   --bg-color-inverted: #fff4e7;
