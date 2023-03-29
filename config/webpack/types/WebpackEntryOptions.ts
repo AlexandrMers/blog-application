@@ -11,7 +11,6 @@ export interface PathsForWebpackConfig {
 }
 
 export interface WebpackOptionsInterface {
-  mode: ModeWebpackType
   paths: PathsForWebpackConfig
   port: number
   isDev: boolean

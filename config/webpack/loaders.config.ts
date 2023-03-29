@@ -3,7 +3,7 @@ import { type WebpackOptionsInterface } from './types'
 
 import { getCssLoaders } from './getCssLoaders'
 
-export function getRules({
+export function getLoaders({
   isDev,
 }: WebpackOptionsInterface): webpack.RuleSetRule[] {
   const typescriptConfigLoader: webpack.RuleSetRule = {

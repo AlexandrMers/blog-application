@@ -1,20 +1,22 @@
 import path from 'path'
 
-import { type WebpackOptionsInterface } from './config/webpack/types'
+import {
+  type ModeWebpackType,
+  type WebpackOptionsInterface,
+} from './config/webpack/types'
 
 import getWebpackConfig from './config/webpack'
 
 interface EnvTypes {
   PORT?: string
-  MODE?: WebpackOptionsInterface['mode']
+  MODE?: ModeWebpackType
 }
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export default () => {
+export default (opt: any) => {
   const env = process.env as EnvTypes
-
   const PORT: number = Number(env.PORT) ?? 3003
-  const mode = env.MODE ?? 'development'
+  const mode = env.MODE
   const isDev = mode === 'development'
 
   const PATHS_CONFIG = {
@@ -33,7 +35,6 @@ export default () => {
   }
 
   const options: WebpackOptionsInterface = {
-    mode,
     paths: PATHS_CONFIG,
     port: PORT,
     isDev,

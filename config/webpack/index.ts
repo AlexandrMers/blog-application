@@ -2,7 +2,7 @@ import type webpack from 'webpack'
 
 // Configs
 import { getPlugins } from './plugins.config'
-import { getRules } from './rules.config'
+import { getLoaders } from './loaders.config'
 import { getResolveConfig } from './resolves.config'
 import { getDevServerConfig } from './dev-server.config'
 
@@ -11,18 +11,17 @@ import { type WebpackOptionsInterface } from './types'
 const getWebpackConfig = (
   options: WebpackOptionsInterface
 ): webpack.Configuration => {
-  const { mode, paths, isDev } = options
+  const { paths, isDev } = options
 
   return {
-    mode,
     entry: paths.entry,
     module: {
-      rules: getRules(options),
+      rules: getLoaders(options),
     },
     resolve: getResolveConfig(options),
     plugins: getPlugins(options),
-    devtool: isDev ? 'inline-source-map' : false,
-    devServer: getDevServerConfig(options),
+    devtool: isDev ? 'inline-source-map' : undefined,
+    devServer: isDev ? getDevServerConfig(options) : undefined,
 
     output: {
       filename: '[name].[contenthash].js',

@@ -11,3 +11,9 @@ declare module '*.svg' {
   const SVG: React.VFC<React.SVGProps<SVGSVGElement>>
   export default SVG
 }
+
+declare namespace NodeJS {
+  interface ProcessEnv {
+    IS_DEV: string | undefined
+  }
+}
