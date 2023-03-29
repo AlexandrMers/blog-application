@@ -9,7 +9,6 @@ export function getCssLoaders(isDev: boolean): webpack.RuleSetRule {
       {
         loader: 'css-loader',
         options: {
-          sourceMap: isDev,
           modules: {
             auto: (resPath: string) => resPath.includes('.module.'),
             localIdentName: isDev
@@ -18,16 +17,11 @@ export function getCssLoaders(isDev: boolean): webpack.RuleSetRule {
           },
         },
       },
-      {
-        loader: 'resolve-url-loader',
-        options: {
-          sourceMap: isDev,
-        },
-      },
+      'resolve-url-loader',
       {
         loader: 'sass-loader',
         options: {
-          sourceMap: isDev,
+          sourceMap: true,
         },
       },
     ],
