@@ -13,7 +13,7 @@ interface EnvTypes {
 }
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export default (opt: any) => {
+export default () => {
   const env = process.env as EnvTypes
   const PORT: number = Number(env.PORT) ?? 3003
   const mode = env.MODE
