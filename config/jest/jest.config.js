@@ -6,7 +6,6 @@ module.exports = {
   },
   coveragePathIgnorePatterns: ['/node_modules/'],
   moduleDirectories: ['node_modules', 'src'],
-
   setupFilesAfterEnv: [
     '<rootDir>/config/jest/jest.setup.ts',
     '@testing-library/jest-dom/extend-expect',
