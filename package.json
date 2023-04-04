@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest --config ./config/jest/jest.config.js",
     "start": "PORT=3000 MODE=development webpack serve --mode=development",
+    "server:run:dev": "node ./json-server/index.js",
     "lint": "eslint \"**/*.{ts,tsx}\"",
     "lint:fix": "eslint \"**/*.{ts,tsx}\" --fix",
     "stylelint": "stylelint \"**/*.scss\"",
@@ -51,6 +52,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^29.5.0",
     "jest-environment-jsdom": "^29.5.0",
+    "json-server": "^0.17.3",
     "mini-css-extract-plugin": "^2.7.2",
     "prettier": "^2.8.7",
     "resolve-url-loader": "^5.0.0",

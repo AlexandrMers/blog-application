@@ -2,16 +2,14 @@ module.exports = {
   preset: 'ts-jest',
   clearMocks: true,
   moduleNameMapper: {
-    '\\.(css|less|scss|sass)$': 'identity-obj-proxy'
+    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
   },
-  coveragePathIgnorePatterns: [
-    '/node_modules/'
+  coveragePathIgnorePatterns: ['/node_modules/'],
+  moduleDirectories: ['node_modules', 'src'],
+  setupFilesAfterEnv: [
+    '<rootDir>/config/jest/jest.setup.ts',
+    '@testing-library/jest-dom/extend-expect',
   ],
-  moduleDirectories: [
-    'node_modules',
-    'src'
-  ],
-  setupFilesAfterEnv: ['<rootDir>/config/jest/jest.setup.ts', '@testing-library/jest-dom/extend-expect'],
   moduleFileExtensions: [
     'js',
     'mjs',
@@ -20,10 +18,9 @@ module.exports = {
     'ts',
     'tsx',
     'json',
-    'node'
+    'node',
   ],
   rootDir: '../../',
   testEnvironment: 'jsdom',
-  testMatch: ['<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)']
-
+  testMatch: ['<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)'],
 }
