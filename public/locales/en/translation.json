@@ -10,5 +10,11 @@
   },
   "not_found_page": {
     "title": "Page not found"
+  },
+  "authorization": {
+    "login": "login",
+    "password": "password",
+    "title": "Authorization",
+    "enter": "login"
   }
 }

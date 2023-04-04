@@ -1,13 +1,13 @@
-import { useState } from 'react'
+import { type FC, useState } from 'react'
 
 import SupervisedUserCircleRoundedIcon from '@mui/icons-material/SupervisedUserCircleRounded'
 import { Icon } from '@mui/material'
 
-import { Modal } from 'shared/ui'
+import { LoginModal } from 'features/AuthByName'
 
 import styles from './style.module.scss'
 
-export const UserManagement = () => {
+export const UserManagement: FC = () => {
   const [isOpenModal, setIsOpenModal] = useState(false)
 
   const handleCloseModal = () => {
@@ -26,9 +26,10 @@ export const UserManagement = () => {
         onClick={handleOpenModal}
         component={SupervisedUserCircleRoundedIcon}
       />
-      <Modal isOpen={isOpenModal} onClose={handleCloseModal}>
-        Здесь будет окно авторизации
-      </Modal>
+      <LoginModal
+        isOpenModal={isOpenModal}
+        handleCloseModal={handleCloseModal}
+      />
     </div>
   )
 }
