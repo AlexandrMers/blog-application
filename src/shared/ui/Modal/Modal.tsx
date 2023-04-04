@@ -8,14 +8,22 @@ import { Portal } from '../Portal/Portal'
 
 import styles from './style.module.scss'
 
-type ModalProps = PropsWithChildren<{ isOpen?: boolean; onClose: () => void }>
+type ModalProps = PropsWithChildren<{
+  className?: string
+  isOpen?: boolean
+  onClose: () => void
+}>
 
 export const Modal = (props: ModalProps) => {
-  const { isOpen, onClose, children } = props
+  const { className, isOpen, onClose, children } = props
 
-  const classNameModal = classNames(styles.Modal, {
-    [styles.Modal_open]: isOpen,
-  })
+  const classNameModal = classNames(
+    styles.Modal,
+    {
+      [styles.Modal_open]: isOpen,
+    },
+    className
+  )
 
   const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
     const element = e.target as Element

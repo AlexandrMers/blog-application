@@ -1,0 +1,14 @@
+.LoginForm {
+  margin-top: 15px;
+  padding: 25px;
+
+  &__InputContainer {
+    margin-bottom: 15px;
+  }
+
+  &__Input {
+    input {
+      padding: 7px;
+    }
+  }
+}
