@@ -1,13 +1,19 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { apiInstance } from 'shared/config/api'
 
-import { type UserSchema } from '../types/User'
+import { type UserRequestType, type UserResponseType } from '../types/User'
 
-const initialState: UserSchema = {}
-
-const userSlice = createSlice({
-  name: 'user',
-  initialState,
-  reducers: {},
+export const userSlice = apiInstance.injectEndpoints({
+  endpoints: (builder) => ({
+    login: builder.mutation<UserResponseType, UserRequestType>({
+      query: (body) => {
+        return {
+          url: '/login',
+          method: 'post',
+          body,
+        }
+      },
+    }),
+  }),
 })
 
-export const { reducer: userReducer, actions: userActions } = userSlice
+export const { useLoginMutation } = userSlice

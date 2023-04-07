@@ -10,7 +10,7 @@ const StoryModal: ComponentMeta<typeof LoginModalComponent> = {
     },
   },
   component: LoginModalComponent,
-  title: 'features/AuthByName',
+  title: 'features/AuthByLogin',
 }
 
 const Template: ComponentStory<typeof LoginModalComponent> = (args) => {

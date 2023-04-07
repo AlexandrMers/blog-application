@@ -7,9 +7,9 @@ export const parameters = {
   controls: {
     matchers: {
       color: /(background|color)$/i,
-      date: /Date$/
-    }
-  }
+      date: /Date$/,
+    },
+  },
 }
 
 export const globalTypes = {
@@ -21,37 +21,36 @@ export const globalTypes = {
       items: [
         {
           title: 'light',
-          value: 'app_theme_light'
+          value: 'app_theme_light',
         },
         {
           title: 'dark',
-          value: 'app_theme_dark'
-        }
+          value: 'app_theme_dark',
+        },
       ],
       showName: true,
-      dynamicTitle: true
-    }
+      dynamicTitle: true,
+    },
   },
   language: {
     name: 'language',
     defaultValue: 'ru',
     toolbar: {
       icon: '',
-      items: [{
-        title: 'Русский',
-        value: 'ru'
-      }, {
-        title: 'Английский',
-        value: 'en'
-      }],
+      items: [
+        {
+          title: 'Русский',
+          value: 'ru',
+        },
+        {
+          title: 'Английский',
+          value: 'en',
+        },
+      ],
       showName: true,
-      dynamicTitle: true
-    }
-  }
+      dynamicTitle: true,
+    },
+  },
 }
 
-export const decorators = [
-  RouteDecorator,
-  LanguageDecorator,
-  ThemeDecorator
-]
+export const decorators = [RouteDecorator, LanguageDecorator, ThemeDecorator]
