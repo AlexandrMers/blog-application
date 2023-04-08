@@ -1,6 +1,7 @@
-import { ThemeDecorator } from '../../src/shared/config/storybook'
-import { LanguageDecorator } from '../../src/shared/config/storybook/decorators/languageDecorator'
-import { RouteDecorator } from '../../src/shared/config/storybook/decorators/routeDecorator'
+import { ThemeDecorator } from './decorators/themeDecorator'
+import { LanguageDecorator } from './decorators/languageDecorator'
+import { RouteDecorator } from './decorators/routeDecorator'
+import { StoreDecorator } from './decorators/storeDecorator'
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -53,4 +54,9 @@ export const globalTypes = {
   },
 }
 
-export const decorators = [RouteDecorator, LanguageDecorator, ThemeDecorator]
+export const decorators = [
+  RouteDecorator,
+  LanguageDecorator,
+  StoreDecorator,
+  ThemeDecorator,
+]

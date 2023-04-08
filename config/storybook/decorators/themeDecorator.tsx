@@ -2,9 +2,13 @@ import { type PropsWithChildren, useEffect } from 'react'
 
 import { type StoryContext } from '@storybook/react'
 
-import { type Theme, ThemeProvider, useTheme } from '../../theme'
+import {
+  type Theme,
+  ThemeProvider,
+  useTheme,
+} from '../../../src/shared/config/theme'
 
-import '../../theme/styles/index.scss'
+import '../../../src/shared/config/theme/styles/index.scss'
 import classNames from 'classnames'
 
 const ThemeSwitcher = ({
