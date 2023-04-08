@@ -11,7 +11,9 @@
   ],
   "profile": { "name": "typicode" },
   "users": [{
-    "username": "merser",
-    "password": "1233214%"
+    "password": "1233214%",
+    "email": "merser@mail.ru",
+    "id": 1,
+    "token": "dfksldfkf32o3ko23k4o23kfokfewf0_1"
   }
 ]}

@@ -14,6 +14,7 @@ declare module '*.svg' {
 
 declare namespace NodeJS {
   interface ProcessEnv {
-    IS_DEV: string | undefined
+    IS_DEV?: string
+    API_URL?: string
   }
 }

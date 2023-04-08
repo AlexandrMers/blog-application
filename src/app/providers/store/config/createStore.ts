@@ -1,12 +1,22 @@
 import { configureStore } from '@reduxjs/toolkit'
+import { setupListeners } from '@reduxjs/toolkit/query'
 
-import { userModel } from 'entities/User'
+import { apiInstance } from 'shared/config/api'
+
+import { authModel } from 'features/AuthByLogin'
 
 export const createStore = () => {
-  return configureStore({
+  const store = configureStore({
     reducer: {
-      user: userModel.userReducer,
+      auth: authModel.reducer,
+      [apiInstance.reducerPath]: apiInstance.reducer,
     },
     devTools: Boolean(process.env.IS_DEV),
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware().concat(apiInstance.middleware),
   })
+
+  setupListeners(store.dispatch)
+
+  return store
 }

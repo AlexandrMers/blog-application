@@ -3,7 +3,7 @@ import { type FC, useState } from 'react'
 import SupervisedUserCircleRoundedIcon from '@mui/icons-material/SupervisedUserCircleRounded'
 import { Icon } from '@mui/material'
 
-import { LoginModal } from 'features/AuthByName'
+import { LoginModal } from 'features/AuthByLogin'
 
 import styles from './style.module.scss'
 

@@ -32,7 +32,9 @@ server.post('/login', (req, res) => {
     )
 
     if (userFromBd) {
-      return res.json(userFromBd)
+      const response = { ...userFromBd }
+      delete response.password
+      return res.json(response)
     }
 
     return res.status(403).json({ message: 'User not found' })

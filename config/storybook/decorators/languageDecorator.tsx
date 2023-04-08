@@ -5,7 +5,7 @@ import {
   LanguageProvider,
   type LanguageType,
   useLanguage,
-} from '../../language'
+} from '../../../src/shared/config/language'
 
 const LanguageSwitcher = ({
   children,

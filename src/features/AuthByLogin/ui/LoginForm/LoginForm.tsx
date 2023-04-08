@@ -1,19 +1,24 @@
 import { type ChangeEvent, type FormEvent, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { FlexContainer, Input } from 'shared/ui'
-
 import { Button } from '@mui/material'
+import { FlexContainer, Input } from 'shared/ui'
+import { getErrorFromResponse } from 'shared/helpers'
+
+import { userModel, type UserRequestType } from 'entities/User'
 
 import styles from './styles.module.scss'
 
 export const LoginForm = () => {
-  const [userData, setUserData] = useState({
-    login: undefined,
-    password: undefined,
-  })
+  const [login, { isLoading, error }] = userModel.useLoginMutation()
 
+  const [userData, setUserData] = useState<UserRequestType>({
+    email: '',
+    password: '',
+  })
   const { t } = useTranslation()
+
+  const errorMessage = getErrorFromResponse(error)
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setUserData((prevState) => ({
@@ -25,8 +30,8 @@ export const LoginForm = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    console.log('userData in submit -> ', {
-      login: userData.login,
+    void login({
+      email: userData.email,
       password: userData.password,
     })
   }
@@ -36,9 +41,10 @@ export const LoginForm = () => {
       <form onSubmit={handleSubmit}>
         <div className={styles.LoginForm__InputContainer}>
           <Input
-            name="login"
+            disabled={isLoading}
+            name="email"
             className={styles.LoginForm__Input}
-            value={userData.login}
+            value={userData.email}
             onChange={handleChange}
             label={t('authorization.login')}
           />
@@ -46,6 +52,7 @@ export const LoginForm = () => {
 
         <div className={styles.LoginForm__InputContainer}>
           <Input
+            disabled={isLoading}
             name="password"
             className={styles.LoginForm__Input}
             value={userData.password}
@@ -55,10 +62,21 @@ export const LoginForm = () => {
           />
         </div>
         <FlexContainer justifyContent="end">
-          <Button size="large" variant="contained" type="submit">
+          <Button
+            disabled={isLoading}
+            size="large"
+            variant="contained"
+            type="submit"
+          >
             {t('authorization.enter')}
           </Button>
         </FlexContainer>
+
+        {errorMessage && (
+          <p style={{ color: 'red' }}>
+            Ошибка с сервера: {errorMessage.data.message}
+          </p>
+        )}
       </form>
     </div>
   )

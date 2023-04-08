@@ -1,8 +1,10 @@
-export interface User {
+export interface UserResponseType {
   id: number
-  username: string
+  email: string
+  token: string
 }
 
-export interface UserSchema {
-  authData?: User
+export interface UserRequestType {
+  email: string
+  password: string
 }
