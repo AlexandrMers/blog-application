@@ -1,4 +1,5 @@
 export interface LoginModalProps {
-  isOpenModal: boolean
   handleCloseModal: () => void
+  isOpenModal: boolean
+  onSuccessLogin: () => void
 }

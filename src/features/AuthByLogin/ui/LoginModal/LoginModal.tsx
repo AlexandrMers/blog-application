@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next'
 
 export const LoginModal = ({
   isOpenModal,
+  onSuccessLogin,
   handleCloseModal,
 }: LoginModalProps) => {
   const { t } = useTranslation()
@@ -19,7 +20,7 @@ export const LoginModal = ({
       onClose={handleCloseModal}
     >
       <h1 className={styles.LoginModal__Title}>{t('authorization.title')}</h1>
-      <LoginForm />
+      <LoginForm onSuccessLogin={onSuccessLogin} />
     </Modal>
   )
 }
