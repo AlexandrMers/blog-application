@@ -1,4 +1,6 @@
 import { useTranslation } from 'react-i18next'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { Controller, useForm } from 'react-hook-form'
 
 import { Button } from '@mui/material'
 import { FlexContainer, Input } from 'shared/ui'
@@ -6,34 +8,30 @@ import { getErrorFromResponse } from 'shared/helpers'
 
 import { userModel, type UserRequestType } from 'entities/User'
 
+import { UserSchema } from '../../schemas/UserSchema'
+
 import styles from './styles.module.scss'
-import { Controller, useForm } from 'react-hook-form'
 
 export const LoginForm = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [_requestLogin, { isLoading, error }] = userModel.useLoginMutation()
+  const [requestLogin, { isLoading, error }] = userModel.useLoginMutation()
 
   const { control, handleSubmit } = useForm<UserRequestType>({
     defaultValues: {
       email: undefined,
       password: undefined,
     },
+    resolver: yupResolver(UserSchema),
   })
 
   const { t } = useTranslation()
 
   const errorMessage = getErrorFromResponse(error)
 
-  // {
-  //   // e.preventDefault()
-  //   // void login({
-  //   //   email: userData.email,
-  //   //   password: userData.password,
-  //   // })
-  // }
-
-  function onSubmit(values: UserRequestType): void {
-    console.log('values check in onSubmit', values)
+  const onSubmit = ({ email, password }: UserRequestType) => {
+    void requestLogin({
+      email,
+      password,
+    })
   }
 
   return (
