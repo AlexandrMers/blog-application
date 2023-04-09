@@ -6,7 +6,7 @@ import { userModel } from 'entities/User'
 
 import { type AuthSlice } from '../types/AuthSliceTypes'
 
-const initialState: AuthSlice = {
+export const initialState: AuthSlice = {
   isLoading: false,
   authData: undefined,
   error: null,

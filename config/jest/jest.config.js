@@ -3,9 +3,15 @@ module.exports = {
   clearMocks: true,
   moduleNameMapper: {
     '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
+    '^app(.*)$': '<rootDir>/src/app$1',
+    '^pages(.*)$': '<rootDir>/src/pages$1',
+    '^widgets(.*)$': '<rootDir>/src/widgets$1',
+    '^features(.*)$': '<rootDir>/src/features$1',
+    '^entities(.*)$': '<rootDir>/src/entities$1',
+    '^shared(.*)$': '<rootDir>/src/shared$1',
   },
   coveragePathIgnorePatterns: ['/node_modules/'],
-  moduleDirectories: ['node_modules', 'src'],
+  moduleDirectories: ['src', 'node_modules'],
   setupFilesAfterEnv: [
     '<rootDir>/config/jest/jest.setup.ts',
     '@testing-library/jest-dom/extend-expect',
