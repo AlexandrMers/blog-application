@@ -32,6 +32,10 @@ export function getPlugins(
           from: `${paths.public}/locales`,
           to: 'locales',
         },
+        {
+          from: `${paths.public}/favicons`,
+          to: 'favicons',
+        },
       ],
     }),
   ]
