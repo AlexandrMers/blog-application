@@ -4,8 +4,8 @@ import { Provider } from 'react-redux'
 
 import { createStore } from '../config/createStore'
 
-export const StoreProvider = ({ children }: PropsWithChildren) => {
-  const store = createStore()
+const store = createStore()
 
+export const StoreProvider = ({ children }: PropsWithChildren) => {
   return <Provider store={store}>{children}</Provider>
 }

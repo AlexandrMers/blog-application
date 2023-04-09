@@ -1,68 +1,71 @@
-import { type FC, useState } from 'react'
+import { type FC, type MouseEvent, useState } from 'react'
 
 import SupervisedUserCircleRoundedIcon from '@mui/icons-material/SupervisedUserCircleRounded'
-import { Alert, Icon, Snackbar } from '@mui/material'
+import { Avatar, Icon, Menu, MenuItem, Typography } from '@mui/material'
 
-import { useAppSelector } from 'shared/hooks'
+import { useAppDispatch, useAppSelector, useBoolean } from 'shared/hooks'
+import { FlexContainer } from 'shared/ui'
+import { sleep } from 'shared/helpers'
 
-import { LoginModal } from 'features/AuthByLogin'
+import { authModel, LoginModal } from 'features/AuthByLogin'
 import { getAuthData } from 'features/AuthByLogin/model/selectors/getAuthData'
 
 import styles from './style.module.scss'
 
 export const UserManagement: FC = () => {
-  const [isOpenModal, setIsOpenModal] = useState(false)
-  const [isSuccessNotify, setIsSuccessNotify] = useState(false)
+  const [isOpenModal, openModal, closeModal] = useBoolean()
 
+  const [anchorElement, setAnchorElement] = useState<Element | null>(null)
+
+  const dispatch = useAppDispatch()
   const auth = useAppSelector(getAuthData)
-  console.log('auth ->', auth)
+  const userName = auth.authData?.email ?? ''
 
-  const handleCloseModal = () => {
-    setIsOpenModal(false)
+  const handleIconClick = (e: MouseEvent<Element>) => {
+    if (userName) {
+      setAnchorElement(e.currentTarget)
+      return
+    }
+    openModal()
   }
 
-  const handleOpenModal = () => {
-    setIsOpenModal(true)
+  const handleClosePopover = () => {
+    setAnchorElement(null)
   }
 
-  const handleSuccessLogin = () => {
-    console.log('run here !!!')
-    handleCloseModal()
-
-    setIsSuccessNotify(true)
+  const handleLogout = async () => {
+    handleClosePopover()
+    await sleep(300)
+    dispatch(authModel.actions.logout())
   }
 
-  const handleCloseNotification = () => {
-    setIsSuccessNotify(false)
-  }
+  const isOpenPopover = Boolean(anchorElement)
 
   return (
     <div className={styles.UserManagement}>
       <Icon
         fontSize="large"
         className={styles.UserManagement__Icon}
-        onClick={handleOpenModal}
+        onClick={handleIconClick}
         component={SupervisedUserCircleRoundedIcon}
       />
-      <LoginModal
-        isOpenModal={isOpenModal}
-        handleCloseModal={handleCloseModal}
-        onSuccessLogin={handleSuccessLogin}
-      />
-
-      <Snackbar
-        open={isSuccessNotify}
-        autoHideDuration={6000}
-        onClose={handleCloseNotification}
+      <Menu
+        anchorEl={anchorElement}
+        open={isOpenPopover}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'right',
+        }}
+        onClose={handleClosePopover}
       >
-        <Alert
-          severity="success"
-          sx={{ width: '100%' }}
-          onClose={handleCloseNotification}
-        >
-          Авторизация прошла успешно!
-        </Alert>
-      </Snackbar>
+        <FlexContainer justifyContent="center">
+          <Avatar alt="user">{userName.slice(0, 2)}</Avatar>
+        </FlexContainer>
+        <Typography sx={{ p: 2 }}>{userName}</Typography>
+        <MenuItem onClick={handleLogout}>Выйти</MenuItem>
+      </Menu>
+
+      <LoginModal isOpenModal={isOpenModal} handleCloseModal={closeModal} />
     </div>
   )
 }

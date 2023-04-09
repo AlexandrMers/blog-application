@@ -23,7 +23,7 @@ export const LoginForm = ({
 }) => {
   const [requestLogin, { isLoading, error }] = userModel.useLoginMutation()
 
-  const { control, handleSubmit } = useForm<UserRequestType>({
+  const { control, handleSubmit, reset } = useForm<UserRequestType>({
     defaultValues: {
       email: '',
       password: '',
@@ -46,6 +46,7 @@ export const LoginForm = ({
 
     if (emailFromResponse) {
       onSuccessLogin()
+      reset()
     }
   }
 

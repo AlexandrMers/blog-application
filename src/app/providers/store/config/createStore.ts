@@ -18,5 +18,7 @@ export const createStore = () => {
 
   setupListeners(store.dispatch)
 
+  store.dispatch(authModel.actions.receiveDataFromStorage())
+
   return store
 }

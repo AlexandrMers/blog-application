@@ -1,20 +1,20 @@
 import { type PropsWithChildren, Suspense, useEffect } from 'react'
 import { type StoryContext } from '@storybook/react'
 
-import {
-  LanguageProvider,
-  type LanguageType,
-  useLanguage,
-} from '../../../src/shared/config/language'
+import { useTranslation } from 'react-i18next'
+
+import { LanguageProvider, type LanguageType } from 'shared/config/language'
 
 const LanguageSwitcher = ({
   children,
   lang,
 }: PropsWithChildren<{ lang: LanguageType }>) => {
-  const { changeLanguage } = useLanguage()
+  const {
+    i18n: { changeLanguage },
+  } = useTranslation()
 
   useEffect(() => {
-    changeLanguage(lang)
+    void changeLanguage(lang)
   }, [lang])
 
   return <>{children}</>

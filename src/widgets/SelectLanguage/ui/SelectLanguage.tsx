@@ -12,11 +12,10 @@ export const SelectLanguage = () => {
     t: translation,
     i18n: { changeLanguage },
   } = useTranslation()
-  const { lang: language, changeLanguage: setLanguage } = useLanguage()
+  const { lang: language } = useLanguage()
 
   const handleChangeLanguage = (value: SuggestType['id']) => {
     const stringValue = value as LanguageType
-    setLanguage(stringValue)
     void changeLanguage(stringValue)
   }
 
@@ -24,7 +23,7 @@ export const SelectLanguage = () => {
 
   return (
     <SelectBox
-      value={language}
+      value={language ?? 'ru'}
       options={options}
       onChange={handleChangeLanguage}
     />

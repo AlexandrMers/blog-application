@@ -1,33 +1,23 @@
-import React, { type PropsWithChildren, useState } from 'react'
+import React, { type PropsWithChildren, useMemo } from 'react'
 import { LanguageContext, type LanguageType } from '../lib'
 
 // ~ import config of config library
 import '../config'
 import { useTranslation } from 'react-i18next'
 
-export const LANGUAGE_KEY_LOCAL_STORAGE = 'language'
-
-const defaultLanguage =
-  (localStorage.getItem(LANGUAGE_KEY_LOCAL_STORAGE) as LanguageType) ?? 'ru'
-
 export const LanguageProvider = ({ children }: PropsWithChildren) => {
   const {
-    i18n: { changeLanguage, language },
+    i18n: { language },
   } = useTranslation()
 
-  const [lang, setLang] = useState(() => defaultLanguage ?? language)
-
-  const handleLanguage = (lang: LanguageType) => {
-    void changeLanguage(lang)
-    setLang(lang)
-    localStorage.setItem(LANGUAGE_KEY_LOCAL_STORAGE, lang)
-  }
+  const lang = useMemo(() => {
+    return ['ru', 'en'].includes(language) ? language : 'ru'
+  }, [language])
 
   return (
     <LanguageContext.Provider
       value={{
-        lang,
-        changeLanguage: handleLanguage,
+        lang: lang as LanguageType,
       }}
     >
       {children}

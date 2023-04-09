@@ -1,10 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { getErrorFromResponse } from 'shared/helpers'
+import {
+  getErrorFromResponse,
+  setItemToLocalStorage,
+  getItemFromLocalStorage,
+} from 'shared/helpers'
 
-import { userModel } from 'entities/User'
+import { userModel, type UserResponseType } from 'entities/User'
 
 import { type AuthSlice } from '../types/AuthSliceTypes'
+import { AUTHORIZATION_IN_LOCAL_STORAGE_KEY } from '../constants/keys'
 
 export const initialState: AuthSlice = {
   isLoading: false,
@@ -15,14 +20,31 @@ export const initialState: AuthSlice = {
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
+  reducers: {
+    receiveDataFromStorage: (state) => {
+      const data = getItemFromLocalStorage<UserResponseType>(
+        AUTHORIZATION_IN_LOCAL_STORAGE_KEY
+      )
+
+      if (data) {
+        state.authData = data
+      }
+    },
+    logout: (state) => {
+      state.authData = undefined
+      setItemToLocalStorage(AUTHORIZATION_IN_LOCAL_STORAGE_KEY, null)
+    },
+  },
   extraReducers: (builder) => {
     builder.addMatcher(
       userModel.userSlice.endpoints.login.matchFulfilled,
       (state, { payload }) => {
         state.isLoading = false
         state.error = null
-        state.authData = payload
+        state.authData = setItemToLocalStorage(
+          AUTHORIZATION_IN_LOCAL_STORAGE_KEY,
+          payload
+        )
       }
     )
     builder.addMatcher(
