@@ -1,4 +1,3 @@
-import { type ChangeEvent, type FormEvent, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { Button } from '@mui/material'
@@ -8,57 +7,70 @@ import { getErrorFromResponse } from 'shared/helpers'
 import { userModel, type UserRequestType } from 'entities/User'
 
 import styles from './styles.module.scss'
+import { Controller, useForm } from 'react-hook-form'
 
 export const LoginForm = () => {
-  const [login, { isLoading, error }] = userModel.useLoginMutation()
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_requestLogin, { isLoading, error }] = userModel.useLoginMutation()
 
-  const [userData, setUserData] = useState<UserRequestType>({
-    email: '',
-    password: '',
+  const { control, handleSubmit } = useForm<UserRequestType>({
+    defaultValues: {
+      email: undefined,
+      password: undefined,
+    },
   })
+
   const { t } = useTranslation()
 
   const errorMessage = getErrorFromResponse(error)
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setUserData((prevState) => ({
-      ...prevState,
-      [e.target.name]: e.target.value,
-    }))
-  }
+  // {
+  //   // e.preventDefault()
+  //   // void login({
+  //   //   email: userData.email,
+  //   //   password: userData.password,
+  //   // })
+  // }
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-
-    void login({
-      email: userData.email,
-      password: userData.password,
-    })
+  function onSubmit(values: UserRequestType): void {
+    console.log('values check in onSubmit', values)
   }
 
   return (
     <div className={styles.LoginForm}>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.LoginForm__InputContainer}>
-          <Input
-            disabled={isLoading}
+          <Controller
+            control={control}
             name="email"
-            className={styles.LoginForm__Input}
-            value={userData.email}
-            onChange={handleChange}
-            label={t('authorization.login')}
+            render={({ field, fieldState }) => (
+              <Input
+                disabled={isLoading}
+                className={styles.LoginForm__Input}
+                label={t('authorization.login')}
+                error={fieldState.invalid}
+                helperText={fieldState.error?.message}
+                {...field}
+              />
+            )}
           />
         </div>
 
         <div className={styles.LoginForm__InputContainer}>
-          <Input
-            disabled={isLoading}
+          <Controller
+            control={control}
             name="password"
-            className={styles.LoginForm__Input}
-            value={userData.password}
-            onChange={handleChange}
-            label={t('authorization.password')}
-            type="password"
+            render={({ field, fieldState }) => (
+              <Input
+                type="password"
+                disabled={isLoading}
+                className={styles.LoginForm__Input}
+                label={t('authorization.password')}
+                error={fieldState.invalid}
+                helperText={fieldState.error?.message}
+                {...field}
+              />
+            )}
           />
         </div>
         <FlexContainer justifyContent="end">

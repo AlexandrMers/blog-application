@@ -10,7 +10,7 @@
     "strictNullChecks": true,
     "allowSyntheticDefaultImports": true,
     "baseUrl": "./src",
-
+    "rootDir": ".",
     "paths": {
       "*": ["*"]
     }
