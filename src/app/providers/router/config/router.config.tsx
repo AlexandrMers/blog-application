@@ -6,22 +6,26 @@ import { AppRoutes, RoutesPath } from 'shared/config/router'
 
 import { NotFoundPage } from 'pages/NotFoundPage'
 
-const MainPage = React.lazy(async () => await import('pages/MainPage'))
-const AboutPage = React.lazy(async () => await import('pages/AboutPage'))
+const PersonalAccountPage = React.lazy(
+  async () => await import('pages/PersonalAccount')
+)
 const ArticlesPage = React.lazy(async () => await import('pages/ArticlesPage'))
+const MyArticlesPage = React.lazy(
+  async () => await import('pages/MyArticlesPage')
+)
 
 export const RouteConfig: Record<AppRoutes, RouteProps> = {
-  [AppRoutes.MAIN]: {
-    path: RoutesPath.main,
-    element: <MainPage />,
-  },
-  [AppRoutes.ABOUT]: {
-    path: RoutesPath.about,
-    element: <AboutPage />,
-  },
   [AppRoutes.ARTICLES]: {
     path: RoutesPath.articles,
     element: <ArticlesPage />,
+  },
+  [AppRoutes.MY_ARTICLES]: {
+    path: RoutesPath.myArticles,
+    element: <MyArticlesPage />,
+  },
+  [AppRoutes.PERSONAL_ACCOUNT]: {
+    path: RoutesPath.personalAccount,
+    element: <PersonalAccountPage />,
   },
   [AppRoutes.NOT_FOUND]: {
     path: RoutesPath.notFound,

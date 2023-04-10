@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --config ./config/jest/jest.config.js",
     "start": "PORT=3000 MODE=development webpack serve --mode=development",
-    "server:run:dev": "node ./json-server/index.js",
+    "server:dev": "node ./json-server/index.js",
     "lint": "eslint \"**/*.{ts,tsx}\"",
     "lint:fix": "eslint \"**/*.{ts,tsx}\" --fix",
     "stylelint": "stylelint \"**/*.scss\"",

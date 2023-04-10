@@ -1,8 +1,8 @@
 {
   "nav_links": {
-    "main": "Главная",
-    "about": "О нас",
-    "articles": "Статьи"
+    "articles": "Статьи",
+    "my_articles": "Мои статьи",
+    "account": "Личный кабинет"
   },
   "languages": {
     "ru": "Русский",
