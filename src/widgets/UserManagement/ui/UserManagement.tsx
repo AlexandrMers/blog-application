@@ -7,8 +7,7 @@ import { useAppDispatch, useAppSelector, useBoolean } from 'shared/hooks'
 import { FlexContainer } from 'shared/ui'
 import { sleep } from 'shared/helpers'
 
-import { authModel, LoginModal } from 'features/AuthByLogin'
-import { getAuthData } from 'features/AuthByLogin/model/selectors/getAuthData'
+import { authModel, LoginModal, selectors } from 'features/AuthByLogin'
 
 import styles from './style.module.scss'
 
@@ -18,7 +17,7 @@ export const UserManagement: FC = () => {
   const [anchorElement, setAnchorElement] = useState<Element | null>(null)
 
   const dispatch = useAppDispatch()
-  const auth = useAppSelector(getAuthData)
+  const auth = useAppSelector(selectors.getAuthData)
   const userName = auth.authData?.email ?? ''
 
   const handleIconClick = (e: MouseEvent<Element>) => {
