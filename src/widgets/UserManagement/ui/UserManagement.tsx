@@ -1,68 +1,109 @@
-import { type FC, type MouseEvent, useState } from 'react'
+import {
+  Children,
+  cloneElement,
+  type FC,
+  type MouseEvent,
+  type PropsWithChildren,
+  type ReactElement,
+  useRef,
+} from 'react'
 
+import { type PopoverOrigin } from '@mui/material/Popover/Popover'
 import SupervisedUserCircleRoundedIcon from '@mui/icons-material/SupervisedUserCircleRounded'
 import { Avatar, Icon, Menu, MenuItem, Typography } from '@mui/material'
 
-import { useAppDispatch, useAppSelector, useBoolean } from 'shared/hooks'
 import { FlexContainer } from 'shared/ui'
 import { sleep } from 'shared/helpers'
+import { useAppDispatch, useAppSelector, useBoolean } from 'shared/hooks'
 
 import { authModel, LoginModal, selectors } from 'features/AuthByLogin'
 
 import styles from './style.module.scss'
 
+export const MenuPopover = ({
+  children,
+  isOpen = false,
+  anchorOrigin = {
+    vertical: 'bottom',
+    horizontal: 'right',
+  },
+  showElement,
+  handleClosePopover,
+}: PropsWithChildren<{
+  isOpen?: boolean
+  showElement: ReactElement
+  anchorOrigin?: PopoverOrigin
+  handleClosePopover: () => void
+}>) => {
+  const refOfAnchorElement = useRef<Element | null>(null)
+
+  return (
+    <>
+      {Children.map(children, (child: ReactElement) =>
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        cloneElement(child, {
+          ...child.props,
+          ref: refOfAnchorElement,
+        })
+      )}
+
+      <Menu
+        anchorEl={refOfAnchorElement.current as Element}
+        open={isOpen}
+        anchorOrigin={anchorOrigin}
+        onClose={handleClosePopover}
+      >
+        {showElement}
+      </Menu>
+    </>
+  )
+}
+
 export const UserManagement: FC = () => {
   const [isOpenModal, openModal, closeModal] = useBoolean()
-
-  const [anchorElement, setAnchorElement] = useState<Element | null>(null)
+  const [isOpenMenuPopover, openMenuPopover, closeMenuPopover] = useBoolean()
 
   const dispatch = useAppDispatch()
   const auth = useAppSelector(selectors.getAuthData)
   const userName = auth.authData?.email ?? ''
+  const userShortName = userName.slice(0, 2)
 
   const handleIconClick = (e: MouseEvent<Element>) => {
     if (userName) {
-      setAnchorElement(e.currentTarget)
+      openMenuPopover()
       return
     }
     openModal()
   }
 
-  const handleClosePopover = () => {
-    setAnchorElement(null)
-  }
-
   const handleLogout = async () => {
-    handleClosePopover()
+    closeMenuPopover()
     await sleep(300)
     dispatch(authModel.actions.logout())
   }
 
-  const isOpenPopover = Boolean(anchorElement)
-
   return (
     <div className={styles.UserManagement}>
-      <Icon
-        fontSize="large"
-        className={styles.UserManagement__Icon}
-        onClick={handleIconClick}
-        component={SupervisedUserCircleRoundedIcon}
-      />
-      <Menu
-        anchorEl={anchorElement}
-        open={isOpenPopover}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'right',
-        }}
-        onClose={handleClosePopover}
+      <MenuPopover
+        isOpen={isOpenMenuPopover}
+        handleClosePopover={closeMenuPopover}
+        showElement={
+          <>
+            <FlexContainer justifyContent="center">
+              <Avatar alt="user">{userShortName}</Avatar>
+            </FlexContainer>
+            <Typography sx={{ p: 2 }}>{userName}</Typography>
+            <MenuItem onClick={handleLogout}>Выйти</MenuItem>
+          </>
+        }
       >
-        <FlexContainer justifyContent="center">
-          <Avatar alt="user">{userName.slice(0, 2)}</Avatar>
-        </FlexContainer>
-        <Typography sx={{ p: 2 }}>{userName}</Typography>
-        <MenuItem onClick={handleLogout}>Выйти</MenuItem>
-      </Menu>
+        <Icon
+          fontSize="large"
+          className={styles.UserManagement__Icon}
+          component={SupervisedUserCircleRoundedIcon}
+          onClick={handleIconClick}
+        />
+      </MenuPopover>
 
       <LoginModal isOpenModal={isOpenModal} handleCloseModal={closeModal} />
     </div>
