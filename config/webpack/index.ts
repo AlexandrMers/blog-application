@@ -20,7 +20,7 @@ const getWebpackConfig = (
     },
     resolve: getResolveConfig(options),
     plugins: getPlugins(options),
-    devtool: isDev ? 'inline-source-map' : undefined,
+    devtool: isDev ? 'source-map' : undefined,
     devServer: isDev ? getDevServerConfig(options) : undefined,
 
     output: {

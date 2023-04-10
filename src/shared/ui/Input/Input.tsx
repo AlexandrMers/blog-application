@@ -1,3 +1,4 @@
+import { forwardRef } from 'react'
 import classNames from 'classnames'
 
 import TextField from '@mui/material/TextField'
@@ -6,12 +7,16 @@ import { type InputProps } from './types'
 
 import styles from './styles.module.scss'
 
-export const Input = ({ className, ...otherProps }: InputProps) => {
-  return (
-    <TextField
-      {...otherProps}
-      className={classNames(styles.Input, className)}
-      variant="standard"
-    />
-  )
-}
+export const Input = forwardRef<HTMLInputElement, InputProps>(
+  ({ className, ...otherProps }, ref) => {
+    return (
+      <TextField
+        {...otherProps}
+        ref={ref}
+        className={classNames(styles.Input, className)}
+        variant="standard"
+      />
+    )
+  }
+)
+Input.displayName = 'Input'

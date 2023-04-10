@@ -6,19 +6,27 @@ import { Button } from '@mui/material'
 import { FlexContainer, Input } from 'shared/ui'
 import { getErrorFromResponse } from 'shared/helpers'
 
-import { userModel, type UserRequestType } from 'entities/User'
+import {
+  userModel,
+  type UserRequestType,
+  type UserResponseType,
+} from 'entities/User'
 
 import { UserSchema } from '../../schemas/UserSchema'
 
 import styles from './styles.module.scss'
 
-export const LoginForm = () => {
+export const LoginForm = ({
+  onSuccessLogin,
+}: {
+  onSuccessLogin: () => void
+}) => {
   const [requestLogin, { isLoading, error }] = userModel.useLoginMutation()
 
-  const { control, handleSubmit } = useForm<UserRequestType>({
+  const { control, handleSubmit, reset } = useForm<UserRequestType>({
     defaultValues: {
-      email: undefined,
-      password: undefined,
+      email: '',
+      password: '',
     },
     resolver: yupResolver(UserSchema),
   })
@@ -27,11 +35,19 @@ export const LoginForm = () => {
 
   const errorMessage = getErrorFromResponse(error)
 
-  const onSubmit = ({ email, password }: UserRequestType) => {
-    void requestLogin({
+  const onSubmit = async ({ email, password }: UserRequestType) => {
+    const result = await requestLogin({
       email,
       password,
     })
+
+    const emailFromResponse = (result as { data: UserResponseType })?.data
+      ?.email
+
+    if (emailFromResponse) {
+      onSuccessLogin()
+      reset()
+    }
   }
 
   return (
