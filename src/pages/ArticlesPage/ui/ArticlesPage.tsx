@@ -1,14 +1,13 @@
 import { useTranslation } from 'react-i18next'
 
-import picture from 'shared/assets/images/person.png'
+import { Typography } from '@mui/material'
 
 export const ArticlesPage = () => {
   const { t } = useTranslation('articles_page')
 
   return (
     <div>
-      <div>{t('articles_title')}</div>
-      <img src={picture} alt="" />
+      <Typography fontSize={24}>{t('title')}</Typography>
     </div>
   )
 }
