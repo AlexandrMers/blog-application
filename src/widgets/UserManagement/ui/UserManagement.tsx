@@ -1,62 +1,15 @@
-import {
-  Children,
-  cloneElement,
-  type FC,
-  type PropsWithChildren,
-  type ReactElement,
-  useRef,
-} from 'react'
+import { type FC } from 'react'
 
-import { type PopoverOrigin } from '@mui/material/Popover/Popover'
 import SupervisedUserCircleRoundedIcon from '@mui/icons-material/SupervisedUserCircleRounded'
-import { Avatar, Icon, Menu, MenuItem, Typography } from '@mui/material'
+import { Avatar, Icon, MenuItem, Typography } from '@mui/material'
 
-import { FlexContainer } from 'shared/ui'
+import { FlexContainer, MenuPopover } from 'shared/ui'
 import { sleep } from 'shared/helpers'
 import { useAppDispatch, useAppSelector, useBoolean } from 'shared/hooks'
 
 import { authModel, LoginModal, selectors } from 'features/AuthByLogin'
 
 import styles from './style.module.scss'
-
-export const MenuPopover = ({
-  children,
-  isOpen = false,
-  anchorOrigin = {
-    vertical: 'bottom',
-    horizontal: 'right',
-  },
-  showElement,
-  handleClosePopover,
-}: PropsWithChildren<{
-  isOpen?: boolean
-  showElement: ReactElement
-  anchorOrigin?: PopoverOrigin
-  handleClosePopover: () => void
-}>) => {
-  const refOfAnchorElement = useRef<Element | null>(null)
-
-  return (
-    <>
-      {Children.map(children, (child: ReactElement) =>
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        cloneElement(child, {
-          ...child.props,
-          ref: refOfAnchorElement,
-        })
-      )}
-
-      <Menu
-        anchorEl={refOfAnchorElement.current as Element}
-        open={isOpen}
-        anchorOrigin={anchorOrigin}
-        onClose={handleClosePopover}
-      >
-        {showElement}
-      </Menu>
-    </>
-  )
-}
 
 export const UserManagement: FC = () => {
   const [isOpenModal, openModal, closeModal] = useBoolean()
