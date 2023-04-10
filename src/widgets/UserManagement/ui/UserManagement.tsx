@@ -2,7 +2,6 @@ import {
   Children,
   cloneElement,
   type FC,
-  type MouseEvent,
   type PropsWithChildren,
   type ReactElement,
   useRef,
@@ -68,7 +67,7 @@ export const UserManagement: FC = () => {
   const userName = auth.authData?.email ?? ''
   const userShortName = userName.slice(0, 2)
 
-  const handleIconClick = (e: MouseEvent<Element>) => {
+  const handleIconClick = () => {
     if (userName) {
       openMenuPopover()
       return
