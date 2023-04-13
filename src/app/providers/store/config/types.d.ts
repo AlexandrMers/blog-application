@@ -1,8 +1,10 @@
-declare type RootState = ReturnType<
-  // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-  ReturnType<typeof import('./createStore').createStore>['getState']
->
+declare type StoreSchema = import('./storeTypes').StateType
+
+declare type ReduxStoreWithManager =
+  import('./storeTypes').ReduxStoreWithManager
+
 declare type AppDispatch = ReturnType<
-  // eslint-disable-next-line @typescript-eslint/consistent-type-imports
   typeof import('./createStore').createStore
 >['dispatch']
+
+declare type StateSchemaKey = keyof import('./storeTypes').StateType

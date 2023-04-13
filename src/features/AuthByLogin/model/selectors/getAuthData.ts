@@ -1,3 +1,3 @@
-export const getAuthData = (state: RootState) => {
+export const getAuthData = (state: StoreSchema) => {
   return state.auth
 }

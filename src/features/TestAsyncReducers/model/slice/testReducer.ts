@@ -1,9 +1,6 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 
-interface TestReducer {
-  field1: string
-  field2: string
-}
+import { type TestReducer } from '../types/TestReducer'
 
 export const initialState: TestReducer = {
   field1: '',

@@ -1,2 +1,2 @@
 export { CheckArea } from './ui/CheckArea/CheckArea'
-export { testModel } from './model'
+export * from './model'
