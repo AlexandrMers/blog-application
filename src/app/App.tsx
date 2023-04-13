@@ -4,7 +4,10 @@ import { Box, Layout } from 'shared/ui'
 
 import 'shared/config/theme/styles/index.scss'
 
-// ~ widgets layout
+// ~ features layer
+import { CheckArea } from 'features/TestAsyncReducers'
+
+// ~ widgets layer
 import { Header } from 'widgets/Header'
 import { SideBar } from 'widgets/SideBar'
 import { SwitchTheme } from 'widgets/SwitchTheme'
@@ -34,6 +37,10 @@ const App: FC = () => {
           <AppRoute />
         </Layout.Content>
       </Layout.Container>
+
+      <div className="CheckAreaButton">
+        <CheckArea />
+      </div>
     </Suspense>
   )
 }

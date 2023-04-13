@@ -4,11 +4,13 @@ import { setupListeners } from '@reduxjs/toolkit/query'
 import { apiInstance } from 'shared/config/api'
 
 import { authModel } from 'features/AuthByLogin'
+import { testModel } from 'features/TestAsyncReducers'
 
 export const createStore = () => {
   const store = configureStore({
     reducer: {
       auth: authModel.reducer,
+      testReducer: testModel.testSlice.reducer,
       [apiInstance.reducerPath]: apiInstance.reducer,
     },
     devTools: Boolean(process.env.IS_DEV),
