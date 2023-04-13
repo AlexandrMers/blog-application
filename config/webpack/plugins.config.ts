@@ -4,15 +4,16 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import DotenvWebpackPlugin from 'dotenv-webpack'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 
 import { type WebpackOptionsInterface } from './types'
 
 export function getPlugins(
   options: WebpackOptionsInterface
 ): webpack.WebpackPluginInstance[] {
-  const { paths } = options
+  const { paths, isDev } = options
 
-  return [
+  const plugins = [
     new HtmlWebpackPlugin({
       template: paths.html,
     }),
@@ -39,4 +40,14 @@ export function getPlugins(
       ],
     }),
   ]
+
+  if (isDev) {
+    plugins.push(
+      new BundleAnalyzerPlugin({
+        openAnalyzer: false,
+      })
+    )
+  }
+
+  return plugins
 }

@@ -5,7 +5,7 @@ export const apiInstance = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.API_URL,
     prepareHeaders: (headers, { getState }) => {
-      const token = (getState() as RootState).auth.authData?.token
+      const token = (getState() as StoreSchema).auth.authData?.token
 
       if (token) {
         headers.set('authorization', `Bearer ${token}`)

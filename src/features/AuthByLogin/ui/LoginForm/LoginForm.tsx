@@ -12,15 +12,12 @@ import {
   type UserResponseType,
 } from 'entities/User'
 
+import { type LoginFormProps } from '../../types/LoginFormTypes'
 import { UserSchema } from '../../schemas/UserSchema'
 
 import styles from './styles.module.scss'
 
-export const LoginForm = ({
-  onSuccessLogin,
-}: {
-  onSuccessLogin: () => void
-}) => {
+const LoginForm = ({ onSuccessLogin }: LoginFormProps) => {
   const [requestLogin, { isLoading, error }] = userModel.useLoginMutation()
 
   const { control, handleSubmit, reset } = useForm<UserRequestType>({
@@ -52,6 +49,7 @@ export const LoginForm = ({
 
   return (
     <div className={styles.LoginForm}>
+      <h1 className={styles.LoginForm__Title}>{t('authorization.title')}</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.LoginForm__InputContainer}>
           <Controller
@@ -107,3 +105,5 @@ export const LoginForm = ({
     </div>
   )
 }
+
+export default LoginForm

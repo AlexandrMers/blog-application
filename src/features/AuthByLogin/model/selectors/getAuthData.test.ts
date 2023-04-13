@@ -1,4 +1,3 @@
-import { type DeepPartial } from 'redux'
 import { getAuthData } from './getAuthData'
 
 describe('getAuthData', () => {
@@ -9,11 +8,11 @@ describe('getAuthData', () => {
       authData: undefined,
     }
 
-    const state: DeepPartial<RootState> = {
+    const state = {
       auth: AUTH_DATA,
     }
 
-    expect(getAuthData(state as RootState)).toEqual(AUTH_DATA)
+    expect(getAuthData(state as StoreSchema)).toEqual(AUTH_DATA)
   })
 
   test('partial state with isLoading=true, error=null, authData=undefined -> equal object', () => {
@@ -23,15 +22,15 @@ describe('getAuthData', () => {
       authData: undefined,
     }
 
-    const state: DeepPartial<RootState> = {
+    const state = {
       auth: AUTH_DATA,
     }
 
-    expect(getAuthData(state as RootState)).toEqual(AUTH_DATA)
+    expect(getAuthData(state as StoreSchema)).toEqual(AUTH_DATA)
   })
 
   test('partial state with isLoading=true, error=null, authData=undefined -> equal object', () => {
-    const AUTH_DATA: RootState['auth'] = {
+    const AUTH_DATA: StoreSchema['auth'] = {
       isLoading: true,
       error: null,
       authData: {
@@ -41,10 +40,10 @@ describe('getAuthData', () => {
       },
     }
 
-    const state: DeepPartial<RootState> = {
+    const state = {
       auth: AUTH_DATA,
     }
 
-    expect(getAuthData(state as RootState)).toEqual(AUTH_DATA)
+    expect(getAuthData(state as StoreSchema)).toEqual(AUTH_DATA)
   })
 })

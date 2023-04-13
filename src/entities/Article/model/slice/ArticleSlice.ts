@@ -21,7 +21,4 @@ export const articleSlice = apiInstance.injectEndpoints({
   }),
 })
 
-export const {
-  useGetArticlesByAuthorIdQuery,
-  useLazyGetArticlesByAuthorIdQuery,
-} = articleSlice
+export const { useGetArticlesByAuthorIdQuery } = articleSlice
