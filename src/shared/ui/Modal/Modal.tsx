@@ -1,10 +1,12 @@
-import React, { type PropsWithChildren } from 'react'
+import React, { type PropsWithChildren, useEffect } from 'react'
 import classNames from 'classnames'
 
 import { Icon } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
 
-import { Portal } from '../Portal/Portal'
+import { sleep } from 'shared/helpers'
+import { useBoolean } from 'shared/hooks'
+import { Portal } from 'shared/ui'
 
 import styles from './style.module.scss'
 
@@ -14,16 +16,34 @@ type ModalProps = PropsWithChildren<{
   onClose: () => void
 }>
 
-export const Modal = (props: ModalProps) => {
-  const { className, isOpen, onClose, children } = props
+const ANIMATION_DELAY = 200
 
-  const classNameModal = classNames(
-    styles.Modal,
-    {
-      [styles.Modal_open]: isOpen,
-    },
-    className
-  )
+export const Modal = (props: ModalProps) => {
+  const { className, isOpen: isOpenProp, onClose, children } = props
+
+  const [isMounted, mount, unmount] = useBoolean()
+  const [isOpenModal, openModal, closeModal] = useBoolean()
+
+  const handleOpenModal = async () => {
+    mount()
+    await sleep(ANIMATION_DELAY)
+    openModal()
+  }
+
+  const handleCloseModal = async () => {
+    closeModal()
+    await sleep(ANIMATION_DELAY)
+    unmount()
+  }
+
+  useEffect(() => {
+    if (isOpenProp) {
+      void handleOpenModal()
+      return
+    }
+
+    void handleCloseModal()
+  }, [isOpenProp])
 
   const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
     const element = e.target as Element
@@ -31,6 +51,18 @@ export const Modal = (props: ModalProps) => {
       return
     }
     onClose()
+  }
+
+  const classNameModal = classNames(
+    styles.Modal,
+    {
+      [styles.Modal_open]: isOpenModal,
+    },
+    className
+  )
+
+  if (!isMounted) {
+    return null
   }
 
   return (

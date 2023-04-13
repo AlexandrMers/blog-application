@@ -1,9 +1,9 @@
-import { type FC } from 'react'
+import React, { type FC } from 'react'
 
 import SupervisedUserCircleRoundedIcon from '@mui/icons-material/SupervisedUserCircleRounded'
 import { Avatar, Icon, MenuItem, Typography } from '@mui/material'
 
-import { FlexContainer, MenuPopover } from 'shared/ui'
+import { FlexContainer, MenuPopover, Spinner } from 'shared/ui'
 import { sleep } from 'shared/helpers'
 import { useAppDispatch, useAppSelector, useBoolean } from 'shared/hooks'
 
@@ -40,13 +40,13 @@ export const UserManagement: FC = () => {
         isOpen={isOpenMenuPopover}
         handleClosePopover={closeMenuPopover}
         showElement={
-          <>
+          <div>
             <FlexContainer justifyContent="center">
               <Avatar alt="user">{userShortName}</Avatar>
             </FlexContainer>
             <Typography sx={{ p: 2 }}>{userName}</Typography>
             <MenuItem onClick={handleLogout}>Выйти</MenuItem>
-          </>
+          </div>
         }
       >
         <Icon
@@ -57,7 +57,9 @@ export const UserManagement: FC = () => {
         />
       </MenuPopover>
 
-      <LoginModal isOpenModal={isOpenModal} handleCloseModal={closeModal} />
+      <React.Suspense fallback={<Spinner />}>
+        <LoginModal isOpenModal={isOpenModal} handleCloseModal={closeModal} />
+      </React.Suspense>
     </div>
   )
 }
