@@ -4,7 +4,7 @@
   "description": "project for improving some skills of development",
   "main": "index.ts",
   "scripts": {
-    "test": "jest --config ./config/jest/jest.config.js",
+    "test": "jest --config ./config/jest/jest.config.js --runInBand",
     "start": "PORT=3000 MODE=development webpack serve --mode=development",
     "server:dev": "node ./json-server/index.js",
     "lint": "eslint \"**/*.{ts,tsx}\"",

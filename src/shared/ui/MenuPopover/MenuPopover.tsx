@@ -28,8 +28,7 @@ export const MenuPopover = ({
 
   return (
     <>
-      {Children.map(children, (child: ReactElement) =>
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      {Children.map(children as ReactElement, (child: ReactElement) =>
         cloneElement(child, {
           ...child.props,
           ref: refOfAnchorElement,
