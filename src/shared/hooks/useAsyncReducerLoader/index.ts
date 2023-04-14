@@ -22,7 +22,8 @@ export const useAsyncReducerLoader = ({
   const dispatch = useDispatch()
 
   useEffect(() => {
-    Object.entries(reducers).forEach(([name, reducer]: ReducersListEntry) => {
+    Object.entries(reducers).forEach((pairs) => {
+      const [name, reducer] = pairs as ReducersListEntry
       if (!store.getState()[name]) {
         store.reducerManager.add(name, reducer)
         dispatch({ type: `@INIT ${name as string} reducer` })
@@ -31,12 +32,12 @@ export const useAsyncReducerLoader = ({
 
     return () => {
       if (removeAfterUnmount) {
-        Object.entries(reducers).forEach(([name]: ReducersListEntry) => {
+        Object.entries(reducers).forEach((pairs) => {
+          const [name] = pairs as ReducersListEntry
           store.reducerManager.remove(name)
           dispatch({ type: `@DESTROY ${name as string} reducer` })
         })
       }
     }
-    // eslint-disable-next-line
   }, [])
 }

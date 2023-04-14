@@ -1,1 +1,1 @@
-export { apiInstance } from './config'
+export * from './config'
