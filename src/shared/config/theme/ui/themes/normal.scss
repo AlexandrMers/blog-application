@@ -13,4 +13,5 @@ $secondary-color-hover: color.adjust($secondary-color, $blackness: 10%);
     --primary-color-hover: #{$primary-color-hover};
     --secondary-color: #{$secondary-color};
     --secondary-color-hover: #{$secondary-color-hover};
+    --card-bg-color: #ebebeb;
 }
