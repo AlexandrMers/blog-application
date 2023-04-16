@@ -1,11 +1,11 @@
 import { Avatar, IconButton } from '@mui/material'
 import CreateIcon from '@mui/icons-material/Create'
 
-import styles from './styles.module.scss'
+import styles from '../styles.module.scss'
 
-export const ProfileCardView = ({ onEdit }: { onEdit: () => void }) => {
+export const ProfileView = ({ onEdit }: { onEdit: () => void }) => {
   return (
-    <>
+    <article className={styles.ProfileCard}>
       <div className={styles.ProfileCard__Avatar}>
         <Avatar
           alt="avatar"
@@ -24,6 +24,6 @@ export const ProfileCardView = ({ onEdit }: { onEdit: () => void }) => {
           <p>aleksandr@mail.com</p>
         </div>
       </div>
-    </>
+    </article>
   )
 }

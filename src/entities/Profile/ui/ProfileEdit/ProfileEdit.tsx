@@ -3,11 +3,11 @@ import CloseIcon from '@mui/icons-material/Close'
 import DoneIcon from '@mui/icons-material/Done'
 import PortraitIcon from '@mui/icons-material/Portrait'
 
-import styles from './styles.module.scss'
+import styles from '../styles.module.scss'
 
-import { Box, Input } from '../../../../shared/ui'
+import { Box, Input } from 'shared/ui'
 
-export const ProfileCardEditable = ({
+export const ProfileEdit = ({
   onCancel,
   onSuccess,
 }: {
