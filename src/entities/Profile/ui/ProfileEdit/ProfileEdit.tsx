@@ -1,21 +1,45 @@
+import { Controller, useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+
 import { Avatar, IconButton } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
 import DoneIcon from '@mui/icons-material/Done'
 import PortraitIcon from '@mui/icons-material/Portrait'
 
-import styles from '../styles.module.scss'
-
 import { Box, Input } from 'shared/ui'
 
+import { ProfileSchema } from '../schemas/ProfileSchema'
+
+import { CardOverlay } from '../CardOverlay'
+
+import { type ProfileEditProps, type ProfileFormInterface } from './types'
+
+import styles from '../styles.module.scss'
+
 export const ProfileEdit = ({
+  surname,
+  name,
+  email,
+  disabledForm = false,
   onCancel,
-  onSuccess,
-}: {
-  onCancel: () => void
-  onSuccess: () => void
-}) => {
+  onSave,
+}: ProfileEditProps) => {
+  const { control, reset, handleSubmit } = useForm<ProfileFormInterface>({
+    resolver: yupResolver(ProfileSchema),
+    defaultValues: {
+      name,
+      email,
+      surname,
+    },
+  })
+
+  const handleCancel = () => {
+    reset()
+    onCancel()
+  }
+
   return (
-    <article className={styles.ProfileCard}>
+    <CardOverlay>
       <div className={styles.ProfileCard__Avatar}>
         <Avatar alt="avatar" variant="circular" sx={{ width: 60, height: 60 }}>
           <IconButton
@@ -30,23 +54,72 @@ export const ProfileEdit = ({
         </Avatar>
       </div>
 
-      <Box>
-        <Input variant="outlined" value="Aleksandr" />
-      </Box>
+      <form onSubmit={handleSubmit(onSave)}>
+        <Controller
+          name="name"
+          control={control}
+          render={({ field, fieldState: { error, invalid } }) => (
+            <Box>
+              <Input
+                {...field}
+                disabled={disabledForm}
+                error={invalid}
+                label="Имя"
+                helperText={error?.message}
+                variant="outlined"
+              />
+            </Box>
+          )}
+        />
 
-      <Box>
-        <Input variant="outlined" value="aleksandr@mail.com" />
-      </Box>
+        <Controller
+          name="surname"
+          control={control}
+          render={({ field, fieldState: { error, invalid } }) => (
+            <Box>
+              <Input
+                {...field}
+                disabled={disabledForm}
+                error={invalid}
+                label="Фамилия"
+                helperText={error?.message}
+                variant="outlined"
+              />
+            </Box>
+          )}
+        />
 
-      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <IconButton onClick={onCancel} color="error">
-          <CloseIcon />
-        </IconButton>
+        <Controller
+          name="email"
+          control={control}
+          render={({ field, fieldState: { error, invalid } }) => (
+            <Box>
+              <Input
+                {...field}
+                disabled={disabledForm}
+                error={invalid}
+                label="email"
+                helperText={error?.message}
+                variant="outlined"
+              />
+            </Box>
+          )}
+        />
 
-        <IconButton onClick={onSuccess} color="success">
-          <DoneIcon />
-        </IconButton>
-      </div>
-    </article>
+        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+          <IconButton
+            onClick={handleCancel}
+            color="error"
+            disabled={disabledForm}
+          >
+            <CloseIcon />
+          </IconButton>
+
+          <IconButton type="submit" color="success" disabled={disabledForm}>
+            <DoneIcon />
+          </IconButton>
+        </div>
+      </form>
+    </CardOverlay>
   )
 }

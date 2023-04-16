@@ -5,7 +5,7 @@ import { Typography } from '@mui/material'
 import { useAppSelector } from 'shared/hooks'
 
 import { selectors } from 'features/AuthByLogin'
-import { EditProfile } from 'features/EditProfile'
+import { EditableProfile } from 'features/EditableProfile'
 
 export const PersonalAccountPage = () => {
   const { t } = useTranslation('personal_account_page')
@@ -17,7 +17,7 @@ export const PersonalAccountPage = () => {
     <div>
       <Typography fontSize={24}>{t('title')}</Typography>
 
-      {authData ? <EditProfile /> : <p>Необходимо авторизоваться</p>}
+      {authData ? <EditableProfile /> : <p>Необходимо авторизоваться</p>}
     </div>
   )
 }

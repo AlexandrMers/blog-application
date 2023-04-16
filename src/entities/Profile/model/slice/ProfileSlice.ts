@@ -4,18 +4,21 @@ import { type ProfileResponseType } from './types'
 
 export const profileSlice = apiInstance.injectEndpoints({
   endpoints: (builder) => ({
-    getProfile: builder.query<ProfileResponseType, undefined>({
+    // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
+    getProfile: builder.query<ProfileResponseType, void>({
       query: () => {
         return {
           url: `/profile`,
           method: 'get',
         }
       },
+
+      providesTags: ['Profile'],
     }),
 
     changeProfile: builder.mutation<
       ProfileResponseType,
-      Omit<ProfileResponseType, 'id'>
+      Omit<ProfileResponseType, 'id' | 'avatar'>
     >({
       query: (body) => {
         return {
@@ -24,8 +27,10 @@ export const profileSlice = apiInstance.injectEndpoints({
           body,
         }
       },
+
+      invalidatesTags: ['Profile'],
     }),
   }),
 })
 
-export const { useGetProfileQuery } = profileSlice
+export const { useGetProfileQuery, useChangeProfileMutation } = profileSlice

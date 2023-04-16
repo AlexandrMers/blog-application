@@ -1,1 +1,5 @@
-export { profileSlice, useGetProfileQuery } from './slice/ProfileSlice'
+export {
+  profileSlice,
+  useGetProfileQuery,
+  useChangeProfileMutation,
+} from './slice/ProfileSlice'

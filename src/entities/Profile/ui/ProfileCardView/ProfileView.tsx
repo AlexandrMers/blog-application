@@ -1,29 +1,65 @@
-import { Avatar, IconButton } from '@mui/material'
+import { Avatar, IconButton, Skeleton, type SkeletonProps } from '@mui/material'
 import CreateIcon from '@mui/icons-material/Create'
+
+import { CardOverlay } from '../CardOverlay'
+
+import { type ProfileViewProps } from './types'
 
 import styles from '../styles.module.scss'
 
-export const ProfileView = ({ onEdit }: { onEdit: () => void }) => {
+const textSkeletonProps: SkeletonProps = {
+  variant: 'text',
+  sx: {
+    fontSize: '18px',
+  },
+  width: 120,
+}
+
+export const ProfileView = ({
+  name,
+  email,
+  avatar,
+  isLoading,
+  onEdit,
+}: ProfileViewProps) => {
   return (
-    <article className={styles.ProfileCard}>
+    <CardOverlay>
       <div className={styles.ProfileCard__Avatar}>
-        <Avatar
-          alt="avatar"
-          variant="circular"
-          sx={{ width: 60, height: 60 }}
-        />
+        {isLoading ? (
+          <Skeleton variant="circular" width={60} height={60} />
+        ) : (
+          <Avatar
+            src={avatar}
+            alt="avatar"
+            variant="circular"
+            sx={{ width: 60, height: 60 }}
+          />
+        )}
       </div>
 
       <div className={styles.ProfileCard__InfoWrapper}>
-        <IconButton onClick={onEdit} color="primary">
-          <CreateIcon />
-        </IconButton>
+        {isLoading ? (
+          <Skeleton variant="rounded" width={40} height={48} />
+        ) : (
+          <IconButton onClick={onEdit} color="primary">
+            <CreateIcon />
+          </IconButton>
+        )}
 
         <div className={styles.ProfileCard__Info}>
-          <p>Aleksandr</p>
-          <p>aleksandr@mail.com</p>
+          {isLoading ? (
+            <>
+              <Skeleton {...textSkeletonProps} />
+              <Skeleton {...textSkeletonProps} />
+            </>
+          ) : (
+            <>
+              <p>{email}</p>
+              <p>{name}</p>
+            </>
+          )}
         </div>
       </div>
-    </article>
+    </CardOverlay>
   )
 }
