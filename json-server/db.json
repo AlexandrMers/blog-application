@@ -1,19 +1,61 @@
 {
   "articles": [
-    { "id": 1, "title": "Статья 1", "author": {"id": 1, "email": "merser@mail.ru"} },
-    { "id": 2, "title": "Статья 2", "author": {"id": 1, "email": "merser@mail.ru"} },
-    { "id": 3, "title": "Статья 3", "author": {"id": 1, "email": "merser@mail.ru"} },
-    { "id": 4, "title": "Статья 4", "author": {"id": 1, "email": "merser@mail.ru"} },
-    { "id": 5, "title": "Статья 5", "author": {"id": 1, "email": "merser@mail.ru"} }
+    {
+      "id": 1,
+      "title": "Статья 1",
+      "author": {
+        "id": 1,
+        "email": "merser@mail.ru"
+      }
+    },
+    {
+      "id": 2,
+      "title": "Статья 2",
+      "author": {
+        "id": 1,
+        "email": "merser@mail.ru"
+      }
+    },
+    {
+      "id": 3,
+      "title": "Статья 3",
+      "author": {
+        "id": 1,
+        "email": "merser@mail.ru"
+      }
+    },
+    {
+      "id": 4,
+      "title": "Статья 4",
+      "author": {
+        "id": 1,
+        "email": "merser@mail.ru"
+      }
+    },
+    {
+      "id": 5,
+      "title": "Статья 5",
+      "author": {
+        "id": 1,
+        "email": "merser@mail.ru"
+      }
+    }
   ],
-  "comments": [
-    { "id": 1, "body": "some comment", "postId": 1 }
+  "profile": [
+    {
+      "id": 1,
+      "avatar": "https://s00.yaplakal.com/pics/pics_original/5/0/6/17827605.jpg",
+      "name": "Aleksandr",
+      "surname": "Avdeev",
+      "email": "merser@mail.ru"
+    }
   ],
-  "profile": { "name": "typicode" },
-  "users": [{
-    "password": "1233214%",
-    "email": "merser@mail.ru",
-    "id": 1,
-    "token": "dfksldfkf32o3ko23k4o23kfokfewf0_1"
-  }
-]}
+  "users": [
+    {
+      "password": "1233214%",
+      "email": "merser@mail.ru",
+      "id": 1,
+      "token": "dfksldfkf32o3ko23k4o23kfokfewf0_1"
+    }
+  ]
+}

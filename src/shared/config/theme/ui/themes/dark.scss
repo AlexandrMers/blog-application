@@ -6,13 +6,14 @@ $secondary-color: #BFA584;
 $secondary-color-hover: color.adjust($secondary-color, $blackness: 40%);
 
 .app_theme_dark {
-  --text-color: rgb(246 246 246 / 80%);
+  --text-color: rgb(0 0 0 / 71%);
   --bg-color: #2C3F59;
   --bg-color-inverted: #fff4e7;
   --primary-color: #{$primary-color};
   --primary-color-hover: #{$primary-color-hover};
   --secondary-color: #{$secondary-color};
   --secondary-color-hover: #{$secondary-color-hover};
+  --card-bg-color: #ebebeb;
 }
 
 

@@ -8,13 +8,13 @@ import { type InputProps } from './types'
 import styles from './styles.module.scss'
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ className, ...otherProps }, ref) => {
+  ({ className, variant = 'standard', ...otherProps }, ref) => {
     return (
       <TextField
         {...otherProps}
         ref={ref}
         className={classNames(styles.Input, className)}
-        variant="standard"
+        variant={variant}
       />
     )
   }
