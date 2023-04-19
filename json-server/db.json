@@ -41,11 +41,15 @@
       }
     }
   ],
-  "profile": {
-    "name": "spdfgjsodgjdfgi",
-    "surname": "jsdfgsdfgjlkdfjg",
-    "email": "merser@example.com"
-  },
+  "profile": [
+    {
+      "id": 1,
+      "avatar": "https://s00.yaplakal.com/pics/pics_original/5/0/6/17827605.jpg",
+      "name": "Aleksandr",
+      "surname": "Avdeev",
+      "email": "merser@mail.ru"
+    }
+  ],
   "users": [
     {
       "password": "1233214%",
