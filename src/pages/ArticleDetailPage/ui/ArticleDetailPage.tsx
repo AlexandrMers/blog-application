@@ -1,6 +1,8 @@
 import React from 'react'
 import { Box, Skeleton, Typography } from '@mui/material'
 
+import { CodeBlock } from 'shared/ui'
+
 import {
   articleModel,
   type IBlockCode,
@@ -87,7 +89,7 @@ export const ArticleDetailPage = () => {
                 <img
                   className={styles.ArticleDetailPage__Image}
                   src={block.src}
-                  alt={block.src}
+                  alt={block.title}
                 />
               </Box>
             </React.Fragment>
@@ -95,11 +97,7 @@ export const ArticleDetailPage = () => {
         }
 
         if (isCodeBlock(block)) {
-          return (
-            <pre key={index} className={styles.ArticleDetailPage__CodeBlock}>
-              <code key={index}>{block.code}</code>
-            </pre>
-          )
+          return <CodeBlock key={index} code={block.code} />
         }
 
         return <></>
