@@ -1,29 +1,9 @@
 import React from 'react'
-import { Box, Skeleton, Typography } from '@mui/material'
+import { Skeleton } from '@mui/material'
 
-import { CodeBlock } from 'shared/ui'
-
-import {
-  articleModel,
-  type IBlockCode,
-  type IBlockImage,
-  type IBlockText,
-  type IBlockType,
-} from 'entities/Article'
+import { ArticleDetail, articleModel } from 'entities/Article'
 
 import styles from './styles.module.scss'
-
-const isTextBlock = (block: IBlockType): block is IBlockText => {
-  return block.type === 'text'
-}
-
-const isImageBlock = (block: IBlockType): block is IBlockImage => {
-  return block.type === 'image'
-}
-
-const isCodeBlock = (block: IBlockType): block is IBlockCode => {
-  return block.type === 'code'
-}
 
 export const ArticleDetailPage = () => {
   const { data, isFetching } = articleModel.useGetArticleByIdQuery(1)
@@ -44,64 +24,12 @@ export const ArticleDetailPage = () => {
   }
 
   return (
-    <div className={styles.ArticleDetailPage}>
-      <Box>
-        <Typography fontSize={24}>{data?.title}</Typography>
-      </Box>
-
-      <Box mt="5px">
-        <Typography fontSize={20}>{data?.subtitle}</Typography>
-      </Box>
-
-      <Box mt="5px">
-        <span className={styles.ArticleDetailPage__CreatedAt}>
-          {data?.createdAt}
-        </span>
-      </Box>
-
-      {data?.img && (
-        <Box mt="15px">
-          <img
-            className={styles.ArticleDetailPage__Image}
-            src={data?.img}
-            alt="main"
-          />
-        </Box>
+    <>
+      {data && (
+        <div className={styles.ArticleDetailPage}>
+          <ArticleDetail {...data} />
+        </div>
       )}
-
-      {data?.blocks.map((block, index) => {
-        if (isTextBlock(block)) {
-          return (
-            <Box className={styles.ArticleDetailPage__TextBlock} key={index}>
-              <b>{block.title}</b>
-              {block.paragraphs.map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-              ))}
-            </Box>
-          )
-        }
-
-        if (isImageBlock(block)) {
-          return (
-            <React.Fragment key={index}>
-              <b>{block.title}</b>
-              <Box>
-                <img
-                  className={styles.ArticleDetailPage__Image}
-                  src={block.src}
-                  alt={block.title}
-                />
-              </Box>
-            </React.Fragment>
-          )
-        }
-
-        if (isCodeBlock(block)) {
-          return <CodeBlock key={index} code={block.code} />
-        }
-
-        return <></>
-      })}
-    </div>
+    </>
   )
 }
