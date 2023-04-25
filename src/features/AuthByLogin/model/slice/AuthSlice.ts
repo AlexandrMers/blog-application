@@ -2,8 +2,8 @@ import { createSlice } from '@reduxjs/toolkit'
 
 import {
   getErrorFromResponse,
-  setItemToLocalStorage,
   getItemFromLocalStorage,
+  setItemToLocalStorage,
 } from 'shared/helpers'
 
 import { userModel, type UserResponseType } from 'entities/User'
@@ -21,6 +21,12 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
+    // setAuthErrorFromRequest: (
+    //   state,
+    //   action: PayloadAction<DefaultResponseError | undefined>
+    // ) => {
+    //   state.error = action.payload
+    // },
     receiveDataFromStorage: (state) => {
       const data = getItemFromLocalStorage<UserResponseType>(
         AUTHORIZATION_IN_LOCAL_STORAGE_KEY

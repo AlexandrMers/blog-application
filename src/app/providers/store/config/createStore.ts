@@ -10,6 +10,18 @@ import { reducerManager } from './reducerManager'
 
 import { StateType } from './storeTypes'
 
+// export const rtkQueryErrorLogger: Middleware =
+//   (api: MiddlewareAPI) => (next) => (action) => {
+//     if (isRejectedWithValue(action)) {
+//       if (action.payload.status === 403) {
+//         const error = getErrorFromResponse(action.payload)
+//         api.dispatch(authModel.actions.setAuthErrorFromRequest(error))
+//       }
+//     }
+//
+//     return next(action)
+//   }
+
 export const createStore = (asyncReducers?: ReducersMapObject) => {
   const rootReducers: ReducersMapObject<StateType> = {
     ...asyncReducers,
