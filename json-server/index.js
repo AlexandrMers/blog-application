@@ -44,10 +44,15 @@ server.post('/login', (req, res) => {
   }
 })
 
+// Роуты, которые должны быть доступны без авторизации
+const notProtectedRoutes = [/\/articles\/*/]
+
 // проверяем, авторизован ли пользователь
-// eslint-disable-next-line
 server.use((req, res, next) => {
-  if (!req.headers.authorization) {
+  if (
+    !req.headers.authorization &&
+    !notProtectedRoutes.some((route) => route.test(req.path))
+  ) {
     return res.status(403).json({ message: 'AUTH ERROR' })
   }
 
