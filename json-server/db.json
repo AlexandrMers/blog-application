@@ -6,6 +6,7 @@
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://lokalise.com/blog/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2021/10/Libraries-for-translating-JavaScript-apps.png.webp",
       "created_at": "26.02.2022",
+      "profileId": 1,
       "type": [
         "IT"
       ],
@@ -61,15 +62,92 @@
           ]
         }
       ]
+    },
+    {
+      "id": 2,
+      "title": "Новости дня",
+      "subtitle": "Что произошло на 27.04.2023",
+      "img": null,
+      "created_at": "27.04.2023",
+      "profileId": 2,
+      "type": [
+        "NEWS"
+      ],
+      "blocks": [
+        {
+          "type": "text",
+          "title": "Эрдоган находится при смерти",
+          "paragraphs": [
+            "Китайская государственная медиакомпания CGTN сообщает, что президент Турции Реджеп Эрдоган находится в критическом состоянии после перенесенного сердечного приступа, а его супругу и близких попросили приехать в больницу. \n\nТурецкому президенту стало плохо во время прямого эфира во вторник, 25 апреля. После небольшого перерыва он продолжил интервью и извинился перед зрителями, пояснив, что заболел. В свою очередь, член Совбеза Турции Чагры Эрхан опроверг слухи об инфаркте и заявил, что Эрдоган «заболел желудочным гриппом из-за активных предвыборных мероприятий на открытом воздухе»\n\nНапомним, что до президентских выборов в Турции осталось всего 2.5 недели. Главный конкурент Кемаль Кылычдароглу считается прозападным кандидатом.\n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Рандомная статья",
+      "subtitle": "Лол кек чебурек",
+      "img": null,
+      "created_at": "27.04.2023",
+      "profileId": 1,
+      "type": [
+        "NEWS"
+      ],
+      "blocks": [
+        {
+          "type": "text",
+          "title": "Что-то важное происходит не здесь",
+          "paragraphs": [
+            "Где-то происходят те же события, копия меня пишет копию песни этой. Если вселенная бесконечна и правда..."
+          ]
+        }
+      ]
     }
   ],
-  "profile": [
+  "comments": [
+    {
+      "id": 1,
+      "created_at": "13:53 27.04.2023",
+      "profileId": 1,
+      "articleId": 1,
+      "text": "Отличная статья"
+    },
+    {
+      "id": 2,
+      "created_at": "13:53 27.04.2023",
+      "profileId": 3,
+      "articleId": 1,
+      "text": "Офигенно подробно все расписали, конечно"
+    },
+    {
+      "id": 3,
+      "created_at": "12:53 27.04.2022",
+      "profileId": 3,
+      "articleId": 2,
+      "text": "хахаахах, лол кек"
+    }
+  ],
+  "profiles": [
     {
       "id": 1,
       "avatar": "https://s00.yaplakal.com/pics/pics_original/5/0/6/17827605.jpg",
       "name": "Aleksandr",
       "surname": "Avdeev",
       "email": "merser@mail.ru"
+    },
+    {
+      "id": 2,
+      "avatar": null,
+      "name": "Michael",
+      "surname": "Franko",
+      "email": "franko@mail.ru"
+    },
+    {
+      "id": 3,
+      "avatar": null,
+      "name": "Юрий",
+      "surname": "Быков",
+      "email": "bykov@mail.ru"
     }
   ],
   "users": [
@@ -78,6 +156,18 @@
       "email": "merser@mail.ru",
       "id": 1,
       "token": "dfksldfkf32o3ko23k4o23kfokfewf0_1"
+    },
+    {
+      "password": "1233214%",
+      "email": "franko@mail.ru",
+      "id": 2,
+      "token": "dfksldfkf32o3ko23k4o32123kfokfewf0_123123"
+    },
+    {
+      "password": "1233214%",
+      "email": "bykov@mail.ru",
+      "id": 3,
+      "token": "dfksldffsdfkf32o3ko23k4o32123kfokfewf0_123123"
     }
   ]
 }

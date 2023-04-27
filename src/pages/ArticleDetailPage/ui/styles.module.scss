@@ -1,10 +1,14 @@
-.ArticleDetailPage {
+.Container {
   background-color: var(--card-bg-color);
   border-radius: 15px;
   margin: 0 auto;
   max-width: 768px;
   padding: 25px;
   width: 100%;
+
+  &:not(:last-child) {
+    margin-bottom: 25px;
+  }
 }
 
 

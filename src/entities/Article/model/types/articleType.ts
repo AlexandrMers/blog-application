@@ -1,3 +1,5 @@
+import { type ProfileResponseType } from 'entities/Profile'
+
 export type BlockType = 'text' | 'code' | 'image'
 
 export interface IBlock {
@@ -26,6 +28,7 @@ export interface IArticleClient {
   subtitle: string
   img: string
   createdAt: string
+  author: ProfileResponseType
   type: string[]
   blocks: IBlockType[]
 }
