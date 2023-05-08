@@ -2,22 +2,39 @@ import cn from 'classnames'
 import { useTranslation } from 'react-i18next'
 
 import { AppLink, FlexContainer } from 'shared/ui'
+import { useAppSelector } from 'shared/hooks'
 
-import { NavigationConfig } from '../lib/navigation.config'
+import { selectors } from 'features/AuthByLogin'
+
 import { type HeaderProps } from '../types/HeaderProps'
+import { NavigationConfig, NavigationRoutes } from '../lib/navigation.config'
 
 import styles from './style.module.scss'
 
-function LinksWithTranslations() {
+function NavigationList() {
   const { t } = useTranslation()
+
+  const user = useAppSelector(selectors.getAuthData)
+  const authData = user.authData
 
   return (
     <>
-      {Object.values(NavigationConfig).map((link) => (
-        <AppLink key={link.key} to={link.to}>
-          {t(`nav_links.${link.key}`)}
-        </AppLink>
-      ))}
+      {Object.values(NavigationConfig).map((link) => {
+        let linkToPage = link.to
+
+        if (link.key === NavigationRoutes.PROFILE) {
+          if (!user) {
+            return null
+          }
+          linkToPage = String(link.to) + `/${String(authData?.id)}`
+        }
+
+        return (
+          <AppLink key={link.key} to={linkToPage}>
+            {t(`nav_links.${link.key}`)}
+          </AppLink>
+        )
+      })}
     </>
   )
 }
@@ -32,7 +49,7 @@ export const Header = ({
       {leftElement}
       <FlexContainer justifyContent="end">
         <div className={styles.Header__Menu}>
-          <LinksWithTranslations />
+          <NavigationList />
         </div>
       </FlexContainer>
       {rightElement}

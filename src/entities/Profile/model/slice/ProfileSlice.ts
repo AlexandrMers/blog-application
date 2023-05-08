@@ -5,10 +5,10 @@ import { type ProfileResponseType } from './types'
 export const profileSlice = apiInstance.injectEndpoints({
   endpoints: (builder) => ({
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    getProfile: builder.query<ProfileResponseType, void>({
-      query: () => {
+    getProfile: builder.query<ProfileResponseType, number>({
+      query: (userId) => {
         return {
-          url: '/profiles/1',
+          url: `/profiles/${userId}`,
           method: 'GET',
         }
       },
@@ -18,11 +18,11 @@ export const profileSlice = apiInstance.injectEndpoints({
 
     changeProfile: builder.mutation<
       ProfileResponseType,
-      Omit<ProfileResponseType, 'id' | 'avatar'>
+      Omit<ProfileResponseType, 'avatar'>
     >({
       query: (body) => {
         return {
-          url: '/profiles/1',
+          url: `/profiles/${body.id}`,
           method: 'PATCH',
           body,
         }

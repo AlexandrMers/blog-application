@@ -12,11 +12,21 @@ function getFullName({ surname, name }: { name?: string; surname?: string }) {
   return [surname, name].filter(Boolean).join(' ')
 }
 
-export const EditableProfile = () => {
+interface EditableProfileProps {
+  canEditInformation: boolean
+  userId: string
+}
+
+export const EditableProfile = ({
+  canEditInformation = true,
+  userId,
+}: EditableProfileProps) => {
   const [isEditMode, editMode, viewMode] = useBoolean()
   const [isOpenNotification, openNotification, closeNotification] = useBoolean()
 
-  const { data, isFetching } = profileModel.useGetProfileQuery()
+  const formattedUserId = Number(userId)
+
+  const { data, isFetching } = profileModel.useGetProfileQuery(formattedUserId)
   const [changeProfileRequest, { isLoading: isLoadingChangeProfile }] =
     profileModel.useChangeProfileMutation()
 
@@ -28,6 +38,7 @@ export const EditableProfile = () => {
     viewMode()
 
     await changeProfileRequest({
+      id: formattedUserId,
       name: data.name,
       surname: data.surname,
       email: data.email,
@@ -57,6 +68,7 @@ export const EditableProfile = () => {
         avatar={data?.avatar}
         isLoading={isLoadingProfile}
         name={fullName}
+        hiddenEditButton={!canEditInformation}
         onEdit={editMode}
       />
 
