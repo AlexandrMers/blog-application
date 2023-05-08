@@ -1,11 +1,10 @@
-import React from 'react'
 import { Skeleton } from '@mui/material'
 import { useParams } from 'react-router'
 
 import { renderSkeletonText } from 'shared/helpers'
 
 import { ArticleDetail, articleModel } from 'entities/Article'
-import { commentModel, CommentList } from 'entities/Comment'
+import { CommentList, commentModel } from 'entities/Comment'
 
 import styles from './styles.module.scss'
 
@@ -25,20 +24,30 @@ function ArticleDetailSkeleton() {
 export const ArticleDetailPage = () => {
   const params = useParams()
   const articleId = Number(params.id)
-  const { data, isFetching } = articleModel.useGetArticleByIdQuery(articleId)
 
-  const { data: commentsData, isFetching: isFetchingComments } =
-    commentModel.useGetCommentListQuery(articleId)
+  const { data, isFetching } = articleModel.useGetArticleByIdQuery(articleId)
+  const { comments, isFetching: isFetchingComments } =
+    commentModel.useGetCommentListQuery(articleId, {
+      selectFromResult: (result) => {
+        return {
+          ...result,
+          comments: commentModel.selectors.selectAll(result.data),
+        }
+      },
+    })
 
   return (
-    <div className={styles.Container}>
+    <div className={styles.ArticleDetailPage}>
       {isFetching && <ArticleDetailSkeleton />}
       {!!data && !isFetching && <ArticleDetail {...data} />}
 
-      <div style={{ marginTop: 25 }}>
+      <div
+        className={styles.ArticleDetailPage__Comments}
+        style={{ marginTop: 25 }}
+      >
         <CommentList
           isLoading={isFetchingComments}
-          comments={Array.isArray(commentsData) ? commentsData : []}
+          comments={Array.isArray(comments) ? comments : []}
         />
       </div>
     </div>

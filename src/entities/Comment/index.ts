@@ -1,4 +1,4 @@
-export { commentModel } from './model'
+export * as commentModel from './model'
 export {
   type ICommentClient,
   type ICommentResponse,

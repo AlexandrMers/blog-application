@@ -1,1 +1,1 @@
-export * as commentModel from './slice/CommentSlice'
+export * from './slice/CommentSlice'

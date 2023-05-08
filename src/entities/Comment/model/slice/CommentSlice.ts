@@ -1,3 +1,5 @@
+import { createEntityAdapter, type EntityState } from '@reduxjs/toolkit'
+
 import { apiInstance } from 'shared/config/api'
 
 import {
@@ -7,20 +9,33 @@ import {
 
 import { mapResponseCommentToClient } from './mappings'
 
-// TODO - надо попробовать внедрить EntityAdapter!!!
+interface CommentsState extends EntityState<ICommentClient> {}
+
+const commentsAdapter = createEntityAdapter<ICommentClient>({
+  selectId: (model) => model.id,
+})
+
+const initialState = commentsAdapter.getInitialState()
+
 export const commentSlice = apiInstance.injectEndpoints({
   endpoints: (builder) => ({
-    getCommentList: builder.query<ICommentClient[], number>({
+    getCommentList: builder.query<CommentsState, number>({
       query: (articleId: number) => {
         return {
           url: `/comments?articleId=${articleId}&_expand=profile`,
           method: 'get',
         }
       },
-      transformResponse: (response: ICommentResponse[]) =>
-        response.map(mapResponseCommentToClient),
+      transformResponse: (responseData: ICommentResponse[]) => {
+        const formattedData = responseData.map(mapResponseCommentToClient)
+        return commentsAdapter.setAll(initialState, formattedData)
+      },
     }),
   }),
 })
 
 export const { useGetCommentListQuery } = commentSlice
+
+export const selectors = commentsAdapter.getSelectors<
+  CommentsState | undefined
+>((state) => state ?? initialState)
