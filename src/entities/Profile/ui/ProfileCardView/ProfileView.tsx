@@ -20,6 +20,7 @@ export const ProfileView = ({
   email,
   avatar,
   isLoading,
+  hiddenEditButton = false,
   onEdit,
 }: ProfileViewProps) => {
   return (
@@ -38,13 +39,15 @@ export const ProfileView = ({
       </div>
 
       <div className={styles.ProfileCard__InfoWrapper}>
-        {isLoading ? (
-          <Skeleton variant="rounded" width={40} height={48} />
-        ) : (
-          <IconButton onClick={onEdit} color="primary">
-            <CreateIcon />
-          </IconButton>
-        )}
+        {!hiddenEditButton ? (
+          isLoading ? (
+            <Skeleton variant="rounded" width={40} height={48} />
+          ) : (
+            <IconButton onClick={onEdit} color="primary">
+              <CreateIcon />
+            </IconButton>
+          )
+        ) : null}
 
         <div className={styles.ProfileCard__Info}>
           {isLoading ? (

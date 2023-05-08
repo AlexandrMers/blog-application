@@ -7,7 +7,7 @@ import { AppRoutes, RoutesPath } from 'shared/config/router'
 import { NotFoundPage } from 'pages/NotFoundPage'
 
 const PersonalAccountPage = React.lazy(
-  async () => await import('pages/PersonalAccount')
+  async () => await import('../../../../pages/ProfilePage')
 )
 const ArticlesPage = React.lazy(async () => await import('pages/ArticlesPage'))
 const MyArticlesPage = React.lazy(
@@ -30,8 +30,8 @@ export const RouteConfig: Record<AppRoutes, RouteProps> = {
     path: RoutesPath.myArticles,
     element: <MyArticlesPage />,
   },
-  [AppRoutes.PERSONAL_ACCOUNT]: {
-    path: RoutesPath.personalAccount,
+  [AppRoutes.PROFILE]: {
+    path: RoutesPath.profile,
     element: <PersonalAccountPage />,
   },
   [AppRoutes.NOT_FOUND]: {

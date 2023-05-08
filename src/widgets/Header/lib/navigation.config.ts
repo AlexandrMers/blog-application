@@ -1,7 +1,7 @@
 import { type LinkProps } from 'react-router-dom'
 
 export enum NavigationRoutes {
-  PERSONAL_ACCOUNT = 'personalAccount',
+  PROFILE = 'profile',
   ARTICLES = 'articles',
   MY_ARTICLES = 'myArticles',
 }
@@ -20,8 +20,8 @@ export const NavigationConfig: Record<
     key: 'my_articles',
   },
 
-  [NavigationRoutes.PERSONAL_ACCOUNT]: {
-    to: '/account',
-    key: 'account',
+  [NavigationRoutes.PROFILE]: {
+    to: '/profile',
+    key: NavigationRoutes.PROFILE,
   },
 }
