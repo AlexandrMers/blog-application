@@ -12,7 +12,7 @@ export function CommentList({
   isLoading,
 }: {
   isLoading: boolean
-  comments: ICommentClient[]
+  comments: Array<Omit<ICommentClient, 'profileId' | 'articleId'>>
 }) {
   return (
     <div className={styles.CommentList}>
