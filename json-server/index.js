@@ -45,13 +45,24 @@ server.post('/login', (req, res) => {
 })
 
 // Роуты, которые должны быть доступны без авторизации
-const notProtectedRoutes = [/\/articles\/*/]
+const notProtectedRoutes = [
+  {
+    regExp: /\/articles\/*/,
+    method: 'GET',
+  },
+  {
+    regExp: /\/comments\/*/,
+    method: 'GET',
+  },
+]
 
 // проверяем, авторизован ли пользователь
 server.use((req, res, next) => {
   if (
     !req.headers.authorization &&
-    !notProtectedRoutes.some((route) => route.test(req.path))
+    !notProtectedRoutes.some(
+      ({ method, regExp }) => regExp.test(req.path) && method === req.method
+    )
   ) {
     return res.status(403).json({ message: 'AUTH ERROR' })
   }

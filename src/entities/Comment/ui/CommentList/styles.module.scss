@@ -1,0 +1,31 @@
+.CommentList {
+  &__Title {
+    margin-bottom: 15px;
+  }
+
+  &__ListWrapper {
+    margin: 0;
+    padding: 0;
+
+    li {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  &__Item {
+    &:not(:last-child) {
+      margin-bottom: 15px;
+    }
+  }
+}
+
+.Skeleton {
+  align-items: center;
+  display: flex;
+
+  &__Text {
+    margin-left: 15px;
+  }
+}

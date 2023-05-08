@@ -2,3 +2,4 @@ export { getErrorFromResponse } from './getErrorFromResponse/getErrorFromRespons
 export { type DefaultResponseError } from './getErrorFromResponse/types'
 export * from './localStorage'
 export * from './sleep'
+export { renderSkeletonText } from './renderSkeletonText'

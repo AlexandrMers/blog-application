@@ -1,10 +1,12 @@
 import { apiInstance } from 'shared/config/api'
+import { createSelector } from 'reselect'
 
-import { type UserResponseType } from 'entities/User'
 import {
   type IArticleClient,
   type IArticleResponse,
 } from '../types/articleType'
+
+import { type UserResponseType } from 'entities/User'
 
 const mapResponseArticleToClient = ({
   img,
@@ -12,6 +14,7 @@ const mapResponseArticleToClient = ({
   subtitle,
   // eslint-disable-next-line @typescript-eslint/naming-convention
   created_at,
+  author,
   type,
   title,
   id,
@@ -20,10 +23,12 @@ const mapResponseArticleToClient = ({
   blocks,
   img,
   id,
+  author,
   type,
   title,
   subtitle,
 })
+
 interface ArticleResponseType {
   id: number
   title: string
@@ -43,7 +48,7 @@ export const articleSlice = apiInstance.injectEndpoints({
     getArticleById: builder.query<IArticleClient, number>({
       query: (id: number) => {
         return {
-          url: `/articles/${id}`,
+          url: `/articles/${id}?_expand=profile`,
           method: 'get',
         }
       },
@@ -51,6 +56,12 @@ export const articleSlice = apiInstance.injectEndpoints({
     }),
   }),
 })
+
+export const selectArticleById = (id: number) =>
+  createSelector(
+    articleSlice.endpoints.getArticleById.select(id),
+    (article) => article?.data
+  )
 
 export const { useGetArticlesByAuthorIdQuery, useGetArticleByIdQuery } =
   articleSlice

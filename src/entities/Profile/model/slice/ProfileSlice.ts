@@ -8,7 +8,7 @@ export const profileSlice = apiInstance.injectEndpoints({
     getProfile: builder.query<ProfileResponseType, void>({
       query: () => {
         return {
-          url: '/profile/1',
+          url: '/profiles/1',
           method: 'GET',
         }
       },
@@ -22,7 +22,7 @@ export const profileSlice = apiInstance.injectEndpoints({
     >({
       query: (body) => {
         return {
-          url: '/profile/1',
+          url: '/profiles/1',
           method: 'PATCH',
           body,
         }

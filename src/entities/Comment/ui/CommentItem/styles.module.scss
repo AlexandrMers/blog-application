@@ -1,0 +1,22 @@
+.CommentItem {
+  &__Header {
+    align-items: center;
+    display: flex;
+  }
+
+  &__Info {
+    margin-left: 15px;
+  }
+
+
+  &__Date {
+    display: block;
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  &__Body {
+    font-size: 16px;
+    padding-left: 55px;
+  }
+}
