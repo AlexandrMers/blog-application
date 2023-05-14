@@ -1,6 +1,4 @@
-import { Typography } from '@mui/material'
-
-import { type ICommentClient } from '../../model/types/commentTypes'
+import { type IComment } from '../../model/types/commentTypes'
 
 import { CommentSkeleton } from './CommentSkeleton'
 import { CommentItem } from '../CommentItem/CommentItem'
@@ -12,20 +10,15 @@ export function CommentList({
   isLoading,
 }: {
   isLoading: boolean
-  comments: Array<Omit<ICommentClient, 'profileId' | 'articleId'>>
+  comments: Array<Omit<IComment, 'profileId' | 'articleId'>>
 }) {
   return (
     <div className={styles.CommentList}>
-      {/* TODO - этот тайтл надо будет вынести выше, т.к. будет фича для добавления комментариев */}
-      <Typography className={styles.CommentList__Title} fontSize={24}>
-        Комментарии
-      </Typography>
-
       {isLoading ? (
         <CommentSkeleton />
       ) : comments.length ? (
         <ul className={styles.CommentList__ListWrapper}>
-          {comments.map(({ id, createdAt, author, text }) => (
+          {comments.map(({ id, createdAt, profile: author, text }) => (
             <li className={styles.CommentList__Item} key={id}>
               <CommentItem author={author} text={text} createdAt={createdAt} />
             </li>

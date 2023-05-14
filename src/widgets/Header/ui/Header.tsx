@@ -23,7 +23,7 @@ function NavigationList() {
         let linkToPage = link.to
 
         if (link.key === NavigationRoutes.PROFILE) {
-          if (!user) {
+          if (!authData) {
             return null
           }
           linkToPage = String(link.to) + `/${String(authData?.id)}`

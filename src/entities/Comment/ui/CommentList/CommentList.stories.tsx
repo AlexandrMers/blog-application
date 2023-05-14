@@ -22,7 +22,7 @@ export const CommentList = Template.bind({})
 CommentList.args = {
   comments: [
     {
-      author: {
+      profile: {
         name: 'Aleksandr',
         surname: 'Avdeev',
         avatar: '',
@@ -34,7 +34,7 @@ CommentList.args = {
       id: 1,
     },
     {
-      author: {
+      profile: {
         name: 'Jordan',
         surname: 'Michael',
         avatar: '',

@@ -1,17 +1,12 @@
 import { createEntityAdapter, type EntityState } from '@reduxjs/toolkit'
 
-import { apiInstance } from 'shared/config/api'
+import { apiInstance, TAG_TYPES_FOR_API } from 'shared/config/api'
 
-import {
-  type ICommentClient,
-  type ICommentResponse,
-} from '../types/commentTypes'
+import { type IComment, type ICreateCommentQuery } from '../types/commentTypes'
 
-import { mapResponseCommentToClient } from './mappings'
+interface CommentsState extends EntityState<IComment> {}
 
-interface CommentsState extends EntityState<ICommentClient> {}
-
-const commentsAdapter = createEntityAdapter<ICommentClient>({
+const commentsAdapter = createEntityAdapter<IComment>({
   selectId: (model) => model.id,
 })
 
@@ -26,15 +21,29 @@ export const commentSlice = apiInstance.injectEndpoints({
           method: 'get',
         }
       },
-      transformResponse: (responseData: ICommentResponse[]) => {
-        const formattedData = responseData.map(mapResponseCommentToClient)
-        return commentsAdapter.setAll(initialState, formattedData)
+      transformResponse: (responseData: IComment[]) => {
+        return commentsAdapter.setAll(initialState, responseData)
       },
+      providesTags: [TAG_TYPES_FOR_API.COMMENTS],
+    }),
+
+    createComment: builder.mutation<CommentsState, ICreateCommentQuery>({
+      query: (article) => {
+        return {
+          url: `/comments`,
+          method: 'post',
+          body: article,
+        }
+      },
+      transformResponse: (responseData: IComment) => {
+        return commentsAdapter.addOne(initialState, responseData)
+      },
+      invalidatesTags: [TAG_TYPES_FOR_API.COMMENTS],
     }),
   }),
 })
 
-export const { useGetCommentListQuery } = commentSlice
+export const { useGetCommentListQuery, useCreateCommentMutation } = commentSlice
 
 export const selectors = commentsAdapter.getSelectors<
   CommentsState | undefined

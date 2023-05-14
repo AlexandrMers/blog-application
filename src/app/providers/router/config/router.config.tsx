@@ -7,7 +7,7 @@ import { AppRoutes, RoutesPath } from 'shared/config/router'
 import { NotFoundPage } from 'pages/NotFoundPage'
 
 const PersonalAccountPage = React.lazy(
-  async () => await import('../../../../pages/ProfilePage')
+  async () => await import('pages/ProfilePage')
 )
 const ArticlesPage = React.lazy(async () => await import('pages/ArticlesPage'))
 const MyArticlesPage = React.lazy(

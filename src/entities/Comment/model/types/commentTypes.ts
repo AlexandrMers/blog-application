@@ -1,19 +1,13 @@
 import { type ProfileResponseType } from 'entities/Profile'
 
-export interface ICommentResponse {
+export interface IComment {
   id: number
-  created_at: string
+  createdAt: string
   profileId: number
   profile: ProfileResponseType
   articleId: number
   text: string
 }
 
-export interface ICommentClient {
-  id: number
-  createdAt: string
-  profileId: number
-  author: ProfileResponseType
-  articleId: number
-  text: string
-}
+export interface ICreateCommentQuery
+  extends Omit<IComment, 'createdAt' | 'author' | 'id' | 'profile'> {}

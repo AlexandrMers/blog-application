@@ -17,8 +17,6 @@ export const ProfilePage = () => {
 
   const userIsMe = String(authData?.id) === userId
 
-  console.log('isAuthUserOnPage ->', userIsMe)
-
   return (
     <div>
       <Typography fontSize={24}>{t('title')}</Typography>

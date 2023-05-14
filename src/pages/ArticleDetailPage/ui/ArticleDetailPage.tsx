@@ -1,10 +1,14 @@
-import { Skeleton } from '@mui/material'
+import { Box, Skeleton, Typography } from '@mui/material'
 import { useParams } from 'react-router'
 
 import { renderSkeletonText } from 'shared/helpers'
+import { useAppSelector } from 'shared/hooks'
 
 import { ArticleDetail, articleModel } from 'entities/Article'
 import { CommentList, commentModel } from 'entities/Comment'
+
+import { AddComment } from 'features/AddComment'
+import { selectors } from 'features/AuthByLogin'
 
 import styles from './styles.module.scss'
 
@@ -25,8 +29,11 @@ export const ArticleDetailPage = () => {
   const params = useParams()
   const articleId = Number(params.id)
 
+  const { authData } = useAppSelector(selectors.getAuthData)
+  const authorizedUserId = authData?.id
+
   const { data, isFetching } = articleModel.useGetArticleByIdQuery(articleId)
-  const { comments, isFetching: isFetchingComments } =
+  const { comments, isLoading: isFetchingComments } =
     commentModel.useGetCommentListQuery(articleId, {
       selectFromResult: (result) => {
         return {
@@ -45,10 +52,20 @@ export const ArticleDetailPage = () => {
         className={styles.ArticleDetailPage__Comments}
         style={{ marginTop: 25 }}
       >
-        <CommentList
-          isLoading={isFetchingComments}
-          comments={Array.isArray(comments) ? comments : []}
-        />
+        <Typography
+          className={styles.ArticleDetailPage__CommentsTitle}
+          fontSize={24}
+        >
+          Комментарии
+        </Typography>
+
+        {authorizedUserId && (
+          <Box marginBottom="20px">
+            <AddComment articleId={articleId} userId={authorizedUserId} />
+          </Box>
+        )}
+
+        <CommentList isLoading={isFetchingComments} comments={comments} />
       </div>
     </div>
   )

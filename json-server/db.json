@@ -5,7 +5,7 @@
       "title": "Javascript news",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://lokalise.com/blog/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2021/10/Libraries-for-translating-JavaScript-apps.png.webp",
-      "created_at": "26.02.2022",
+      "createdAt": 1684057663735,
       "profileId": 1,
       "type": [
         "IT"
@@ -68,7 +68,7 @@
       "title": "Новости дня",
       "subtitle": "Что произошло на 27.04.2023",
       "img": null,
-      "created_at": "27.04.2023",
+      "createdAt": 1684057663735,
       "profileId": 2,
       "type": [
         "NEWS"
@@ -88,7 +88,7 @@
       "title": "Рандомная статья",
       "subtitle": "Лол кек чебурек",
       "img": null,
-      "created_at": "27.04.2023",
+      "createdAt": 1684057663735,
       "profileId": 1,
       "type": [
         "NEWS"
@@ -107,24 +107,73 @@
   "comments": [
     {
       "id": 1,
-      "created_at": "13:53 27.04.2023",
+      "createdAt": 1684057663735,
       "profileId": 1,
       "articleId": 1,
       "text": "Отличная статья"
     },
     {
       "id": 2,
-      "created_at": "13:53 27.04.2023",
+      "createdAt": 1684057663735,
       "profileId": 3,
       "articleId": 1,
       "text": "Офигенно подробно все расписали, конечно"
     },
     {
       "id": 3,
-      "created_at": "12:53 27.04.2022",
+      "createdAt": 1684057663735,
       "profileId": 3,
       "articleId": 2,
       "text": "хахаахах, лол кек"
+    },
+    {
+      "profileId": 1,
+      "articleId": 1,
+      "text": "",
+      "createdAt": 1684058235666,
+      "id": 4
+    },
+    {
+      "profileId": 1,
+      "articleId": 1,
+      "text": "fdsfsdf",
+      "createdAt": 1684058284048,
+      "id": 5
+    },
+    {
+      "profileId": 1,
+      "articleId": 1,
+      "text": "hello) I liked your article a lot)",
+      "createdAt": 1684058455889,
+      "id": 6
+    },
+    {
+      "profileId": 1,
+      "articleId": 1,
+      "text": "sdfsdf",
+      "createdAt": 1684058564911,
+      "id": 7
+    },
+    {
+      "profileId": 1,
+      "articleId": 1,
+      "text": "hello brother)))",
+      "createdAt": 1684058977943,
+      "id": 8
+    },
+    {
+      "profileId": 1,
+      "articleId": 1,
+      "text": "how are you?)",
+      "createdAt": 1684059040721,
+      "id": 9
+    },
+    {
+      "profileId": 1,
+      "articleId": 1,
+      "text": "This is a wonderful article\n",
+      "createdAt": 1684059128823,
+      "id": 10
     }
   ],
   "profiles": [
@@ -133,7 +182,7 @@
       "avatar": "https://s00.yaplakal.com/pics/pics_original/5/0/6/17827605.jpg",
       "name": "Aleksandr",
       "surname": "Avdeev",
-      "email": "merser@mail.ru"
+      "email": "merser@example.com"
     },
     {
       "id": 2,
@@ -153,7 +202,7 @@
   "users": [
     {
       "password": "1233214%",
-      "email": "merser@mail.ru",
+      "email": "merser@example.com",
       "id": 1,
       "token": "dfksldfkf32o3ko23k4o23kfokfewf0_1"
     },
