@@ -1,4 +1,4 @@
-import { apiInstance } from 'shared/config/api'
+import { apiInstance, TAG_TYPES_FOR_API } from 'shared/config/api'
 
 import { type ProfileResponseType } from './types'
 
@@ -13,7 +13,7 @@ export const profileSlice = apiInstance.injectEndpoints({
         }
       },
 
-      providesTags: ['Profile'],
+      providesTags: [TAG_TYPES_FOR_API.PROFILE],
     }),
 
     changeProfile: builder.mutation<
@@ -28,7 +28,7 @@ export const profileSlice = apiInstance.injectEndpoints({
         }
       },
 
-      invalidatesTags: ['Profile'],
+      invalidatesTags: [TAG_TYPES_FOR_API.PROFILE],
     }),
   }),
 })

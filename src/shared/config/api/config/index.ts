@@ -1,5 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
+export enum TAG_TYPES_FOR_API {
+  PROFILE = 'Profile',
+  COMMENTS = 'Comments',
+}
+
 export const apiInstance = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
@@ -14,6 +19,6 @@ export const apiInstance = createApi({
       return headers
     },
   }),
-  tagTypes: ['Profile'],
+  tagTypes: [TAG_TYPES_FOR_API.PROFILE, TAG_TYPES_FOR_API.COMMENTS],
   endpoints: () => ({}),
 })

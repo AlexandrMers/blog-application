@@ -54,6 +54,10 @@ const notProtectedRoutes = [
     regExp: /\/comments\/*/,
     method: 'GET',
   },
+  {
+    regExp: /\/profile\/*/,
+    method: 'GET',
+  },
 ]
 
 // проверяем, авторизован ли пользователь
@@ -65,6 +69,10 @@ server.use((req, res, next) => {
     )
   ) {
     return res.status(403).json({ message: 'AUTH ERROR' })
+  }
+
+  if (req.method === 'POST') {
+    req.body.createdAt = Date.now()
   }
 
   next()

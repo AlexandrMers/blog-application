@@ -1,7 +1,7 @@
 export * as commentModel from './model'
 export {
-  type ICommentClient,
-  type ICommentResponse,
+  type ICreateCommentQuery,
+  type IComment,
 } from './model/types/commentTypes'
 
 export { CommentItem, CommentList } from './ui'
