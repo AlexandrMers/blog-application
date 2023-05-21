@@ -20,6 +20,24 @@ export interface IBlockImage extends IBlock {
   title: string
 }
 
+export enum CategoryType {
+  TRAVEL = 'travel',
+  ANALYZE = 'analyze',
+  IT = 'it',
+  HEALTH = 'health',
+  SCIENCE = 'science',
+  DESIGN = 'design',
+}
+
+export const CategoryDictionary: Record<CategoryType, string> = {
+  [CategoryType.ANALYZE]: 'Анализ',
+  [CategoryType.DESIGN]: 'Дизайн',
+  [CategoryType.IT]: 'IT',
+  [CategoryType.HEALTH]: 'Здоровье',
+  [CategoryType.SCIENCE]: 'Наука',
+  [CategoryType.TRAVEL]: 'Путешествия',
+}
+
 export type IBlockType = IBlockText | IBlockCode | IBlockImage
 
 export interface IArticleClient {

@@ -5,13 +5,19 @@ import {
   type IArticleCardFields,
 } from '../ArticleItem/ArticleItem'
 
+import { renderArticleListSkeleton } from './renderSkeleton'
+
 import styles from './styles.module.scss'
 
 export interface IArticleListProps {
+  isLoading?: boolean
   list: IArticleCardFields[]
 }
 
-export const ArticleList = ({ list }: IArticleListProps) => {
+export const ArticleList = ({
+  isLoading = false,
+  list = [],
+}: IArticleListProps) => {
   return (
     <section className={styles.ArticleList}>
       <Grid columns={['1fr', '1fr']} gap="30px">
@@ -33,6 +39,8 @@ export const ArticleList = ({ list }: IArticleListProps) => {
             </GridItem>
           )
         })}
+
+        {isLoading && renderArticleListSkeleton(5, list.length === 0)}
       </Grid>
     </section>
   )

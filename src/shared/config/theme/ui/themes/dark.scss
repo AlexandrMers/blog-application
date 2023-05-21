@@ -21,8 +21,15 @@ $secondary-color-hover: color.adjust($secondary-color, $blackness: 40%);
   // design system colors
   --black: #282828;
   --gray-strong: #BDBDBD;
-  --orange: #D74D00;
   --gray: #EFEFEF;
+
+  // categories
+  --red: #D00;
+  --orange: #D74D00;
+  --yellow: #DDE100;
+  --green: #009818;
+  --blue: #0108BD;
+  --purple: #7B16CB;
 }
 
 

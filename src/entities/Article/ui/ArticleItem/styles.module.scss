@@ -61,7 +61,7 @@ $box-shadow-article-card: 0 0 7px 1px rgb(0 0 0 / 20%);
   position: relative;
 
   &::before {
-    background: var(--orange);
+    background: transparent;
     border-radius: 5px;
     content: '';
     display: block;
@@ -70,6 +70,42 @@ $box-shadow-article-card: 0 0 7px 1px rgb(0 0 0 / 20%);
     position: absolute;
     top: -3px;
     width: $rect-size;
+  }
+
+  &_travel {
+    &::before{
+      background: var(--red);
+    }
+  }
+
+  &_analyze {
+    &::before{
+      background: var(--orange);
+    }
+  }
+
+  &_it {
+    &::before{
+      background: var(--yellow);
+    }
+  }
+
+  &_health {
+    &::before{
+      background: var(--green);
+    }
+  }
+
+  &_science {
+    &::before{
+      background: var(--blue);
+    }
+  }
+
+  &_design {
+    &::before{
+      background: var(--purple);
+    }
   }
 }
 

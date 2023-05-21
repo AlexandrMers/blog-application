@@ -1,12 +1,14 @@
 import { type FC, type ReactElement } from 'react'
+import cn from 'classnames'
+
+import { CategoryDictionary, type CategoryType } from '../../model'
 
 import styles from './styles.module.scss'
-import cn from 'classnames'
 
 export interface IArticleCardFields {
   image: string
   title: string
-  category: string
+  category: CategoryType
   authorName: string
 }
 
@@ -21,6 +23,11 @@ export const ArticleItem: FC<IArticleItemProps> = ({
   category,
   authorName,
 }: IArticleItemProps): ReactElement => {
+  const categoryName = CategoryDictionary[category]
+  const categoryClassName = cn(styles.ArticleItem__Category, {
+    [styles[`ArticleItem__Category_${category}`]]: true,
+  })
+
   return (
     <article
       className={cn(styles.ArticleItem, {
@@ -35,13 +42,7 @@ export const ArticleItem: FC<IArticleItemProps> = ({
         </h3>
 
         <div className={styles.ArticleItem__MetaInfo}>
-          <span
-            className={cn(styles.ArticleItem__Category, {
-              [styles.ArticleItem__Category_analyze]: true,
-            })}
-          >
-            {category}
-          </span>
+          <span className={categoryClassName}>{categoryName}</span>
           <span className={styles.ArticleItem__Author}>{authorName}</span>
         </div>
       </div>
