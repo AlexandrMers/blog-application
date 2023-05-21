@@ -1,0 +1,10 @@
+.Grid {
+  display: grid;
+  width: 100%;
+}
+
+.Grid__Item {
+  & > * {
+    height: 100%;
+  }
+}
