@@ -78,6 +78,41 @@ server.use((req, res, next) => {
   next()
 })
 
+server.get('/articles', (req, res) => {
+  const { _page, _limit, _expand } = req.query
+
+  req.query._expand = _expand
+
+  const articles = router.db.get('articles').value()
+  const profiles = router.db.get('profiles').value()
+
+  const currentPage = parseInt(_page) || 1
+  const perPage = parseInt(_limit) || 10
+
+  const startIndex = (currentPage - 1) * perPage
+  const endIndex = startIndex + perPage
+
+  const pagedArticles = articles.slice(startIndex, endIndex).map((article) => ({
+    ...article,
+    profile:
+      profiles.find((profile) => profile.id === article.profileId) ?? null,
+  }))
+
+  res.json({
+    currentPage,
+    perPage,
+    total: articles.length,
+    data: pagedArticles,
+    hasMore: pagedArticles.length < articles.length,
+  })
+})
+
+server.use('/articles', (req, res, next) => {
+  const { _expand } = req.query
+  req.query = _expand
+  next()
+})
+
 server.use(router)
 
 // запуск сервера

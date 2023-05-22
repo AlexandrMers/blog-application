@@ -1,4 +1,4 @@
-import { type ProfileResponseType } from 'entities/Profile'
+import { type IProfile } from 'entities/Profile'
 
 export type BlockType = 'text' | 'code' | 'image'
 
@@ -40,17 +40,17 @@ export const CategoryDictionary: Record<CategoryType, string> = {
 
 export type IBlockType = IBlockText | IBlockCode | IBlockImage
 
-export interface IArticleClient {
+export interface IArticleItem {
   id: number
   title: string
   subtitle: string
   img: string
   createdAt: string
-  author: ProfileResponseType
-  type: string[]
+  author: IProfile
+  type: CategoryType
   blocks: IBlockType[]
 }
 
-export type IArticleResponse = Omit<IArticleClient, 'createdAt'> & {
-  created_at: string
+export type IArticleResponse = Omit<IArticleItem, 'author'> & {
+  profile: IProfile
 }

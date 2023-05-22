@@ -9,7 +9,7 @@ export function renderArticleListSkeleton(
   count?: number,
   withBigCard?: boolean
 ): ReactElement[] {
-  return new Array(5).fill(null).map((item, index) => {
+  return new Array(5).fill(null).map((_, index) => {
     const isFirstElement = index === 0
 
     return (

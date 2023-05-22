@@ -33,7 +33,7 @@ const App: FC = () => {
         <Layout.SideBar>
           <SideBar endCellRender={<SwitchTheme />} />
         </Layout.SideBar>
-        <Layout.Content>
+        <Layout.Content background="var(--gray)">
           <AppRoute />
         </Layout.Content>
       </Layout.Container>

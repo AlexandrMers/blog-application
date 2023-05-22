@@ -1,51 +1,72 @@
 import { apiInstance } from 'shared/config/api'
-import { createSelector } from 'reselect'
 
-import {
-  type IArticleClient,
-  type IArticleResponse,
-} from '../types/articleType'
-
-import { type UserResponseType } from 'entities/User'
+import { type IArticleItem, type IArticleResponse } from '../types/articleType'
 
 const mapResponseArticleToClient = ({
   img,
   blocks,
   subtitle,
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  created_at,
-  author,
+  createdAt,
+  profile,
   type,
   title,
   id,
-}: IArticleResponse): IArticleClient => ({
-  createdAt: created_at,
+}: IArticleResponse): IArticleItem => ({
+  createdAt,
   blocks,
   img,
   id,
-  author,
+  author: profile,
   type,
   title,
   subtitle,
 })
 
-interface ArticleResponseType {
-  id: number
-  title: string
-  author: Omit<UserResponseType, 'token'>
-}
-
 export const articleSlice = apiInstance.injectEndpoints({
   endpoints: (builder) => ({
-    getArticlesByAuthorId: builder.query<ArticleResponseType[], number>({
-      query: (authorId: number) => {
+    // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
+    getArticlesList: builder.query<
+      {
+        data: IArticleItem[]
+        hasMore: boolean
+        currentPage: number
+      },
+      { page: number; limit: number }
+    >({
+      query: ({ page, limit }) => {
         return {
-          url: `/articles?author.id=${authorId}`,
+          url: `/articles?_expand=profile&_page=${page}&_limit=${limit}`,
           method: 'get',
         }
       },
+      transformResponse: (response: {
+        hasMore: boolean
+        perPage: number
+        total: number
+        currentPage: number
+        data: IArticleResponse[]
+      }) => ({
+        data: response.data.map(mapResponseArticleToClient),
+        hasMore: response.hasMore,
+        currentPage: response.currentPage,
+      }),
+      serializeQueryArgs: ({ endpointName, queryArgs }) =>
+        `${endpointName}-${queryArgs.limit}`,
+      forceRefetch({ currentArg, previousArg }) {
+        return currentArg?.page !== previousArg?.page
+      },
+      merge: (currentCacheData, responseData, { arg }) => {
+        if (arg.page > 1) {
+          currentCacheData.hasMore = responseData.hasMore
+          currentCacheData.data.push(...responseData.data)
+          return currentCacheData
+        }
+
+        return responseData
+      },
     }),
-    getArticleById: builder.query<IArticleClient, number>({
+    getArticleById: builder.query<IArticleItem, number>({
       query: (id: number) => {
         return {
           url: `/articles/${id}?_expand=profile`,
@@ -57,11 +78,4 @@ export const articleSlice = apiInstance.injectEndpoints({
   }),
 })
 
-export const selectArticleById = (id: number) =>
-  createSelector(
-    articleSlice.endpoints.getArticleById.select(id),
-    (article) => article?.data
-  )
-
-export const { useGetArticlesByAuthorIdQuery, useGetArticleByIdQuery } =
-  articleSlice
+export const { useGetArticlesListQuery, useGetArticleByIdQuery } = articleSlice

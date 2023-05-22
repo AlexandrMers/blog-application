@@ -1,17 +1,16 @@
+import { NavLink } from 'react-router-dom'
+
 import { Grid, GridItem } from 'shared/ui'
 
-import {
-  ArticleItem,
-  type IArticleCardFields,
-} from '../ArticleItem/ArticleItem'
-
-import { renderArticleListSkeleton } from './renderSkeleton'
+import { type IArticleItem } from '../../model'
+import { ArticleItem } from '../ArticleItem/ArticleItem'
 
 import styles from './styles.module.scss'
+import { renderArticleListSkeleton } from './renderSkeleton'
 
 export interface IArticleListProps {
   isLoading?: boolean
-  list: IArticleCardFields[]
+  list: IArticleItem[]
 }
 
 export const ArticleList = ({
@@ -21,26 +20,32 @@ export const ArticleList = ({
   return (
     <section className={styles.ArticleList}>
       <Grid columns={['1fr', '1fr']} gap="30px">
-        {list.map(({ title, image, authorName, category }, index) => {
+        {list.map(({ title, img, author, type, createdAt, id }, index) => {
           const isFirstElement = index === 0
 
           return (
             <GridItem
-              key={index}
+              key={id}
               gridRow={isFirstElement ? ['span', 2] : undefined}
             >
-              <ArticleItem
-                variant={isFirstElement ? 'big' : 'normal'}
-                title={title}
-                image={image}
-                authorName={authorName}
-                category={category}
-              />
+              <NavLink
+                className={styles.ArticleList__Link}
+                to={`/articles/${id}`}
+              >
+                <ArticleItem
+                  variant={isFirstElement ? 'big' : 'normal'}
+                  title={title}
+                  author={author}
+                  type={type}
+                  img={img}
+                  createdAt={createdAt}
+                />
+              </NavLink>
             </GridItem>
           )
         })}
 
-        {isLoading && renderArticleListSkeleton(5, list.length === 0)}
+        {isLoading && renderArticleListSkeleton(3, list.length === 0)}
       </Grid>
     </section>
   )

@@ -8,17 +8,20 @@ import ImageBee from 'shared/assets/images/bee.jpg'
 
 const StoryArticleItem: ComponentMeta<typeof ArticleItemComponent> = {
   argTypes: {
-    category: {
+    type: {
       defaultValue: 'Анализ',
     },
     title: {
       defaultValue: 'Почему офис стал культовым сериалом?',
     },
-    image: {
+    img: {
       defaultValue: ImageOffice,
     },
-    authorName: {
-      defaultValue: 'Иванов Иван',
+    author: {
+      defaultValue: {
+        name: 'Иван',
+        surname: 'Иванов',
+      },
     },
   },
   component: ArticleItemComponent,
@@ -47,7 +50,7 @@ ArticleItem.args = {}
 export const ArticleItemBig = Template.bind({})
 ArticleItemBig.args = {
   variant: 'big',
-  image: ImageBee,
+  img: ImageBee,
 }
 
 export default StoryArticleItem
