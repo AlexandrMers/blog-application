@@ -1,11 +1,11 @@
 import { apiInstance, TAG_TYPES_FOR_API } from 'shared/config/api'
 
-import { type ProfileResponseType } from './types'
+import { type IProfile } from './types'
 
 export const profileSlice = apiInstance.injectEndpoints({
   endpoints: (builder) => ({
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    getProfile: builder.query<ProfileResponseType, number>({
+    getProfile: builder.query<IProfile, number>({
       query: (userId) => {
         return {
           url: `/profiles/${userId}`,
@@ -16,10 +16,7 @@ export const profileSlice = apiInstance.injectEndpoints({
       providesTags: [TAG_TYPES_FOR_API.PROFILE],
     }),
 
-    changeProfile: builder.mutation<
-      ProfileResponseType,
-      Omit<ProfileResponseType, 'avatar'>
-    >({
+    changeProfile: builder.mutation<IProfile, Omit<IProfile, 'avatar'>>({
       query: (body) => {
         return {
           url: `/profiles/${body.id}`,

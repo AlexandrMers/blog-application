@@ -1,0 +1,15 @@
+$max-width-list-container: 1164px;
+
+.ArticleList {
+  max-width: $max-width-list-container;
+  width: 100%;
+}
+
+.ArticleList__Link {
+  color: inherit;
+  text-decoration: none;
+
+  & > * {
+    height: 100%;
+  }
+}

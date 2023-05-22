@@ -6,7 +6,7 @@ $secondary-color: #BFA584;
 $secondary-color-hover: color.adjust($secondary-color, $blackness: 40%);
 
 .app_theme_dark {
-  --text-color: rgb(0 0 0 / 71%);
+  --text-color: #282828;;
   --bg-color: #2C3F59;
   --bg-color-inverted: #fff4e7;
   --primary-color: #{$primary-color};
@@ -14,6 +14,22 @@ $secondary-color-hover: color.adjust($secondary-color, $blackness: 40%);
   --secondary-color: #{$secondary-color};
   --secondary-color-hover: #{$secondary-color-hover};
   --card-bg-color: #ebebeb;
+
+  // article card
+  --article-card-bg: #fff;
+
+  // design system colors
+  --black: #282828;
+  --gray-strong: #BDBDBD;
+  --gray: #EFEFEF;
+
+  // categories
+  --red: #D00;
+  --orange: #D74D00;
+  --yellow: #DDE100;
+  --green: #009818;
+  --blue: #0108BD;
+  --purple: #7B16CB;
 }
 
 

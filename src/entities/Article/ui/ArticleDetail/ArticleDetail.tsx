@@ -3,7 +3,7 @@ import { Box, Typography } from '@mui/material'
 
 import { CodeBlock } from 'shared/ui'
 
-import { type IArticleClient } from '../../model'
+import { type IArticleItem } from '../../model'
 import {
   isTextBlock,
   isImageBlock,
@@ -18,7 +18,7 @@ export function ArticleDetail({
   subtitle,
   createdAt,
   blocks,
-}: IArticleClient) {
+}: IArticleItem) {
   return (
     <div className={styles.ArticleDetail}>
       <Box>

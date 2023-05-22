@@ -1,4 +1,4 @@
-import { type ProfileResponseType } from 'entities/Profile'
+import { type IProfile } from 'entities/Profile'
 
 export type BlockType = 'text' | 'code' | 'image'
 
@@ -20,19 +20,37 @@ export interface IBlockImage extends IBlock {
   title: string
 }
 
+export enum CategoryType {
+  TRAVEL = 'travel',
+  ANALYZE = 'analyze',
+  IT = 'it',
+  HEALTH = 'health',
+  SCIENCE = 'science',
+  DESIGN = 'design',
+}
+
+export const CategoryDictionary: Record<CategoryType, string> = {
+  [CategoryType.ANALYZE]: 'Анализ',
+  [CategoryType.DESIGN]: 'Дизайн',
+  [CategoryType.IT]: 'IT',
+  [CategoryType.HEALTH]: 'Здоровье',
+  [CategoryType.SCIENCE]: 'Наука',
+  [CategoryType.TRAVEL]: 'Путешествия',
+}
+
 export type IBlockType = IBlockText | IBlockCode | IBlockImage
 
-export interface IArticleClient {
+export interface IArticleItem {
   id: number
   title: string
   subtitle: string
   img: string
   createdAt: string
-  author: ProfileResponseType
-  type: string[]
+  author: IProfile
+  type: CategoryType
   blocks: IBlockType[]
 }
 
-export type IArticleResponse = Omit<IArticleClient, 'createdAt'> & {
-  created_at: string
+export type IArticleResponse = Omit<IArticleItem, 'author'> & {
+  profile: IProfile
 }

@@ -6,7 +6,7 @@ export const getDevServerConfig = (
 ): DevServerConfigurationType => {
   return {
     port: options.port,
-    open: true,
+    open: false,
     historyApiFallback: true,
   }
 }

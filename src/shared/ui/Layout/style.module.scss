@@ -1,5 +1,3 @@
-$container-padding: 15px;
-
 .LayoutContainer {
   display: flex;
   width: 100%;
@@ -8,12 +6,10 @@ $container-padding: 15px;
 .SideBar {
   background-color: var(--secondary-color);
   min-height: calc(100vh - var(--header-height));
-  padding: $container-padding;
   width: var(--sidebar-width);
 }
 
 .LayoutContent {
   flex-grow: 1;
   min-height: calc(100vh - var(--header-height));
-  padding: $container-padding;
 }

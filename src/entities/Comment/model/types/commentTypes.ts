@@ -1,10 +1,10 @@
-import { type ProfileResponseType } from 'entities/Profile'
+import { type IProfile } from 'entities/Profile'
 
 export interface IComment {
   id: number
   createdAt: string
   profileId: number
-  profile: ProfileResponseType
+  profile: IProfile
   articleId: number
   text: string
 }

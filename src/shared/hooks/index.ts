@@ -4,3 +4,4 @@ export {
   useAsyncReducerLoader,
   type ReducersList,
 } from './useAsyncReducerLoader'
+export { useInfiniteScroll } from './useInfiniteScroll'

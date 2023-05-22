@@ -1,0 +1,117 @@
+$max-width-article-card: 567px;
+$rect-size: 22px;
+$box-shadow-article-card: 0 0 7px 1px rgb(0 0 0 / 20%);
+
+.ArticleItem {
+  background-color: var(--article-card-bg);
+  border-radius: 20px;
+  cursor: pointer;
+  max-width: $max-width-article-card;
+  overflow: hidden;
+  transition: all ease-in .15s;
+  width: 100%;
+
+  &:hover {
+    box-shadow: $box-shadow-article-card;
+    transform: translateY(-3px);
+  }
+}
+
+.ArticleItem__Image {
+  display: block;
+  height: 213px;
+  max-width: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.ArticleItem_big {
+  .ArticleItem__Image {
+    height: 560px;
+  }
+}
+
+.ArticleItem__InfoWrapper {
+  padding: 30px;
+}
+
+.ArticleItem__Title {
+  color: var(--text-color);
+  font-size: 32px;
+
+  // TODO - с подключением других шрифтов может измениться!
+  font-weight: 600;
+  line-height: 38px;
+  margin-bottom: 15px;
+}
+
+.ArticleItem__MetaInfo {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ArticleItem__Category {
+  font-size: 16px;
+
+  // TODO - с подключением других шрифтов может измениться!
+  font-weight: 600;
+  line-height: 20px;
+  padding-left: calc($rect-size + 15px);
+  position: relative;
+
+  &::before {
+    background: transparent;
+    border-radius: 5px;
+    content: '';
+    display: block;
+    height: $rect-size;
+    left: 0;
+    position: absolute;
+    top: -3px;
+    width: $rect-size;
+  }
+
+  &_travel {
+    &::before{
+      background: var(--red);
+    }
+  }
+
+  &_analyze {
+    &::before{
+      background: var(--orange);
+    }
+  }
+
+  &_it {
+    &::before{
+      background: var(--yellow);
+    }
+  }
+
+  &_health {
+    &::before{
+      background: var(--green);
+    }
+  }
+
+  &_science {
+    &::before{
+      background: var(--blue);
+    }
+  }
+
+  &_design {
+    &::before{
+      background: var(--purple);
+    }
+  }
+}
+
+.ArticleItem__Author {
+  color: var(--gray-strong);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+}

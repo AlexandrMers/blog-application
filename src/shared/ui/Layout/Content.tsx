@@ -1,7 +1,22 @@
 import { type PropsWithChildren } from 'react'
+import cn from 'classnames'
 
 import styles from './style.module.scss'
 
-export const Content = ({ children }: PropsWithChildren) => {
-  return <div className={styles.LayoutContent}>{children}</div>
+interface IContentProps extends PropsWithChildren {
+  className?: string
+  background?: string
+}
+
+export const Content = ({ children, className, background }: IContentProps) => {
+  return (
+    <div
+      className={cn(styles.LayoutContent, className)}
+      style={{
+        background,
+      }}
+    >
+      {children}
+    </div>
+  )
 }

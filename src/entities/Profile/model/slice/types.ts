@@ -1,4 +1,4 @@
-export interface ProfileResponseType {
+export interface IProfile {
   id: number
   email: string
   name: string
