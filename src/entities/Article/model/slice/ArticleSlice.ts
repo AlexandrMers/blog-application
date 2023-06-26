@@ -59,6 +59,7 @@ export const articleSlice = apiInstance.injectEndpoints({
       merge: (currentCacheData, responseData, { arg }) => {
         if (arg.page > 1) {
           currentCacheData.hasMore = responseData.hasMore
+          currentCacheData.currentPage = responseData.currentPage
           currentCacheData.data.push(...responseData.data)
           return currentCacheData
         }

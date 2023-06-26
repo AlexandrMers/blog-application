@@ -92,6 +92,8 @@ server.get('/articles', (req, res) => {
   const startIndex = (currentPage - 1) * perPage
   const endIndex = startIndex + perPage
 
+  const lastIndexOfArticles = articles.length - 1
+
   const pagedArticles = articles.slice(startIndex, endIndex).map((article) => ({
     ...article,
     profile:
@@ -103,7 +105,7 @@ server.get('/articles', (req, res) => {
     perPage,
     total: articles.length,
     data: pagedArticles,
-    hasMore: pagedArticles.length < articles.length,
+    hasMore: endIndex <= lastIndexOfArticles,
   })
 })
 
