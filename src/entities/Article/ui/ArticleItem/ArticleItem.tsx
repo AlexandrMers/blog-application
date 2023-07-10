@@ -18,7 +18,6 @@ export const ArticleItem: FC<IArticleItemProps> = ({
   author: { name, surname },
   createdAt,
 }: IArticleItemProps): ReactElement => {
-  console.log('createdAt ->', createdAt)
   const categoryName = CategoryDictionary[type]
   const categoryClassName = cn(styles.ArticleItem__Category, {
     [styles[`ArticleItem__Category_${type}`]]: true,

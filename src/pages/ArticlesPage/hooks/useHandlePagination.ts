@@ -23,8 +23,9 @@ export function useHandlePagination(limit: number) {
     if (!data?.hasMore) {
       return undefined
     }
+
     setCurrentPage(data.currentPage + 1)
-  }, [data?.currentPage, data?.hasMore])
+  }, [data])
 
   useInfiniteScroll({
     callback: onHandleNextPage,

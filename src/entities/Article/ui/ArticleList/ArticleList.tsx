@@ -6,6 +6,7 @@ import { type IArticleItem } from '../../model'
 import { ArticleItem } from '../ArticleItem/ArticleItem'
 
 import styles from './styles.module.scss'
+import { memo } from 'react'
 import { renderArticleListSkeleton } from './renderSkeleton'
 
 export interface IArticleListProps {
@@ -13,40 +14,40 @@ export interface IArticleListProps {
   list: IArticleItem[]
 }
 
-export const ArticleList = ({
-  isLoading = false,
-  list = [],
-}: IArticleListProps) => {
-  return (
-    <section className={styles.ArticleList}>
-      <Grid columns={['1fr', '1fr']} gap="30px">
-        {list.map(({ title, img, author, type, createdAt, id }, index) => {
-          const isFirstElement = index === 0
+export const ArticleList = memo(
+  ({ isLoading = false, list = [] }: IArticleListProps) => {
+    return (
+      <section className={styles.ArticleList}>
+        <Grid columns={['1fr', '1fr']} gap="30px">
+          {list.map(({ title, img, author, type, createdAt, id }, index) => {
+            const isFirstElement = index === 0
 
-          return (
-            <GridItem
-              key={id}
-              gridRow={isFirstElement ? ['span', 2] : undefined}
-            >
-              <NavLink
-                className={styles.ArticleList__Link}
-                to={`/articles/${id}`}
+            return (
+              <GridItem
+                key={index}
+                gridRow={isFirstElement ? ['span', 2] : undefined}
               >
-                <ArticleItem
-                  variant={isFirstElement ? 'big' : 'normal'}
-                  title={title}
-                  author={author}
-                  type={type}
-                  img={img}
-                  createdAt={createdAt}
-                />
-              </NavLink>
-            </GridItem>
-          )
-        })}
+                <NavLink
+                  className={styles.ArticleList__Link}
+                  to={`/articles/${id}`}
+                >
+                  <ArticleItem
+                    variant={isFirstElement ? 'big' : 'normal'}
+                    title={title}
+                    author={author}
+                    type={type}
+                    img={img}
+                    createdAt={createdAt}
+                  />
+                </NavLink>
+              </GridItem>
+            )
+          })}
 
-        {isLoading && renderArticleListSkeleton(3, list.length === 0)}
-      </Grid>
-    </section>
-  )
-}
+          {isLoading && renderArticleListSkeleton(3, list.length === 0)}
+        </Grid>
+      </section>
+    )
+  }
+)
+ArticleList.displayName = 'ArticleList'
