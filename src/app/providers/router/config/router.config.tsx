@@ -13,11 +13,18 @@ const ArticlesPage = React.lazy(async () => await import('pages/ArticlesPage'))
 const ArticleDetailPage = React.lazy(
   async () => await import('pages/ArticleDetailPage')
 )
+const ArticleCreatePage = React.lazy(
+  async () => await import('pages/ArticleCreatePage')
+)
 
 export const RouteConfig: Record<AppRoutes, RouteProps> = {
   [AppRoutes.ARTICLES]: {
     path: RoutesPath.articles,
     element: <ArticlesPage />,
+  },
+  [AppRoutes.ARTICLE_CREATE]: {
+    path: RoutesPath.articleCreate,
+    element: <ArticleCreatePage />,
   },
   [AppRoutes.ARTICLE_DETAIL]: {
     path: RoutesPath.articleDetail,

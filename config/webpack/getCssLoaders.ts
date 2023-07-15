@@ -3,7 +3,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
 export function getCssLoaders(isDev: boolean): webpack.RuleSetRule {
   return {
-    test: /\.s[ac]ss$/i,
+    test: /\.(sc|sa|c)ss$/i,
     use: [
       isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
       {
